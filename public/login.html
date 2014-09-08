@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<!--[if lt IE 7]><html class="ie ie6" lang="fr"><![endif]-->
+<!--[if IE 7]><html class="ie ie7" lang="fr"><![endif]-->
+<!--[if IE 8]><html class="ie ie8" lang="fr"><![endif]-->
+<!--[if gte IE 9]><html class="ie gteie9" lang="fr"><![endif]-->
+<!--[if !(IE)]><!--><html lang="fr"><!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>{{title}}</title>
+	<meta name="description" content="" />
+	<meta name="author" content="Cannelle Plus">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/base.css" />
+	<link rel="stylesheet" type="text/css" href="css/form.css" />
+	<link rel="stylesheet" type="text/css" href="css/main.css" />
+	<link rel="shortcut icon" href="images/favicon.ico">
+</head>
+<body>
+	<header class="clearfix">
+		<p><a href="#" data-target="games">{{logo}}</a></p>
+		<h1><a href="#" data-modal="open">{{name}}</a></h1>
+	</header>
+	<div id="main">
+		<section id="createAccount">
+			<h2 class="title">Login</h2>
+			<ul class="login">
+				<li>
+					<!-- FACEBOOK -->
+					<fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
+					</fb:login-button>
+					<div id="status"></div>
+				</li>
+				<li>
+					<!-- GOOGLE -->
+					<span id="signinButton">
+						<span
+							class="g-signin"
+							data-callback="signinCallback"
+							data-clientid="971706069383-89l9n8puhri7b6s15gff0p74p9mkh23k.apps.googleusercontent.com"
+							data-cookiepolicy="single_host_origin"
+							data-requestvisibleactions="http://schemas.google.com/AddActivity"
+							data-scope="https://www.googleapis.com/auth/plus.login">
+						</span>
+					</span>
+				</li>
+			</ul>			
+		</section>
+	</div>
+	<div class="overlay">
+		<p>{{Praesent at mollis augue. Aliquam ultrices felis id bibendum adipiscing. At condimentum ante felisend tristique.}}</p>
+		<ul>
+			<li><a href="#" data-modal="close">oui</a></li>
+			<li><a href="#" data-modal="close">non</a></li>
+		</ul>
+	</div>
+</body>	
+<script src="js/libs/jquery-1.9.1.min.js"></script>
+<script src="js/facebook.js"></script>
+<script src="js/google.js"></script>
+<script src="js/main.js"></script>
+</html>
