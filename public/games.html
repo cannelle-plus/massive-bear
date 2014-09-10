@@ -1,0 +1,157 @@
+<<<<<<< HEAD
+<html>
+<body>
+	hello !
+</body>
+=======
+<!DOCTYPE HTML>
+<!--[if lt IE 7]><html class="ie ie6" lang="fr"><![endif]-->
+<!--[if IE 7]><html class="ie ie7" lang="fr"><![endif]-->
+<!--[if IE 8]><html class="ie ie8" lang="fr"><![endif]-->
+<!--[if gte IE 9]><html class="ie gteie9" lang="fr"><![endif]-->
+<!--[if !(IE)]><!--><html lang="fr"><!--<![endif]-->
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<title>{{title}}</title>
+	<meta name="description" content="" />
+	<meta name="author" content="Cannelle Plus">
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="stylesheet" type="text/css" href="css/base.cssssss" />
+	<link rel="stylesheet" type="text/css" href="css/form.cssssss" />
+	<link rel="stylesheet" type="text/css" href="css/main.csssss" />
+	<link rel="shortcut icon" href="images/favicon.ico">
+</head>
+<body>
+	<header class="clearfix">
+		<p><a href="#" data-target="games">{{logo}}</a></p>
+		<h1><a href="#" data-modal="open">{{name}}</a></h1>
+	</header>
+	<div id="main">
+		<!--<section id="createAccount">
+			<h2 class="title">Create account</h2>
+			<form action="#" method="post" enctype="application/x-www-form-urlencoded">
+				<input type="text" id="nickname" name="text" placeholder="Nickname *">
+				<input type="text" id="email" name="email" placeholder="Email *">
+				<input type="password" id="pwd" name="pwd" placeholder="Password *">
+				<input type="password" id="pwd2" name="pwd2" placeholder="Confirm password *">
+				<div class="checkbox">
+					<input type="checkbox">
+					<p>J'accepte les <a href="#" data-target="cgu">conditions générales d'utilisation</a></p>
+				</div>
+				<div class="clearfix">
+					<button type="submit" id="envoyer" name="envoyer" class="button">Create</button>
+				</div>
+				<footer class="clearfix">
+					<p><a href="#" data-target="mentions">Mentions légales</a></p>
+				</footer>
+			</form>
+		</section>-->
+		<section id="games">
+			<script id="gamesListTemplate" type="text/x-dot-template">
+			{{~it.gamesList :game}} 
+				<li>
+					<p class="avatar">{{=game.gameLocation}} - {{= new Date(game.gameDate).toLocaleString("en-GB")}}</p>
+					<p class="infos">
+						<strong>Lorem ipsum dolor</strong>
+						Lorem ipsum dolor<br />
+						Lorem ipsum dolor
+					</p>
+					<p class="number alert">{{= game.nbPlayers}}/{{= game.maxPlayers}}</p>
+					<a href="#" class="more" data-target="gameDetail">+</a><br/>
+					<div class="action">
+						<button type="button" class="actionJoin" data="{{=game.gameId}}">Join</button>
+						<button type="button" class="actionAbandonGame" data="{{=game.gameId}}">Adandon</button>
+					</div>
+				</li>
+
+				{{~}}
+			</script>
+
+			<ul id="gamesListContainer" class="games" />
+
+			<footer class="clearfix">
+				<p><a href="#" data-target="createGame">Créer une nouvelle partie</a></p>
+			</footer>
+		</section>
+		<section id="gameDetail">
+			<ul class="games">
+				<li>
+					<p class="avatar">O</p>
+					<p class="infos">
+						<strong>Lorem ipsum dolor</strong>
+						Lorem ipsum dolor<br />
+						Lorem ipsum dolor
+					</p>
+					<p class="number alert">5/8</p>
+				</li>
+				<li class="clearfix">
+					<ul>
+						<li>Joueur un</li>
+						<li>Joueur trois</li>
+						<li>Joueur cinq</li>
+					</ul>
+					<ul>
+						<li>Joueur deux</li>
+						<li><strong>Moi</strong></li>
+						<li>...</li>
+					</ul>
+				</li>
+			</ul>
+			<p class="detailAction"><a href="#">Quitter la partie</a></p>
+			<footer class="clearfix">
+				<p><a href="#" data-target="createGame">Créer une nouvelle partie</a></p>
+			</footer>
+		</section>
+		<section id="createGame">
+			<h2 class="title">Create new game</h2>
+			<form action="#" method="post" enctype="application/x-www-form-urlencoded">
+				<input type="text" id="name" name="name" placeholder="Name *">
+				<div class="semiField">
+					<input type="date"><input type="text">				
+				</div>
+				<select>
+					<option selected>Location</option>
+					<option>Lorem ipsum</option>
+					<option>Dolor sit amet</option>
+					<option>Constectur</option>
+				</select>
+				<select>
+					<option selected>Players required</option>
+					<option>4</option>
+					<option>6</option>
+					<option>8</option>
+					<option>10</option>
+				</select>
+				<div class="clearfix">
+					<button type="submit" id="envoyer" name="envoyer" class="button">Create</button>
+				</div>
+			</form>
+		</section>
+		<section id="cgu">
+			<h2 class="title">Conditions générales d'utilisation</h2>
+			<p>Vivamus eget nisi blandit, <strong>dapibus purus vitae</strong>, feugiat odio.</p>
+			<h3 class="subtitle">1/ Sit amet consetectur</h3>
+			<p>Praesent at mollis augue. Aliquam ultrices felis id bibendum adipiscing. <a href="#">Integer</a> condimentum ante felisend tristique.</p>
+			<p>Praesent at mollis augue. Aliquam ultrices felis id bibendum adipiscing. <a href="#">Integer</a> condimentum ante felisend tristique.</p>
+		</section>
+		<section id="mentions">
+			<h2 class="title">Mentions légales</h2>
+			<p>Vivamus eget nisi blandit, <strong>dapibus purus vitae</strong>, feugiat odio.</p>
+			<h3 class="subtitle">1/ Sit amet consetectur</h3>
+			<p>Praesent at mollis augue. Aliquam ultrices felis id bibendum adipiscing. <a href="#">Integer</a> condimentum ante felisend tristique.</p>
+			<p>Praesent at mollis augue. Aliquam ultrices felis id bibendum adipiscing. <a href="#">Integer</a> condimentum ante felisend tristique.</p>
+		</section>
+	</div>
+	<div class="overlay">
+		<p>{{Praesent at mollis augue. Aliquam ultrices felis id bibendum adipiscing. At condimentum ante felisend tristique.}}</p>
+		<ul>
+			<li><a href="#" data-modal="close">oui</a></li>
+			<li><a href="#" data-modal="close">non</a></li>
+		</ul>
+	</div>
+</body>	
+<script src="libs/jquery-1.11.1.min.js" type="text/javascript"></script>
+<script  src="libs/doT.min.js" type="text/javascript"></script>
+<script src="javascripts/init.js" type="text/javascript"></script>
+>>>>>>> origin/master
+</html>
