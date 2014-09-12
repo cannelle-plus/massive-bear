@@ -22,21 +22,27 @@ module.exports = (function(driverCmd){
         fnSendCmd(commande); 
     };
     
-    var _createGame = function(id,date,location,name){
-        var commande = 'CreateGame{Id:'+id+',Date:'+date+',Location:'+location+',Name:'+name+'}';
+    var _createGame = function(ownerId,date,location,name,nbPlayersRequired){
+        var commande = 'CreateGame{ownerId:'+ownerId+' ,Date:'+date+',Location:'+location+',Name:'+name+', nbPlayersRequired:'+nbPlayersRequired+'}';
         fnSendCmd(commande); 
     
     };
     
-    var _joinGame = function(idGame,userId){
-        var commande = 'JoinGame{Id:'+idGame+'UserId:'+userId+'}';
+    var _joinGame = function(gameID,userId){
+        var commande = 'JoinGame{gameID:'+gameID+' ,UserId:'+userId+'}';
         fnSendCmd(commande);
     };
     
-    var _abondonGame = function(idGame){
-        var commande = 'AbandonGame{Id:'+idGame+'}';
+    var _abondonGame = function(gameID,userId){
+        var commande = 'AbandonGame{gameID:'+gameID+' ,UserId:'+userId+'}';
         fnSendCmd(commande);
     };
+
+    var _cancelGame = function(gameID,userId){
+        var commande = 'CancelGame{gameID:'+gameID+' ,UserId:'+userId+'}';
+        fnSendCmd(commande);
+    };
+
     
     return{
      
@@ -45,7 +51,8 @@ module.exports = (function(driverCmd){
         logout:_logout,
         createGame:_createGame,
         joinGame:_joinGame,
-        abandonGame:_abondonGame
+        abandonGame:_abondonGame,
+        cancelGame:_cancelGame
     }
 
 });

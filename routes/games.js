@@ -29,51 +29,73 @@ router.get('/games', function(req, res) {
 	 res.sendFile('games.html',options);
 });
 
+
 /* POST to Add new game */
 router.post('/game/creategame', function(req, res) {
 
     // Get our form values. These rely on the "name" attributes
     
-    //Id must be create by controller ???
-    var id = Math.floor((Math.random() * 10) + 1);
-    
-    var date = req.body.date;
-    var location = req.body.location;
-    var name = req.body.name;
-    commands.createGame(id,date,location,name);  
+    if(!req.body.gameDate || req.body.gameDate.length==0)
+        res.status(400).send('Game date is missing !');
+
+    if(!req.body.gameLocation || req.body.gameLocation.length==0)
+        res.status(400).send('Game location is missing !');
+
+    if(!req.body.gameName)
+        res.status(400).send('Game name is missing !');
+
+    if(!req.body.nbPlayersRequired || req.body.nbPlayersRequired.length == 0)
+        res.status(400).send('Game s players number is missing !');
+
+
+    commands.createGame(req.user.id,req.body.gameDate ,req.body.gameLocation,req.body.gameName, req.body.nbPlayersRequired);  
 
     // to be defined 
-    res.send("Nouveau match enregistré  ! :) ");
+    res.send("Game created  !");
 });
 
 
-/* POST to Add new game */
+/* POST to join game */
 router.post('/game/joinGame', function(req, res) {
 
-    console.log('joinGame start');
+
     // Get our form values. These rely on the "name" attributes
+
     if(req.body.game)
     {
-        console.log(req.user);
-     //  commands.joinGame(id,date,location,name);   
-    }    
+        commands.joinGame(req.body.game,req.user.id);   
+        res.send("Game joigned  ! :) ");
+    }  
+    else
+        res.status(400).send('Game id is missing !');
 
-    // to be defined 
-    res.send("Nouveau joueur enregistré  ! :) ");
+
 });
 
-/* POST to Add new game */
+/* POST to Add abandon game */
 router.post('/game/abandonGame', function(req, res) {
 
-    // Get our form values. These rely on the "name" attributes
-    
-    var date = req.body.date;
-    var location = req.body.location;
-    var name = req.body.name;
-    //commands.commands.createGame(id,date,location,name);  
+    if(req.body.game)
+    {
+        commands.abandonGame(req.body.game,req.user.id);   
+        res.send("Game abandoned  ! ");
+    }  
+    else
+        res.status(400).send('Game id is missing !');
 
-    // to be defined 
-    res.send("Nouveau match enregistré  ! :) ");
+});
+
+/* POST to Add abandon game */
+router.post('/game/cancelGame', function(req, res) {
+
+    if(req.body.game)
+    {
+        commands.cancelGame(req.body.game,req.user.id);   
+        res.send("Game canceled  ! ");
+    }  
+    else
+        res.status(400).send('Game id is missing !');
+
 });
 
 

@@ -16,10 +16,10 @@ $(function() {
 	});
 	
 	// Action on game
-	$('#games .games li').on('click',function(e){
+	$('#games .games').on('click','li',function(e){
 		$(this).find('.action').show();
 	});
-	$('.action a').on('click',function(e){
+	$('#games .games').on('click','.action a',function(e){
 		doNothing(e);
 		$(this).closest('.action').hide();
 	});

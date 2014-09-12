@@ -44,6 +44,27 @@ return {
 
     },
 
+    getBear:function(userId,fnCallback)
+    {
+
+    var db = new sqlite3.Database('./db/drawTeams.db')
+    var user = null;
+
+    db.serialize(function() {
+        db.get("SELECT * FROM Users WHERE userId="+userId, function(err, row) {
+             if(err)
+                throw err;
+            if(row)
+            user = row;
+
+            fnCallback(user);
+            db.close;
+        });
+    })
+    
+    return user;
+
+    }, 
     
 
 
