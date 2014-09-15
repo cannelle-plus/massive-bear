@@ -17,14 +17,14 @@ var app = express();
 // all environments
 app.set('port', process.env.PORT || 8888);
 app.set('views', __dirname + '/views');
-app.use(favicon(__dirname + '/public/images/favicon.ico'));
+app.use(favicon(__dirname + '/../www-root/images/favicon.ico'));
 app.use(logger('dev'));
 app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
 app.use(methodOverride());
-app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, '/../www-root')));
 
 var router = require('./routes')(app);
 

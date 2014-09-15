@@ -60,7 +60,7 @@ module.exports = function (app) {
   app.get('/auth/google/callback',passport.authenticate('google', { failureRedirect: '/login' }),function(req, res) {res.redirect('/games');});
 
 var options = {
-                root: './public/',
+                root: './www-root/',
                 dotfiles: 'deny',
                 headers: {
                     'x-timestamp': Date.now(),
@@ -145,7 +145,7 @@ app.get('/bears*', ensureAuthenticated,require('./bears'));
 //                                                 failureRedirect: '/login'}));
 
 // 	var options = {
-//     root: './public/',
+//     root: './www-root/',
 //     dotfiles: 'deny',
 //     headers: {
 //         'x-timestamp': Date.now(),

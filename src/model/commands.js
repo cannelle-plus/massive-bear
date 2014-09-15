@@ -53,7 +53,7 @@ module.exports = (function(driverCmd){
         joinGame:_joinGame,
         abandonGame:_abondonGame,
         cancelGame:_cancelGame
-    }
+    };
 
 });
 

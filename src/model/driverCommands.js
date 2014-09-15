@@ -17,5 +17,5 @@ module.exports = (function(){
             _commandsToFile(cmd);
         }
         
-    }
+    };
 })();

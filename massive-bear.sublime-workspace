@@ -1,0 +1,663 @@
+{
+	"auto_complete":
+	{
+		"selected_items":
+		[
+			[
+				"yolo",
+				"yolo-bear"
+			],
+			[
+				"dev",
+				"devjs"
+			],
+			[
+				"tas",
+				"tasks"
+			],
+			[
+				"games",
+				"gamesList"
+			],
+			[
+				"game",
+				"gameDate"
+			],
+			[
+				"br",
+				"browserify"
+			],
+			[
+				"face",
+				"facebookLogin"
+			],
+			[
+				"g",
+				"googleLogin"
+			],
+			[
+				"re",
+				"registerTask"
+			],
+			[
+				"defa",
+				"default"
+			],
+			[
+				"www",
+				"www-root"
+			]
+		]
+	},
+	"buffers":
+	[
+		{
+			"file": "/D/projects/yolo-bear/src/js/facebook.js",
+			"settings":
+			{
+				"buffer_size": 2904,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/projects/yolo-bear/src/js/app.js",
+			"settings":
+			{
+				"buffer_size": 314,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/projects/yolo-bear/src/js/gamesViewModel.js",
+			"settings":
+			{
+				"buffer_size": 2960,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/projects/yolo-bear/src/jsTap/fakeRepository.js",
+			"settings":
+			{
+				"buffer_size": 1368,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/projects/yolo-bear/Gruntfile.js",
+			"settings":
+			{
+				"buffer_size": 4808,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/projects/yolo-bear/src/js/google.js",
+			"settings":
+			{
+				"buffer_size": 1895,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/projects/yolo-bear/src/js/ajaxRepository.js",
+			"settings":
+			{
+				"buffer_size": 1227,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "ReadMe.md",
+			"settings":
+			{
+				"buffer_size": 316,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "Gruntfile.js",
+			"settings":
+			{
+				"buffer_size": 3184,
+				"line_ending": "Windows"
+			}
+		}
+	],
+	"build_system": "",
+	"command_palette":
+	{
+		"height": 58.0,
+		"selected_items":
+		[
+			[
+				"packa",
+				"Preferences: Browse Packages"
+			]
+		],
+		"width": 392.0
+	},
+	"console":
+	{
+		"height": 0.0
+	},
+	"distraction_free":
+	{
+		"menu_visible": true,
+		"show_minimap": false,
+		"show_open_files": false,
+		"show_tabs": false,
+		"side_bar_visible": false,
+		"status_bar_visible": false
+	},
+	"file_history":
+	[
+		"/D/projects/massive-bear/ReadMe.md",
+		"/D/projects/yolo-bear/src/js/yoloBear.js",
+		"/D/projects/massive-bear/www-root/js/yolo-bear.js",
+		"/D/projects/yolo-bear/src/js/massiveBear.js",
+		"/D/projects/yolo-bear/src/js/app.js",
+		"/D/projects/yolo-bear/Gruntfile.js",
+		"/D/projects/massive-bear/src/server.js",
+		"/D/projects/massive-bear/src/routes/index.js",
+		"/D/projects/massive-bear/src/routes/games.js",
+		"/D/projects/massive-bear/src/routes/bears.js",
+		"/D/projects/massive-bear/Gruntfile.js",
+		"/D/projects/massive-bear/src/oauth.js",
+		"/D/projects/yolo-bear/src/html/games.html",
+		"/D/projects/yolo-bear/.gitignore",
+		"/D/projects/yolo-bear/src/js/facebook.js",
+		"/D/projects/yolo-bear/src/js/gamesViewModel.js",
+		"/D/projects/yolo-bear/src/js/ajaxRepository.js",
+		"/D/projects/yolo-bear/src/js/google.js",
+		"/D/projects/yolo-bear/src/jsTap/fakeRepository.js",
+		"/D/projects/yolo-bear/src/js/main.js",
+		"/D/projects/yolo-bear/www-root/js/yolo-bear.js",
+		"/D/projects/yolo-bear/src/libs/jquery-1.11.1.min.js",
+		"/D/projects/yolo-bear/src/js/gameViewModel.js",
+		"/D/projects/yolo-bear/src/js/ajax.js",
+		"/D/projects/yolo-bear/www-root/js/yolo-bear.min.js",
+		"/D/projects/yolo-bear/src/html/signIn.html",
+		"/D/projects/yolo-bear/src/html/login.html",
+		"/D/projects/yolo-bear/package.json",
+		"/D/projects/massive-bear/package.json",
+		"/D/projects/massive-bear/.gitignore",
+		"/D/projects/massive-bear/src/html/games.html",
+		"/D/projects/massive-bear/src/js/model/driverCommands.js",
+		"/D/projects/massive-bear/src/js/model/commands.js",
+		"/D/projects/massive-bear/specs/unitTests/string.spec.js",
+		"/D/projects/massive-bear/dist/bear2bear.js",
+		"/D/projects/massive-bear/src/js/ui/google.js",
+		"/D/projects/massive-bear/src/js/model/projections.js",
+		"/D/projects/massive-bear/src/js/oauth.js",
+		"/D/projects/massive-bear/src/js/routes/games.js",
+		"/D/projects/massive-bear/src/js/ui/ajax.js",
+		"/D/projects/massive-bear/karma.conf.js",
+		"/D/projects/massive-bear/public/javascripts/main.js",
+		"/D/projects/massive-bear/model/driverCommands.js",
+		"/D/projects/massive-bear/model/commands.js",
+		"/E/gruntExample/Gruntfile.js",
+		"/D/projects/massive-bear/src/js/server.js",
+		"/D/projects/massive-bear/src/js/ui/facebook.js",
+		"/D/projects/massive-bear/src/js/ui/main.js",
+		"/D/projects/massive-bear/test-main.js",
+		"/D/projects/massive-bear/test/test.js",
+		"/D/projects/massive-bear/routes/games.js",
+		"/D/projects/massive-bear/server.js",
+		"/D/projects/massive-bear/routes/index.js",
+		"/D/projects/massive-bear/model/projections.js",
+		"/D/projects/laughing-wookie/src/server/server.fsproj",
+		"/D/projects/laughing-wookie/build.sh",
+		"/C/Users/Yoann/AppData/Local/Temp/Temp1_FSharp.Data.Toolbox-master.zip/FSharp.Data.Toolbox-master/RELEASE_NOTES.md",
+		"/D/projects/laughing-wookie/src/wookie.unit.tests/wookie.unit.tests.fsproj",
+		"/D/projects/laughing-wookie/src/wookie/wookie.fsproj",
+		"/D/projects/laughing-wookie/src/prewookie/prewookie.fsproj",
+		"/D/projects/testTravis/.travis.yml",
+		"/C/Program Files (x86)/ContinuousTests/AutoTest.VS.2013.Addin",
+		"/D/Projects/db-wookie/scripts/authenticationScript.sql",
+		"/D/projects/laughing-wookie/src/laughing-wookie.sln",
+		"/D/projects/laughing-wookie/laughing-wookie.sln",
+		"/C/Users/Yoann/AppData/Local/Temp/Temp1_bear2bear.zip/bear2bear/model/projections.js",
+		"/D/projects/GetEventStoreExample/README.md",
+		"/D/Projects/db-wookie/scripts/authenticationScript.tests.sql",
+		"/D/projects/EventStore/readme.markdown",
+		"/C/Users/Yoann/Downloads/Italian keyboard superdev (WaYdotNET).rar",
+		"/D/Projects/yolo-bear/README.md",
+		"/D/Projects/db-wookie/README.md",
+		"/D/Projects/db-wookie/recreateDrawTeams.bat",
+		"/D/Projects/db-wookie/recreateDrawTeamsWithTestSample.bat",
+		"/D/Projects/db-wookie/temp/script.temp",
+		"/D/Projects/db-wookie/createScript.sql",
+		"/D/Projects/db-wookie/testScript.sql",
+		"/D/Projects/db-wookie/script.temp",
+		"/D/Projects/db-wookie/end.sql",
+		"/D/Projects/db-wookie/begin.sql"
+	],
+	"find":
+	{
+		"height": 34.0
+	},
+	"find_in_files":
+	{
+		"height": 0.0,
+		"where_history":
+		[
+		]
+	},
+	"find_state":
+	{
+		"case_sensitive": false,
+		"find_history":
+		[
+			"fakeAjaxRepository",
+			"ajaxRepository",
+			"fakeRepository",
+			"ajaxRepository",
+			"fakeRepository",
+			"yoloBear",
+			"repository",
+			"livere",
+			"public",
+			"devimages",
+			"wwwroot",
+			"html",
+			"htmlRendered",
+			"keepalive",
+			"ajaxRepository",
+			"fakeAjaxRepository",
+			"ajaxRepository",
+			"fakeAjaxRepository",
+			"ajax",
+			"ajaxRepository",
+			"gameViewModel",
+			"gamesViewModel",
+			"games",
+			"gameViewModel",
+			"gamesViewModel",
+			"gameViewModel",
+			"repository",
+			"_repository",
+			"repository",
+			"gameId",
+			"_createGame",
+			"gameNbPlayers",
+			"gameDate",
+			"gameLocation",
+			"gameName",
+			"_cancelGame",
+			"join",
+			"joinGame",
+			"repository",
+			"joinGame",
+			"_joinGame",
+			"gamesList",
+			"ajaxRepository",
+			"actionRepository",
+			"connect",
+			"testing",
+			"capitalize",
+			"expect",
+			"simplemocha",
+			"testing",
+			"_commandsToFile",
+			"pack",
+			"packa",
+			"primary",
+			"players",
+			"gameLocation",
+			"gameDate",
+			"GamesList",
+			"yoann",
+			"Yoann",
+			"yoann",
+			"Session",
+			"string",
+			"game",
+			"Authentication",
+			"CreateGame",
+			"gameDate",
+			"gameId",
+			"\\\"",
+			"uuidGiven",
+			"tokenId",
+			"uuidGiven",
+			"test",
+			"testScript",
+			"createScript",
+			"testScript",
+			"create",
+			"createScript",
+			"createAndTestScript",
+			"Authentication",
+			"authentication",
+			"yogolo49",
+			"Authentication"
+		],
+		"highlight": true,
+		"in_selection": false,
+		"preserve_case": false,
+		"regex": false,
+		"replace_history":
+		[
+			"www-root",
+			"_repository",
+			"\""
+		],
+		"reverse": false,
+		"show_context": true,
+		"use_buffer2": true,
+		"whole_word": false,
+		"wrap": true
+	},
+	"groups":
+	[
+		{
+			"selected": 7,
+			"sheets":
+			[
+				{
+					"buffer": 0,
+					"file": "/D/projects/yolo-bear/src/js/facebook.js",
+					"settings":
+					{
+						"buffer_size": 2904,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2885,
+								2885
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 635.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/projects/yolo-bear/src/js/app.js",
+					"settings":
+					{
+						"buffer_size": 314,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								314,
+								314
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/projects/yolo-bear/src/js/gamesViewModel.js",
+					"settings":
+					{
+						"buffer_size": 2960,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								136,
+								136
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/D/projects/yolo-bear/src/jsTap/fakeRepository.js",
+					"settings":
+					{
+						"buffer_size": 1368,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1338,
+								1338
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 395.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/D/projects/yolo-bear/Gruntfile.js",
+					"settings":
+					{
+						"buffer_size": 4808,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3105,
+								3105
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 1380.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/D/projects/yolo-bear/src/js/google.js",
+					"settings":
+					{
+						"buffer_size": 1895,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 6,
+					"file": "/D/projects/yolo-bear/src/js/ajaxRepository.js",
+					"settings":
+					{
+						"buffer_size": 1227,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								209,
+								209
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 7,
+					"file": "ReadMe.md",
+					"settings":
+					{
+						"buffer_size": 316,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								198,
+								198
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Markdown/Markdown.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 8,
+					"file": "Gruntfile.js",
+					"settings":
+					{
+						"buffer_size": 3184,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1753,
+								1753
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 735.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
+			]
+		}
+	],
+	"incremental_find":
+	{
+		"height": 0.0
+	},
+	"input":
+	{
+		"height": 31.0
+	},
+	"layout":
+	{
+		"cells":
+		[
+			[
+				0,
+				0,
+				1,
+				1
+			]
+		],
+		"cols":
+		[
+			0.0,
+			1.0
+		],
+		"rows":
+		[
+			0.0,
+			1.0
+		]
+	},
+	"menu_visible": true,
+	"replace":
+	{
+		"height": 62.0
+	},
+	"save_all_on_build": true,
+	"select_file":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"select_project":
+	{
+		"height": 0.0,
+		"selected_items":
+		[
+		],
+		"width": 0.0
+	},
+	"show_minimap": true,
+	"show_open_files": false,
+	"show_tabs": true,
+	"side_bar_visible": true,
+	"side_bar_width": 150.0,
+	"status_bar_visible": true
+}

@@ -19,7 +19,7 @@ router.get('/gamesList', function(req, res) {
 
 router.get('/games', function(req, res) {
    var options = {
-    root: './public/',
+    root: './www-root/',
     dotfiles: 'deny',
     headers: {
         'x-timestamp': Date.now(),
@@ -35,16 +35,16 @@ router.post('/game/creategame', function(req, res) {
 
     // Get our form values. These rely on the "name" attributes
     
-    if(!req.body.gameDate || req.body.gameDate.length==0)
+    if(!req.body.gameDate || req.body.gameDate.length===0)
         res.status(400).send('Game date is missing !');
 
-    if(!req.body.gameLocation || req.body.gameLocation.length==0)
+    if(!req.body.gameLocation || req.body.gameLocation.length===0)
         res.status(400).send('Game location is missing !');
 
     if(!req.body.gameName)
         res.status(400).send('Game name is missing !');
 
-    if(!req.body.nbPlayersRequired || req.body.nbPlayersRequired.length == 0)
+    if(!req.body.nbPlayersRequired || req.body.nbPlayersRequired.length === 0)
         res.status(400).send('Game s players number is missing !');
 
 

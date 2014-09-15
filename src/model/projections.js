@@ -8,7 +8,7 @@ return {
 
     getGames : function(fnCallback)
     {
-    var db = new sqlite3.Database('./db/drawTeams.db',sqlite3.OPEN_READONLY)
+    var db = new sqlite3.Database('./db/drawTeams.db',sqlite3.OPEN_READONLY);
     var games = [];
 
     db.serialize(function() {
@@ -18,7 +18,9 @@ return {
                 throw err;
 
             fnCallback(gamesList);
-            db.close;});
+            /*jshint -W030 */
+            db.close;   
+        });
     });
 
     
@@ -28,7 +30,7 @@ return {
     getBears:function()
     {
 
-    var db = new sqlite3.Database('./db/drawTeams.db')
+    var db = new sqlite3.Database('./db/drawTeams.db');
     var users = [];
 
     db.serialize(function() {
@@ -37,8 +39,10 @@ return {
                 throw err;
             users.push(row);
         },function(){
-            db.close;})
-    })
+            /*jshint -W030 */
+            db.close;
+        });
+    });
     
     return users;
 
@@ -47,7 +51,7 @@ return {
     getBear:function(userId,fnCallback)
     {
 
-    var db = new sqlite3.Database('./db/drawTeams.db')
+    var db = new sqlite3.Database('./db/drawTeams.db');
     var user = null;
 
     db.serialize(function() {
@@ -58,9 +62,10 @@ return {
             user = row;
 
             fnCallback(user);
+            /*jshint -W030 */
             db.close;
         });
-    })
+    });
     
     return user;
 
@@ -68,7 +73,7 @@ return {
     
 
 
-}
+};
 
 })();
 
