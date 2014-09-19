@@ -26,12 +26,16 @@ module.exports = function(grunt) {
         },
         devjs: {
           files: ['src/**/*'],
-          tasks: ['devjs']
+          tasks: ['devjs'],
+          options: {
+            spawn: false, //Without this option specified express won't be reloaded
+            livereload : true
+          }
         },
         wwwroot : {
           files: ['www-root/**/*'],
           options : {
-            livereload :true 
+            //livereload : 6546
           }
         }
       },
@@ -72,10 +76,12 @@ module.exports = function(grunt) {
       express: {
         options: {
           // Override defaults here
+          //port : 5498 
         },
         web: {
           options: {
             script: 'src/server.js',
+            livereload : true
           }
         },
       },
@@ -84,7 +90,8 @@ module.exports = function(grunt) {
           options:{
             stream:true
           },
-          tasks : [ {
+          tasks : [ 
+            {
             grunt:true,
             args : ['watch:yolobear']
             },
@@ -115,10 +122,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-parallel');
     
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'simplemocha', 'clean','copy', 'replace', 'express', 'parallel:web']);
+    grunt.registerTask('default', ['jshint', 'simplemocha', 'clean','copy', 'replace', 'express', 'watch:devjs']);
+    grunt.registerTask('yolobear', ['watch:yolobear']);
+    
 
     grunt.registerTask('devjs', ['jshint', 'simplemocha','express:web']);
-    grunt.registerTask('yolo-bear', ['clean', 'copy', 'replace', 'express:web']);
+    grunt.registerTask('yolo-bear', ['clean', 'copy', 'replace']);
 
 };
 

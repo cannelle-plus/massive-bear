@@ -3,15 +3,14 @@
 //var LocalStrategy = require('passport-local').Strategy;
 // var session = require('express-session');
 // var expressSession = require('express-session');
-
+  
 var expressSession = require('express-session');
 var config = require('../oauth.js');
 var passport = require('passport');
 var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google').Strategy;
 
-
-module.exports = function (app) {
+var createApp =function (app) {
    
   // serialize and deserialize
   passport.serializeUser(function(user, done) {
@@ -42,7 +41,7 @@ module.exports = function (app) {
                  profile.identifier = identifier;
                  return done(null, profile);
                });}
-));
+  ));
 
   app.use(expressSession({secret: 'my_precious',
              saveUninitialized: true,
@@ -59,110 +58,85 @@ module.exports = function (app) {
   app.get('/auth/google',passport.authenticate('google'),function(req, res){});
   app.get('/auth/google/callback',passport.authenticate('google', { failureRedirect: '/login' }),function(req, res) {res.redirect('/games');});
 
-var options = {
-                root: './www-root/',
-                dotfiles: 'deny',
-                headers: {
-                    'x-timestamp': Date.now(),
-                    'x-sent': true
-                 }
-               };
+  var options = {
+                  root: './www-root/',
+                  dotfiles: 'deny',
+                  headers: {
+                      'x-timestamp': Date.now(),
+                      'x-sent': true
+                   }
+                 };
 
-// Send login form
-app.get('/login', function(req, res){
-  if(req.isAuthenticated())
-    res.redirect('/games');
-  else
-    res.sendFile('login.html',options);
-});
+  // Send login form
+  app.get('/login', function(req, res){
+    if(req.isAuthenticated())
+      res.redirect('/games');
+    else
+      res.sendFile('login.html',options);
+  });
 
-// Disable user auth token
-app.get('/logout', function(req, res){
-  req.logout();
-  res.redirect('/');
-});
+  // Disable user auth token
+  app.get('/logout', function(req, res){
+    req.logout();
+    res.redirect('/');
+  });
 
- function ensureAuthenticated(req, res, next) {
-  // if (req.isAuthenticated()) { return next(); }
-  // res.redirect('/login')
-  req.user = {id:'007', username:'bond'};
-  return next();
-}
+   
 
-app.post('/game/*', ensureAuthenticated,require('./games'));
-app.get('/games*', ensureAuthenticated,require('./games'));
-app.get('/bears*', ensureAuthenticated,require('./bears'));
-
-    return app;
+  return app;
 };
 
 
+var createRouting = function(app, handlers)
+{
+  //todo check interface
+  
+  var appWithAuthentication= createApp(app);
 
-// app.use(expressSession({secret: 'my_precious',
-// 						saveUninitialized: true,
-//                  		resave: true}));
+  function ensureAuthenticated(req, res, next) {
+    // if (req.isAuthenticated()) { return next(); }
+    // res.redirect('/login')
+    req.user = {id:'007', username:'bond'};
+    return next();
+  }
 
+  var _createRouter  = function(app,ensureAuthentication){
 
-// app.use(passport.initialize());
-// app.use(passport.session());
+    //todo Check the interface
+    var _app = app;
+    var _ensureAuthentication = ensureAuthentication;
 
-// passport.serializeUser(function(user, done) {
-//   done(null, user.id);
-// });
+    var _get = function(route,handler)
+    {
+        _app.get(route,_ensureAuthentication,handler);
+    };
 
-// passport.deserializeUser(function(id, done) {
-//   // query the current user from database
-//   User.find(id)
-//     .success(function(user){
-//         done(null, user);
-//     }).error(function(err){
-//         done(new Error('User ' + id + ' does not exist'));
-//     });
-// });
+    var _post = function(route,handler)
+    {
+        _app.post(route,_ensureAuthentication,handler);
+    };
 
-// passport.use(new LocalStrategy({
-// 	usernameField: 'username',
-//     passwordField: 'password',
-//     passReqToCallback : true
-//   },
-//   function(req, username, password, done) { 
+    return {
+      get : _get,
+      post : _post,
+    };
+  };
 
-// console.log('auth '+username);
-//   if (username=='aziz')
-//   	console.log('ok')
-//   var user = {
-//   	id:'123',
-//   	nom:'eb',
-//   	prenom:'aziz'
-//   }
-//   return done(null, user);
-//   //return done(null, false, { message: 'Invalid Password' });
+  var router = _createRouter(appWithAuthentication,ensureAuthenticated);
+  
+  router.get('/getBear', handlers.bear.getBear);
 
-// }));
+  
+  router.get('/gamesList',handlers.game.getGameList);
+  router.get('/games',handlers.game.getGames);
 
+  router.post('/game/creategame',handlers.game.createGame);
+  router.post('/game/joingame',handlers.game.joinGame);
+  router.post('/game/abandongame',handlers.game.abandonGame);
+  router.post('/game/cancelgame',handlers.game.cancelGame);
+ 
+};
 
-// app.post('/login', passport.authenticate('local', { successRedirect: '/games',
-//                                                 failureRedirect: '/login'}));
+module.exports = createRouting;
 
-// 	var options = {
-//     root: './www-root/',
-//     dotfiles: 'deny',
-//     headers: {
-//         'x-timestamp': Date.now(),
-//         'x-sent': true
-//     	}
-//   	};
-
-// 	app.get('/login', function(req, res){
-//   		res.sendFile('login.html',options);
-// 	});
-
-
-// 	function ensureAuthenticated(req, res, next) {
-//   if (req.isAuthenticated()) { return next(); }
-//   res.redirect('/login')
-// }
-
-    // app.get('/games*', ensureAuthenticated,require('./games'));
-    // app.get('/bears*', ensureAuthenticated,require('./bears'));
 

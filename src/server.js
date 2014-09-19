@@ -10,6 +10,18 @@ var favicon= require('serve-favicon');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
 
+var projections = require('./model/projections')('./db/Bear2Bear.db');
+
+var commandDispatcher = new require('./model/commandFileWriter')();
+var gameCommands = require('./model/gameCommands')(commandDispatcher);
+
+
+
+var router = require('./routes');
+
+var GameHandler = require('./handlers/games');
+var BearHandler = require('./handlers/bears');
+
 
 var app = express();
 
@@ -26,7 +38,12 @@ app.use(bodyParser.json());
 app.use(methodOverride());
 app.use(express.static(path.join(__dirname, '/../www-root')));
 
-var router = require('./routes')(app);
+var handlers = {
+	game : new GameHandler(projections, gameCommands),
+	bear : new BearHandler(projections, gameCommands)
+};
+
+router(app,handlers);
 
 // development only
 if ('development' == app.get('env')) {
