@@ -84,18 +84,18 @@
 	"buffers":
 	[
 		{
-			"file": "/D/projects/yolo-bear/src/js/model/games.js",
+			"file": "/D/projects/yolo-bear/src/js/gamesViewModel.js",
 			"settings":
 			{
-				"buffer_size": 2521,
+				"buffer_size": 2769,
 				"line_ending": "Windows"
 			}
 		},
 		{
-			"file": "src/handlers/games.js",
+			"file": "/D/projects/yolo-bear/src/html/games.html",
 			"settings":
 			{
-				"buffer_size": 2865,
+				"buffer_size": 6031,
 				"line_ending": "Windows"
 			}
 		}
@@ -144,12 +144,15 @@
 	},
 	"file_history":
 	[
-		"/D/projects/massive-bear/src/model/game.js",
+		"/D/projects/db-wookie/scripts/authenticationScript.sql",
+		"/D/projects/glowing-wookie/src/projectionsConsole/GamesListProjection.cs",
+		"/D/projects/massive-bear/src/server.js",
+		"/D/projects/massive-bear/src/.env",
 		"/D/projects/massive-bear/src/handlers/games.js",
 		"/D/projects/yolo-bear/src/js/model/games.js",
+		"/D/projects/glowing-wookie/src/projectionsConsole/projectionsConsole.csproj",
+		"/D/projects/massive-bear/src/model/game.js",
 		"/D/projects/yolo-bear/src/js/gamesViewModel.js",
-		"/D/projects/db-wookie/scripts/authenticationScript.sql",
-		"/D/projects/massive-bear/src/server.js",
 		"/D/projects/yolo-bear/src/js/model/game.js",
 		"/D/projects/yolo-bear/src/html/games.html",
 		"/D/projects/massive-bear/src/model/projections.js",
@@ -272,6 +275,11 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"createGame",
+			"messageIdProcessed",
+			"Projections",
+			"wookiePort",
+			"localhost",
 			"date",
 			"startDate",
 			"gameNbPlayers",
@@ -394,12 +402,7 @@
 			"fakeAjaxRepository",
 			"ajaxRepository",
 			"fakeRepository",
-			"ajaxRepository",
-			"fakeRepository",
-			"yoloBear",
-			"repository",
-			"livere",
-			"public"
+			"ajaxRepository"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -421,23 +424,23 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/D/projects/yolo-bear/src/js/model/games.js",
+					"file": "/D/projects/yolo-bear/src/js/gamesViewModel.js",
 					"settings":
 					{
-						"buffer_size": 2521,
+						"buffer_size": 2769,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2172,
-								2172
+								2307,
+								2307
 							]
 						],
 						"settings":
@@ -446,35 +449,34 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 785.0,
+						"translation.y": 950.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "src/handlers/games.js",
+					"file": "/D/projects/yolo-bear/src/html/games.html",
 					"settings":
 					{
-						"buffer_size": 2865,
+						"buffer_size": 6031,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1157,
-								1157
+								3662,
+								3672
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 390.0,
+						"translation.y": 1320.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -1,6 +1,7 @@
 /**
 * Module dependencies.
 */
+var env = require('node-env-file');
 var express = require('express');
 var http = require('http');
 var path = require('path');
@@ -10,15 +11,13 @@ var favicon= require('serve-favicon');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
 
-var wookieServer = {
-	host : 'localhost',
-	port : '8081'
-};
+env(__dirname + '/.env');
 
-var projections = require('./model/projections')('D:\\projects\\db-wookie\\db\\Bear2Bear.db');
+
+var projections = require('./model/projections')(process.env.connStringBear2Bear);
 
 //var dispatcher = new require('./dispatcher/fileWriter')();
-var dispatcher = new require('./dispatcher/wookie')(wookieServer.host, wookieServer.port);
+var dispatcher = new require('./dispatcher/wookie')(process.env.wookieHost, process.env.wookiePort);
 
 var game = require('./model/game')(dispatcher);
 
