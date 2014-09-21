@@ -32,21 +32,29 @@ var GameHandler = function(projections, commands)
     this.createGame = function(req, res) {
 
         // Get our form values. These rely on the "name" attributes
+
+        var startDate =req.body.startDate;
+        var location = req.body.location;
+        var name = req.body.name;
+        var nbPlayersRequired = req.body.nbPlayersRequired;
+        var ownerId  = req.user.id;
+        var userId = req.user.id;
+        var userName = req.user.username;
         
-        if(!req.body.gameDate || req.body.gameDate.length===0)
+        if(!startDate || startDate.length===0)
             res.status(400).send('Game date is missing !');
 
-        if(!req.body.gameLocation || req.body.gameLocation.length===0)
+        if(!location || location.length===0)
             res.status(400).send('Game location is missing !');
 
-        if(!req.body.gameName)
+        if(!name)
             res.status(400).send('Game name is missing !');
 
-        if(!req.body.nbPlayersRequired || req.body.nbPlayersRequired.length === 0)
+        if(!nbPlayersRequired || nbPlayersRequired.length === 0)
             res.status(400).send('Game s players number is missing !');
 
 
-        commands.createGame(req.user.id, req.user.username, req.body.gameDate ,req.body.gameLocation,req.body.gameName, req.body.nbPlayersRequired);  
+        commands.createGame(userId,userName , ownerId, startDate ,location,name, nbPlayersRequired);  
 
         // to be defined 
         res.send("Game created  !");

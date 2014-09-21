@@ -15,43 +15,41 @@ module.exports = function(dispatcher){
 
     var dispatchMessage =function(commandType, id,version, userId, userName, cmd)
     {
+        //to be added an uuid for the message to garanty at-least once.
         var msg = {
             "Id" : id,
             "Version" : version,
-            "CorrelationId" : generateUUID(),
             "MetaData" : {
-                "TokenId" : "88085239-6f0f-48c6-b73d-017333cb99ba", // remaining so far but should be disposed because passport is handling the security, so far...
-                "UserId" : userId,
-                "UserName" : userName
+                "CorrelationId" :  generateUUID(),
+                "UserId" :  generateUUID(),
+                "UserName":  userName 
             },
             "PayLoad" : {
                 "Case" : commandType,
-                "value" : cmd
+                "Fields" : cmd
             }
         };
 
-        dispatcher.sendCmd(msg);
+        dispatcher.sendCmd("game", id, msg);
     };
 
     
-    var _createGame = function(userId, userName, ownerId,date,location,name,nbPlayersRequired){
+    var _createGame = function(userId, userName, ownerId,startDate,location,name,nbPlayersRequired){
         
-        var cmd = {
-            "OwnerId" : ownerId,
-            "GameDate" : date,
-            "GameLocation" : location,
-            "GameName" : name,
-            "NmPlayersRequired" : nbPlayersRequired
-        };
+        var cmd = [
+            name,
+            ownerId,
+            startDate,
+            location,
+            nbPlayersRequired
+        ];
 
-        dispatchMessage("createGame", generateUUID(), 0,userId, userName, cmd);
+        dispatchMessage("CreateGame", generateUUID(), 0,userId, userName, cmd);
     };
     
     var _joinGame = function(gameId, version,userId , userName){
 
-        var cmd = {
-            "UserId" : userId
-        };
+        var cmd = [];
 
         dispatchMessage("JoinGame", gameId, version,userId, userName, cmd);
 
@@ -59,9 +57,7 @@ module.exports = function(dispatcher){
     
     var _abondonGame = function(gameID, version,userId, userName){
 
-         var cmd = {
-            "UserId" : userId
-        };
+         var cmd = [];
 
         dispatchMessage("AbandonGame", gameId, version,userId, userName, cmd);
 
@@ -69,9 +65,7 @@ module.exports = function(dispatcher){
 
     var _cancelGame = function(gameID, version,userId, userName){
 
-        var cmd = {
-            "UserId" : userId
-        };
+        var cmd = [];
         
         dispatchMessage("CancelGame", gameId, version,userId, userName, cmd);
     };

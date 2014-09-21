@@ -1,6 +1,5 @@
 var http = require('http');
-var querystring = require('querystring');
-
+  
 module.exports = function(host, port){
     if(!host) throw 'host of eventStore not given';
     if(!port) throw 'port of eventStore not given';
@@ -9,35 +8,47 @@ module.exports = function(host, port){
     var _port = port;
 
     // An object of options to indicate where to post to
-    var createReq = function(id,length) {
+    var createReq = function(route,id,length) {
       var options = {
-        host: _ipAddress,
+        host: _host,
         port: _port,
-        path: '/streams/' + id,
+        path: '/' + route +'/' + id,
         method: 'POST',
         headers: {
-            'Content-Type': 'application/vnd.eventstore.events+json',
+            'Content-Type': 'application/json',
             'Content-Length': length
         }
       };
 
+      console.log(options);
+
       // Set up the request
-      var post_req = http.request(options, function(res) {
+      return http.request(options, function(res) { 
           res.setEncoding('utf8');
           res.on('data', function (chunk) {
               console.log('Response: ' + chunk);
           });
         });
     };
-    var _executeCommand = function(id,cmd){
-
+    var _executeCommand = function(route,id,cmd){
+      try
+      {
         console.log(cmd);
-        var data = querystring.stringify(cmd);
-        var req = createReq(id, data.length);      
+        var data = JSON.stringify(cmd);
+        var req = createReq(route, id, data.length);      
 
         // post the data
-        post_req.write(data);
-        post_req.end();
+        req.write(data);
+        req.end();
+      }
+      catch(e)
+      {
+        console.log("*********************************");
+        console.log("Error while accessing wookie");
+        console.log(e);
+        console.log("*********************************");
+      }
+        
     };
     
     return {

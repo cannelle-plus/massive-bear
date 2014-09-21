@@ -5,17 +5,24 @@ var express = require('express');
 var http = require('http');
 var path = require('path');
 var logger = require('morgan');
-var bodyParser= require('body-Parser');
+var bodyParser= require('body-parser');
 var favicon= require('serve-favicon');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
 
-var projections = require('./model/projections')('./db/Bear2Bear.db');
+var wookieServer = {
+	host : 'localhost',
+	port : '8081'
+};
 
-var commandDispatcher = new require('./model/commandFileWriter')();
-var gameCommands = require('./model/gameCommands')(commandDispatcher);
+var projections = require('./model/projections')('D:\\projects\\db-wookie\\db\\Bear2Bear.db');
 
+//var dispatcher = new require('./dispatcher/fileWriter')();
+var dispatcher = new require('./dispatcher/wookie')(wookieServer.host, wookieServer.port);
 
+var game = require('./model/game')(dispatcher);
+
+var ges = require('./listenner/ges');
 
 var router = require('./routes');
 
@@ -25,6 +32,9 @@ var BearHandler = require('./handlers/bears');
 
 var app = express();
 
+//uncomment to access eventStore subscription
+// ges();	
+	
 
 // all environments
 app.set('port', process.env.PORT || 8888);
@@ -39,8 +49,8 @@ app.use(methodOverride());
 app.use(express.static(path.join(__dirname, '/../www-root')));
 
 var handlers = {
-	game : new GameHandler(projections, gameCommands),
-	bear : new BearHandler(projections, gameCommands)
+	game : new GameHandler(projections, game),
+	bear : new BearHandler(projections, game)
 };
 
 router(app,handlers);

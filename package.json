@@ -20,7 +20,7 @@
     "passport-google": "*"
   },
   "scripts": {
-    "start": "node server.js",
+    "start": "node src/server.js",
     "test": "karma start"
   },
   "devDependencies": {
@@ -41,6 +41,7 @@
     "karma-requirejs": "^0.2.2",
     "load-grunt-tasks": "^0.6.0",
     "mocha": "^1.21.4",
-    "requirejs": "^2.1.14"
+    "requirejs": "^2.1.14",
+    "watch": "^0.11.0"
   }
 }

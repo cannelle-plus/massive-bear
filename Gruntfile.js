@@ -28,8 +28,7 @@ module.exports = function(grunt) {
           files: ['src/**/*'],
           tasks: ['devjs'],
           options: {
-            spawn: false, //Without this option specified express won't be reloaded
-            livereload : true
+            spawn: false //Without this option specified express won't be reloaded
           }
         },
         wwwroot : {
@@ -80,8 +79,7 @@ module.exports = function(grunt) {
         },
         web: {
           options: {
-            script: 'src/server.js',
-            livereload : true
+            script: 'src/server.js'  
           }
         },
       },
@@ -122,7 +120,7 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-parallel');
     
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'simplemocha', 'clean','copy', 'replace', 'express', 'watch:devjs']);
+    grunt.registerTask('default', ['jshint', 'simplemocha', 'clean','copy', 'replace', 'express', "watch:devjs"]);
     grunt.registerTask('yolobear', ['watch:yolobear']);
     
 
