@@ -128,7 +128,5 @@ module.exports = function(grunt) {
     grunt.registerTask('devjs', ['jshint', 'simplemocha','express:web']);
     grunt.registerTask('yolo-bear', ['clean', 'copy', 'replace']);
 
-    grunt.registerTask('travis',['jshint', 'simplemocha'])
-
 };
 

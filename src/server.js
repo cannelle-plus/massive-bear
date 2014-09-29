@@ -11,7 +11,7 @@ var favicon= require('serve-favicon');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
 
-env(__dirname + '/.env');
+env(__dirname + '/prod.env');
 
 
 var projections = require('./model/projections')(process.env.connStringBear2Bear);

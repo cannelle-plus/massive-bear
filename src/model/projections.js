@@ -4,6 +4,7 @@ var    sqlite3 = require('sqlite3');
 projections = function(dbPath)
 {
     var _dbPath = dbPath;
+		console.log(dbPath);
  
 
     var _getGames = function(fnCallback)
