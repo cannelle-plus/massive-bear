@@ -3,6 +3,10 @@
   "description": "play together",
   "version": "0.0.1",
   "private": true,
+	"repository": {
+		  "type": "git",
+		  "url": "git://github.com/cannelle-plus/massive-bear.git"
+	}
   "dependencies": {
     "express": "4.8.6",
     "serve-favicon": "2.1.1",
@@ -13,7 +17,7 @@
     "errorhandler": "1.1.1",
     "dot": "1.0.2",
     "sqlite3": "2.2.7",
-    "passport": "0.2.*",
+    "passport": "0.2.1",
     "passport-local": "1.0.*",
     "express-session": "1.7.*",
     "passport-facebook": "1.0.3",
