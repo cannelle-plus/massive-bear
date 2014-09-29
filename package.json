@@ -6,7 +6,7 @@
 	"repository": {
 		  "type": "git",
 		  "url": "git://github.com/cannelle-plus/massive-bear.git"
-	}
+	},
   "dependencies": {
     "express": "4.8.6",
     "serve-favicon": "2.1.1",
