@@ -19,7 +19,7 @@
     "sqlite3": "2.2.7",
     "passport": "0.2.1",
     "passport-local": "1.0.0",
-    "express-session": "1.7.*",
+    "express-session": "1.7.6",
     "passport-facebook": "1.0.3",
     "passport-google": "*",
     "node-env-file" : "0.1.3",
