@@ -2,5 +2,5 @@ language: node_js
 node_js:
   - "0.8"
 before_install: npm install -g grunt-cli
-install: sudo npm install
+install: sudo $(which npm) install
 before_script: grunt travis
