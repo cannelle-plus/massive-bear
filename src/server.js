@@ -11,7 +11,7 @@ var favicon= require('serve-favicon');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
 
-env(__dirname + '/prod.env');
+env(__dirname + '/.env');
 
 
 var projections = require('./model/projections')(process.env.connStringBear2Bear);
@@ -22,6 +22,7 @@ var dispatcher = new require('./dispatcher/wookie')(process.env.wookieHost, proc
 var game = require('./model/game')(dispatcher);
 
 var ges = require('./listenner/ges');
+var socket = require('./listenner/socket');
 
 var router = require('./routes');
 
@@ -31,8 +32,7 @@ var BearHandler = require('./handlers/bears');
 
 var app = express();
 
-//uncomment to access eventStore subscription
-// ges();	
+
 	
 
 // all environments
@@ -60,9 +60,14 @@ if ('development' == app.get('env')) {
 }
 
 
-http.createServer(app).listen(app.get('port'), function(){
+var server = http.createServer(app);
+
+//uncomment to access eventStore subscription
+ges();		
+socket(server);
+
+server.listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));
- 	
 });
 
 

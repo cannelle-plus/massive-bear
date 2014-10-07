@@ -2,17 +2,24 @@ var GameHandler = function(projections, commands)
 {
     //add checking on the interface projections, commands
 
-    /* GET games list in JSON format */
-    this.getGameList = function(req, res) {
-       	// get data in json format
-    	projections.getGames(function(rows){
-
+    var retrieveJsonGamesFor = function(res){ 
+        return function(rows){
             var games = {
-                gamesList : rows
-            };
-    	   res.send(JSON.stringify(games));
-	   });
+                            gamesList : rows
+           };
+           res.send(JSON.stringify(games));
+        };
+    };
 
+    var writeError = function(err){
+        console.log(err);
+    };
+
+    /* GET games list in JSON format */
+    this.getGameList = function(req, response) {
+       	// get data in json format
+    	projections.getGames()
+                   .then(retrieveJsonGamesFor(response),writeError);
     };
 
     this.getGames = function(req, res) {

@@ -1,72 +1,31 @@
-var    sqlite3 = require('sqlite3');
+var QSQL = require('q-sqlite3');
 
 
 projections = function(dbPath)
 {
     var _dbPath = dbPath;
-		console.log(dbPath);
+    var _db = null;
+
+    console.log(dbPath);
+
+    QSQL.createDatabase(dbPath, "OPEN_READONLY").done(function(db) {
+        console.log('db created');
+        _db = db;
+    });
  
-
-    var _getGames = function(fnCallback)
+    var _getGames = function()
     {
-        var db = new sqlite3.Database(_dbPath,sqlite3.OPEN_READONLY);
-        var games = [];
-
-        db.serialize(function() {
-            
-            db.all("SELECT * FROM GamesList", function(err, gamesList) {
-                if(err)
-                    throw err;
-
-                fnCallback(gamesList);
-                /*jshint -W030 */
-                db.close;   
-            });
-        });
+        return _db.all('SELECT * FROM GamesList');
     }; 
    
     var _getBears = function()
     {
-
-        var db = new sqlite3.Database(_dbPath);
-        var users = [];
-
-        db.serialize(function() {
-            db.each("SELECT * FROM Users", function(err, row) {
-                 if(err)
-                    throw err;
-                users.push(row);
-            },function(){
-                /*jshint -W030 */
-                db.close;
-            });
-        });
-    
-        return users;
-
+        return _db.all('SELECT * FROM Users');
     };
 
-    var _getBear = function(userId,fnCallback)
+    var _getBear = function(userId)
     {
-
-        var db = new sqlite3.Database(_dbPath);
-        var user = null;
-
-        db.serialize(function() {
-             db.get("SELECT * FROM Users WHERE userId="+userId, function(err, row) {
-                 if(err)
-                    throw err;
-                if(row)
-                user = row;
-
-                fnCallback(user);
-                /*jshint -W030 */
-                db.close;
-            });
-        });
-        
-        return user;
-
+        return _db.get('SELECT * FROM Users WHERE userId='+userId);
     };
     
     return {

@@ -76,7 +76,7 @@ module.exports = function(grunt) {
       express: {
         options: {
           // Override defaults here
-          //port : 5498 
+          port : 5498 
         },
         web: {
           options: {
@@ -128,7 +128,7 @@ module.exports = function(grunt) {
     grunt.registerTask('devjs', ['jshint', 'simplemocha','express:web']);
     grunt.registerTask('yolo-bear', ['clean', 'copy', 'replace']);
 
-    grunt.registerTask('travis',['jshint', 'simplemocha'])
+    grunt.registerTask('travis',['jshint', 'simplemocha']);
 
 };
 

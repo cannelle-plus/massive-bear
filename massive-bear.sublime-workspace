@@ -84,10 +84,10 @@
 	"buffers":
 	[
 		{
-			"file": "/D/projects/yolo-bear/src/js/gamesViewModel.js",
+			"file": "/D/projects/yolo-bear/www-root/games.html",
 			"settings":
 			{
-				"buffer_size": 2769,
+				"buffer_size": 6262,
 				"line_ending": "Windows"
 			}
 		},
@@ -95,7 +95,40 @@
 			"file": "/D/projects/yolo-bear/src/html/games.html",
 			"settings":
 			{
-				"buffer_size": 6031,
+				"buffer_size": 6337,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/projects/yolo-bear/src/js/socket.js",
+			"settings":
+			{
+				"buffer_size": 226,
+				"line_ending": "Windows",
+				"name": "var socket = function()"
+			}
+		},
+		{
+			"file": "/D/projects/yolo-bear/src/js/yoloBear.js",
+			"settings":
+			{
+				"buffer_size": 345,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/projects/yolo-bear/src/js/app.js",
+			"settings":
+			{
+				"buffer_size": 430,
+				"line_ending": "Windows"
+			}
+		},
+		{
+			"file": "/D/projects/yolo-bear/Gruntfile.js",
+			"settings":
+			{
+				"buffer_size": 5814,
 				"line_ending": "Windows"
 			}
 		}
@@ -144,24 +177,74 @@
 	},
 	"file_history":
 	[
+		"/D/projects/yolo-bear/src/libs/socket.io/socket.io-1.1.0.js",
+		"/D/projects/yolo-bear/Gruntfile.js",
+		"/D/projects/massive-bear/src/model/projections.js",
+		"/D/projects/massive-bear/src/.env",
+		"/D/projects/massive-bear/src/server.js",
+		"/D/projects/massive-bear/src/handlers/bears.js",
+		"/D/projects/massive-bear/src/handlers/games.js",
+		"/D/projects/massive-bear/src/listenner/socket.js",
+		"/D/projects/massive-bear/Gruntfile.js",
+		"/D/projects/massive-bear/www-root/games.html",
+		"/D/projects/yolo-bear/www-root/games.html",
+		"/D/projects/massive-bear/www-root/login.html",
+		"/D/projects/massive-bear/src/listenner/ges.js",
+		"/D/projects/massive-bear/.sublime-grunt.cache",
+		"/D/projects/yolo-bear/src/js/app.js",
+		"/D/projects/yolo-bear/src/jsTap/fakeRepository.js",
+		"/D/projects/yolo-bear/README.md",
+		"/D/projects/yolo-bear/src/js/yoloBear.js",
+		"/D/projects/massive-bear/node_modules/ges-client/package.json",
+		"/D/projects/glowing-wookie/deploy/glowing.exe.config",
+		"/D/projects/glowing-wookie-scaffold/build.fsx",
+		"/D/projects/glowing-wookie/.gitignore",
+		"/D/projects/glowing-wookie-scaffold/docs/tools/generate.fsx",
+		"/D/projects/glowing-wookie-scaffold/src/glowing/glowing.csproj",
+		"/D/projects/glowing-wookie-scaffold/deploy/glowing.projections.xml",
+		"/D/projects/glowing-wookie-scaffold/src/glowing.projections/glowing.projections.csproj",
+		"/D/projects/glowing-wookie-scaffold/src/glowing/packages.config",
+		"/D/projects/glowing-wookie-scaffold/src/glowing.projections/packages.config",
+		"/D/projects/glowing-wookie-scaffold/src/glowing.projections/subscription.cs",
+		"/D/projects/glowing-wookie-scaffold/glowing.sln",
+		"/D/projects/glowing-wookie-scaffold/tests/glowing.Tests/Tests.fs",
+		"/D/projects/laughing-wookie/docs/tools/generate.fsx",
+		"/D/projects/laughing-wookie/build.fsx",
+		"/D/projects/glowing-wookie-scaffold/src/g/glowing.csproj",
+		"/D/projects/glowing-wookie-scaffold/src/glowing/glowing.fsproj",
+		"/D/projects/glowing-wookie-scaffold/src/glowing/AssemblyInfo.fs",
+		"/D/projects/glowing-wookie-scaffold/src/glowing/Library.fs",
+		"/D/projects/laughing-wookie/.travis.yml",
+		"/D/projects/laughing-wookie-scaffolded/.gitignore",
+		"/D/projects/laughing-wookie/build.fsx_old",
+		"/D/projects/glowing-wookie-scaffold/src/glowing/Script.fsx",
+		"/D/projects/laughing-wookie-scaffolded/build.fsx",
+		"/D/projects/laughing-wookie-scaffolded/docs/tools/generate.fsx",
+		"/D/projects/laughing-wookie-scaffolded/docs/tools/packages.config",
+		"/D/projects/laughing-wookie-scaffolded/tests/laughing-wookie.Tests/Tests.fs",
+		"/D/projects/laughing-wookie-scaffolded/src/wookie/wookie.fsproj",
+		"/D/projects/laughing-wookie-scaffolded/src/server/server.fsproj",
+		"/D/projects/laughing-wookie-scaffolded/init.fsx",
+		"/D/projects/laughing-wookie-scaffolded/tests/laughing-wookie.Tests/laughing-wookie.Tests.fsproj",
+		"/D/projects/laughing-wookie-scaffolded/tests/laughing-wookie.Tests/packages.config",
+		"/D/projects/laughing-wookie/build.sh",
+		"/D/projects/laughing-wookie-scaffolded/src/FSharp.ProjectTemplate/FSharp.ProjectTemplate.fsproj",
+		"/D/projects/glowing-wookie/src/projectionsConsole/projectionsConsole.csproj",
+		"/D/projects/glowing-wookie/glowing-wookie.sln",
+		"/D/projects/laughing-wookie/src/wookie/wookie.fsproj",
+		"/D/projects/laughing-wookie/src/server/Server.fsproj",
+		"/D/projects/glowing-wookie/projections.sln",
+		"/D/projects/glowing-wookie/build.sh",
+		"/D/projects/yolo-bear/src/html/games.html",
+		"/D/projects/yolo-bear/src/js/gamesViewModel.js",
 		"/D/projects/db-wookie/scripts/authenticationScript.sql",
 		"/D/projects/glowing-wookie/src/projectionsConsole/GamesListProjection.cs",
-		"/D/projects/massive-bear/src/server.js",
-		"/D/projects/massive-bear/src/.env",
-		"/D/projects/massive-bear/src/handlers/games.js",
 		"/D/projects/yolo-bear/src/js/model/games.js",
-		"/D/projects/glowing-wookie/src/projectionsConsole/projectionsConsole.csproj",
 		"/D/projects/massive-bear/src/model/game.js",
-		"/D/projects/yolo-bear/src/js/gamesViewModel.js",
 		"/D/projects/yolo-bear/src/js/model/game.js",
-		"/D/projects/yolo-bear/src/html/games.html",
-		"/D/projects/massive-bear/src/model/projections.js",
 		"/D/projects/db-wookie/recreateBear2Bear.bat",
 		"/D/projects/db-wookie/recreateBear2BearWithTestSample.bat",
 		"/D/projects/db-wookie/scripts/authenticationScript.tests.sql",
-		"/D/projects/yolo-bear/src/js/yoloBear.js",
-		"/D/projects/massive-bear/src/listenner/ges.js",
-		"/D/projects/massive-bear/Gruntfile.js",
 		"/D/projects/massive-bear/src/dispatcher/wookie.js",
 		"/C/Users/Yoann/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
 		"/C/Users/Yoann/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
@@ -169,19 +252,13 @@
 		"/C/Users/Yoann/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
 		"/D/projects/yolo-bear/src/js/ajaxRepository.js",
 		"/D/projects/massive-bear/src/routes/index.js",
-		"/D/projects/yolo-bear/src/jsTap/fakeRepository.js",
 		"/D/projects/massive-bear/src/model/commandFileWriter.js",
 		"/D/projects/massive-bear/src/model/commandEventStore.js",
 		"/D/projects/massive-bear/src/model/gameCommands.js",
 		"/D/projects/massive-bear/www-root/js/yolo-bear.js",
-		"/D/projects/yolo-bear/www-root/games.html",
-		"/D/projects/yolo-bear/README.md",
-		"/D/projects/massive-bear/src/handlers/bears.js",
 		"/D/projects/massive-bear/src/model/commands.js",
 		"/D/projects/massive-bear/src/model/driverCommands.js",
 		"/D/projects/massive-bear/src/model/executeWithGES.js",
-		"/D/projects/massive-bear/www-root/login.html",
-		"/D/projects/massive-bear/www-root/games.html",
 		"/D/projects/massive-bear/node_modules/grunt-parallel/tasks/parallel.js",
 		"/D/projects/massive-bear/node_modules/grunt-parallel/node_modules/q/q.js",
 		"/D/projects/massive-bear/package.json",
@@ -191,8 +268,6 @@
 		"/C/Users/Yoann/Desktop/bearTobearWeb.bat",
 		"/C/Users/Yoann/Desktop/massivebear .bat",
 		"/D/projects/yolo-bear/src/js/google.js",
-		"/D/projects/yolo-bear/Gruntfile.js",
-		"/D/projects/yolo-bear/src/js/app.js",
 		"/D/projects/yolo-bear/src/js/facebook.js",
 		"/D/projects/massive-bear/ReadMe.md",
 		"/D/projects/yolo-bear/src/js/massiveBear.js",
@@ -229,34 +304,7 @@
 		"/D/projects/massive-bear/test/test.js",
 		"/D/projects/massive-bear/routes/games.js",
 		"/D/projects/massive-bear/server.js",
-		"/D/projects/massive-bear/routes/index.js",
-		"/D/projects/massive-bear/model/projections.js",
-		"/D/projects/laughing-wookie/src/server/server.fsproj",
-		"/D/projects/laughing-wookie/build.sh",
-		"/C/Users/Yoann/AppData/Local/Temp/Temp1_FSharp.Data.Toolbox-master.zip/FSharp.Data.Toolbox-master/RELEASE_NOTES.md",
-		"/D/projects/laughing-wookie/src/wookie.unit.tests/wookie.unit.tests.fsproj",
-		"/D/projects/laughing-wookie/src/wookie/wookie.fsproj",
-		"/D/projects/laughing-wookie/src/prewookie/prewookie.fsproj",
-		"/D/projects/testTravis/.travis.yml",
-		"/C/Program Files (x86)/ContinuousTests/AutoTest.VS.2013.Addin",
-		"/D/Projects/db-wookie/scripts/authenticationScript.sql",
-		"/D/projects/laughing-wookie/src/laughing-wookie.sln",
-		"/D/projects/laughing-wookie/laughing-wookie.sln",
-		"/C/Users/Yoann/AppData/Local/Temp/Temp1_bear2bear.zip/bear2bear/model/projections.js",
-		"/D/projects/GetEventStoreExample/README.md",
-		"/D/Projects/db-wookie/scripts/authenticationScript.tests.sql",
-		"/D/projects/EventStore/readme.markdown",
-		"/C/Users/Yoann/Downloads/Italian keyboard superdev (WaYdotNET).rar",
-		"/D/Projects/yolo-bear/README.md",
-		"/D/Projects/db-wookie/README.md",
-		"/D/Projects/db-wookie/recreateDrawTeams.bat",
-		"/D/Projects/db-wookie/recreateDrawTeamsWithTestSample.bat",
-		"/D/Projects/db-wookie/temp/script.temp",
-		"/D/Projects/db-wookie/createScript.sql",
-		"/D/Projects/db-wookie/testScript.sql",
-		"/D/Projects/db-wookie/script.temp",
-		"/D/Projects/db-wookie/end.sql",
-		"/D/Projects/db-wookie/begin.sql"
+		"/D/projects/massive-bear/routes/index.js"
 	],
 	"find":
 	{
@@ -275,6 +323,36 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"facebook",
+			"res",
+			"response",
+			"rows",
+			"user",
+			"res",
+			"response",
+			"retrieveJsonGames",
+			"DB",
+			"_db",
+			"listenner",
+			"socket",
+			"glowing",
+			"fsproj",
+			"bin",
+			"deploy",
+			"bin",
+			"deploy",
+			"proj",
+			"projectionsConsole",
+			"glowing",
+			"deployDir",
+			"website",
+			"referenceBinaries",
+			"libs",
+			"Server",
+			"Scaffold",
+			"Server",
+			"build",
+			"94",
 			"createGame",
 			"messageIdProcessed",
 			"Projections",
@@ -372,37 +450,7 @@
 			"getBear",
 			"handlers",
 			"createRouting",
-			"gameHandler",
-			"abandon",
-			"getGameList",
-			"getGames",
-			"getGameList",
-			"routes",
-			"handlers",
-			"bearHandler",
-			"_ensureAuthentication",
-			"appWithAuthentication",
-			"ensureAuthentication",
-			"ensureAuthenticated",
-			"ensureAuthentication",
-			"createRouting",
-			"bearHandler",
-			"router",
-			"createRouting",
-			"bearsRoutes",
-			"myApp",
-			"appWithAuthentication",
-			"router",
-			"createRouting",
-			"createApp",
-			"projections",
-			"_getBear",
-			"_dbPath",
-			"dbPath",
-			"fakeAjaxRepository",
-			"ajaxRepository",
-			"fakeRepository",
-			"ajaxRepository"
+			"gameHandler"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -410,6 +458,10 @@
 		"regex": false,
 		"replace_history":
 		[
+			"deploy",
+			"glowing",
+			"lib",
+			"server",
 			"isGameForEvent",
 			"www-root",
 			"_repository",
@@ -424,15 +476,148 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 5,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/D/projects/yolo-bear/src/js/gamesViewModel.js",
+					"file": "/D/projects/yolo-bear/www-root/games.html",
 					"settings":
 					{
-						"buffer_size": 2769,
+						"buffer_size": 6262,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6254,
+								6254
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1880.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/D/projects/yolo-bear/src/html/games.html",
+					"settings":
+					{
+						"buffer_size": 6337,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6215,
+								6227
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1955.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/D/projects/yolo-bear/src/js/socket.js",
+					"settings":
+					{
+						"buffer_size": 226,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								76,
+								76
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var socket = function()",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "/D/projects/yolo-bear/src/js/yoloBear.js",
+					"settings":
+					{
+						"buffer_size": 345,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								30,
+								30
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "/D/projects/yolo-bear/src/js/app.js",
+					"settings":
+					{
+						"buffer_size": 430,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								402,
+								402
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 5,
+					"file": "/D/projects/yolo-bear/Gruntfile.js",
+					"settings":
+					{
+						"buffer_size": 5814,
 						"regions":
 						{
 						},
@@ -446,37 +631,11 @@
 						"settings":
 						{
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 950.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/D/projects/yolo-bear/src/html/games.html",
-					"settings":
-					{
-						"buffer_size": 6031,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3662,
-								3672
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1320.0,
+						"translation.y": 1026.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
