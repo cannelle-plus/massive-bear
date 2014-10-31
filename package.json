@@ -23,7 +23,12 @@
     "passport-facebook": "1.0.3",
     "passport-google": "*",
     "node-env-file": "0.1.3",
-    "ges-client": "0.9.0"
+    "q-sqlite3" : "0.1.2",
+    "socket.io" : "1.2.0",
+    "ges-client": "0.9.0",
+    "rx" : "2.3.14",
+    "log4js": "git+https://github.com/cannelle-plus/log4js-node",
+    "node-uuid": "^1.4.1"
   },
   "scripts": {
     "start": "node src/server.js",
@@ -48,7 +53,7 @@
     "karma-requirejs": "0.2.2",
     "load-grunt-tasks": "0.6.0",
     "mocha": "1.21.4",
-    "requirejs": "2.1.14",
+    "requirejs": "^2.1.15",
     "watch": "0.11.0"
   }
 }

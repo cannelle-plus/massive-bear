@@ -130,7 +130,7 @@ var createRouting = function(app, handlers)
   router.get('/gamesList',handlers.game.getGameList);
   router.get('/games',handlers.game.getGames);
 
-  router.post('/game/creategame',handlers.game.createGame);
+  router.post('/game/schedulegame',handlers.game.createGame);
   router.post('/game/joingame',handlers.game.joinGame);
   router.post('/game/abandongame',handlers.game.abandonGame);
   router.post('/game/cancelgame',handlers.game.cancelGame);

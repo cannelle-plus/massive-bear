@@ -4,8 +4,196 @@
 		"selected_items":
 		[
 			[
+				"ses",
+				"session"
+			],
+			[
+				"session",
+				"sessions"
+			],
+			[
+				"e",
+				"eventSource"
+			],
+			[
+				"_",
+				"_subscribeToSocket"
+			],
+			[
+				"subsc",
+				"subscription"
+			],
+			[
+				"sub",
+				"subscription"
+			],
+			[
+				"su",
+				"Subscription"
+			],
+			[
+				"gam",
+				"gamesRender"
+			],
+			[
+				"ga",
+				"gameAdded"
+			],
+			[
+				"_createGame",
+				"_createGameJoined"
+			],
+			[
+				"ev",
+				"evtServerPlayerAddedToGame"
+			],
+			[
+				"_cre",
+				"_createGameCreated"
+			],
+			[
+				"evt",
+				"evtTypes"
+			],
+			[
+				"eve",
+				"evtTypes"
+			],
+			[
+				"_pla",
+				"_playersUnChecked"
+			],
+			[
 				"user",
-				"userId"
+				"username"
+			],
+			[
+				"_player",
+				"_nbPlayers"
+			],
+			[
+				"in",
+				"indexOf"
+			],
+			[
+				"add",
+				"addPlayerToGame"
+			],
+			[
+				"gamen",
+				"gameNotJoined"
+			],
+			[
+				"re",
+				"Reactive"
+			],
+			[
+				"log",
+				"log4javascript"
+			],
+			[
+				"agg",
+				"aggType"
+			],
+			[
+				"subj",
+				"subjectName"
+			],
+			[
+				"subje",
+				"subjects"
+			],
+			[
+				"call",
+				"call_jsdom"
+			],
+			[
+				"j",
+				"jquery"
+			],
+			[
+				"fu",
+				"function"
+			],
+			[
+				"to",
+				"toto"
+			],
+			[
+				"js",
+				"jsdom"
+			],
+			[
+				"return",
+				"returnValue"
+			],
+			[
+				"Eve",
+				"eventIs"
+			],
+			[
+				"_render",
+				"_renderActionSuccess"
+			],
+			[
+				"_er",
+				"_renderGameAdded"
+			],
+			[
+				"game",
+				"gameName"
+			],
+			[
+				"po",
+				"property"
+			],
+			[
+				"s",
+				"should"
+			],
+			[
+				"pub",
+				"pubsubObservable"
+			],
+			[
+				"d",
+				"doSomethingOnTheUI"
+			],
+			[
+				"pu",
+				"pubsubObservable"
+			],
+			[
+				"obs",
+				"obsAggregate"
+			],
+			[
+				"where",
+				"whereAggregate"
+			],
+			[
+				"aggregat",
+				"aggregateType"
+			],
+			[
+				"even",
+				"eventHandler"
+			],
+			[
+				"My",
+				"mySubscriber"
+			],
+			[
+				"do",
+				"doAction"
+			],
+			[
+				"msg",
+				"msgtoSend"
+			],
+			[
+				"fak",
+				"fakeSocket"
 			],
 			[
 				"join",
@@ -18,10 +206,6 @@
 			[
 				"aja",
 				"_ajaxRepository"
-			],
-			[
-				"game",
-				"game"
 			],
 			[
 				"games",
@@ -68,10 +252,6 @@
 				"googleLogin"
 			],
 			[
-				"re",
-				"registerTask"
-			],
-			[
 				"defa",
 				"default"
 			],
@@ -84,51 +264,10 @@
 	"buffers":
 	[
 		{
-			"file": "/D/projects/yolo-bear/www-root/games.html",
+			"file": "package.json",
 			"settings":
 			{
-				"buffer_size": 6262,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/projects/yolo-bear/src/html/games.html",
-			"settings":
-			{
-				"buffer_size": 6337,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/projects/yolo-bear/src/js/socket.js",
-			"settings":
-			{
-				"buffer_size": 226,
-				"line_ending": "Windows",
-				"name": "var socket = function()"
-			}
-		},
-		{
-			"file": "/D/projects/yolo-bear/src/js/yoloBear.js",
-			"settings":
-			{
-				"buffer_size": 345,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/projects/yolo-bear/src/js/app.js",
-			"settings":
-			{
-				"buffer_size": 430,
-				"line_ending": "Windows"
-			}
-		},
-		{
-			"file": "/D/projects/yolo-bear/Gruntfile.js",
-			"settings":
-			{
-				"buffer_size": 5814,
+				"buffer_size": 1588,
 				"line_ending": "Windows"
 			}
 		}
@@ -177,24 +316,95 @@
 	},
 	"file_history":
 	[
-		"/D/projects/yolo-bear/src/libs/socket.io/socket.io-1.1.0.js",
-		"/D/projects/yolo-bear/Gruntfile.js",
-		"/D/projects/massive-bear/src/model/projections.js",
-		"/D/projects/massive-bear/src/.env",
+		"/D/projects/massive-bear/src/listenner/eventStore.js",
 		"/D/projects/massive-bear/src/server.js",
-		"/D/projects/massive-bear/src/handlers/bears.js",
-		"/D/projects/massive-bear/src/handlers/games.js",
-		"/D/projects/massive-bear/src/listenner/socket.js",
+		"/D/projects/massive-bear/src/listenner/webSocket.js",
+		"/D/projects/massive-bear/src/model/projections.js",
+		"/D/projects/massive-bear/package.json",
+		"/D/projects/massive-bear/specs/unitTests/sessions.spec.js",
+		"/D/projects/massive-bear/src/listenner/session.js",
+		"/D/projects/massive-bear/src/listenner/sessions.js",
+		"/D/projects/massive-bear/specs/unitTests/session.spec.js",
+		"/D/projects/massive-bear/.gitignore",
+		"/D/projects/massive-bear/specs/unitTests/eventStore.spec.js",
+		"/D/projects/massive-bear/specs/unitTests/userSocket.spec.js",
+		"/D/projects/massive-bear/specs/unitTests/webSocket.spec.js",
+		"/D/projects/yolo-bear/specs/unitTests/pubsubBasics.spec.js",
+		"/D/projects/massive-bear/src/logger.js",
+		"/D/projects/massive-bear/specs/unitTests/subscription.spec.js",
+		"/D/projects/massive-bear/src/listenner/subscription.js",
+		"/D/projects/massive-bear/src/routes/index.js",
+		"/D/projects/massive-bear/src/listenner/userSocket.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/reactive.js",
+		"/D/projects/yolo-bear/package.json",
+		"/D/projects/massive-bear/specs/unitTests/repositorySocket.spec.js",
+		"/D/projects/yolo-bear/Gruntfile.js",
 		"/D/projects/massive-bear/Gruntfile.js",
-		"/D/projects/massive-bear/www-root/games.html",
-		"/D/projects/yolo-bear/www-root/games.html",
-		"/D/projects/massive-bear/www-root/login.html",
+		"/D/projects/massive-bear/specs/integrationTests/test.js",
+		"/D/projects/massive-bear/src/listenner/repositorySocket.js",
 		"/D/projects/massive-bear/src/listenner/ges.js",
-		"/D/projects/massive-bear/.sublime-grunt.cache",
-		"/D/projects/yolo-bear/src/js/app.js",
-		"/D/projects/yolo-bear/src/jsTap/fakeRepository.js",
-		"/D/projects/yolo-bear/README.md",
+		"/D/projects/massive-bear/specs/unitTests/repositorySocket.js",
+		"/D/projects/massive-bear/specs/unitTests/webSocket.js",
+		"/D/projects/massive-bear/specs/unitTests/string.spec.js",
+		"/D/projects/massive-bear/Gruntfile.js~",
+		"/D/projects/massive-bear/karma.conf.js",
+		"/D/projects/massive-bear/src/listenner/socket.js",
 		"/D/projects/yolo-bear/src/js/yoloBear.js",
+		"/D/projects/yolo-bear/npm-debug.log",
+		"/D/projects/yolo-bear/src/js/logger.js",
+		"/D/projects/yolo-bear/README.md",
+		"/D/projects/yolo-bear/node_modules/log4js/lib/log4js.js",
+		"/D/projects/yolo-bear/src/js/massiveBear.js",
+		"/D/projects/yolo-bear/src/js/model/games.js",
+		"/D/projects/yolo-bear/src/js/model/game.js",
+		"/D/projects/yolo-bear/src/js/viewmodel/gamesViewModel.js",
+		"/D/projects/yolo-bear/src/html/games.html",
+		"/D/projects/yolo-bear/src/js/ui/gamesRender.js",
+		"/D/projects/yolo-bear/node_modules/log4js/lib/appenders/console.js",
+		"/D/projects/yolo-bear/specs/unitTests/gamesViewModel.spec.js",
+		"/D/projects/yolo-bear/src/jsTap/fakeSocket.js",
+		"/D/projects/yolo-bear/src/js/app.js",
+		"/D/projects/yolo-bear/src/jsTap/fakeAjax.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/repository.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/socket.js",
+		"/D/projects/yolo-bear/specs/unitTests/calljsDom.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/ajax.js",
+		"/D/projects/massive-bear/src/handlers/games.js",
+		"/D/projects/massive-bear/node_modules/ges-client/test/tcp/ges/append_to_stream.js",
+		"/D/projects/massive-bear/src/model/game.js",
+		"/D/projects/yolo-bear/src/js/ui/navigation.js",
+		"/D/projects/yolo-bear/www-root/games.html",
+		"/D/projects/yolo-bear/specs/sss.spec.js",
+		"/D/projects/yolo-bear/src/libs/js/log4javascript.js",
+		"/D/projects/yolo-bear/src/js/libs/log4javascript.js",
+		"/D/projects/yolo-bear/src/js/appWindow.js",
+		"/D/projects/yolo-bear/www-root/js/yolo-bear.js",
+		"/D/projects/yolo-bear/spec/unitTests/calljsDom.js",
+		"/D/projects/yolo-bear/spec/unitTests/gamesViewModel.spec.js",
+		"/D/projects/yolo-bear/spec/support/jasmine.json",
+		"/D/projects/yolo-bear/jasmine.json",
+		"/D/projects/yolo-bear/src/js/session.js",
+		"/D/projects/yolo-bear/specs/unitTests/test.js",
+		"/D/projects/yolo-bear/bundle.js",
+		"/D/projects/yolo-bear/node_modules/pubsub-js/src/pubsub.js",
+		"/D/projects/yolo-bear/node_modules/dot/doT.js",
+		"/D/projects/yolo-bear/src/js/ui/ui.games.js",
+		"/D/projects/yolo-bear/src/js/yolo-bear.js",
+		"/D/projects/yolo-bear/src/js/reactive.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/repositorySync.js",
+		"/D/projects/yolo-bear/src/libs/js/jquery-1.11.1.min.js",
+		"/D/projects/yolo-bear/src/js/viewmodel/gameTemplates.js",
+		"/D/projects/yolo-bear/src/js/reactiveSources/ajaxRepository.js",
+		"/D/projects/yolo-bear/src/js/reactive/emitter.js",
+		"/D/projects/yolo-bear/src/js/gamesViewModel.js",
+		"/D/projects/yolo-bear/src/jsTap/fakeRepository.js",
+		"/D/projects/yolo-bear/src/js/socket.js",
+		"/D/projects/yolo-bear/src/libs/socket.io/socket.io-1.1.0.js",
+		"/D/projects/massive-bear/src/.env",
+		"/D/projects/massive-bear/src/handlers/bears.js",
+		"/D/projects/massive-bear/www-root/games.html",
+		"/D/projects/massive-bear/www-root/login.html",
+		"/D/projects/massive-bear/.sublime-grunt.cache",
 		"/D/projects/massive-bear/node_modules/ges-client/package.json",
 		"/D/projects/glowing-wookie/deploy/glowing.exe.config",
 		"/D/projects/glowing-wookie-scaffold/build.fsx",
@@ -233,78 +443,7 @@
 		"/D/projects/glowing-wookie/glowing-wookie.sln",
 		"/D/projects/laughing-wookie/src/wookie/wookie.fsproj",
 		"/D/projects/laughing-wookie/src/server/Server.fsproj",
-		"/D/projects/glowing-wookie/projections.sln",
-		"/D/projects/glowing-wookie/build.sh",
-		"/D/projects/yolo-bear/src/html/games.html",
-		"/D/projects/yolo-bear/src/js/gamesViewModel.js",
-		"/D/projects/db-wookie/scripts/authenticationScript.sql",
-		"/D/projects/glowing-wookie/src/projectionsConsole/GamesListProjection.cs",
-		"/D/projects/yolo-bear/src/js/model/games.js",
-		"/D/projects/massive-bear/src/model/game.js",
-		"/D/projects/yolo-bear/src/js/model/game.js",
-		"/D/projects/db-wookie/recreateBear2Bear.bat",
-		"/D/projects/db-wookie/recreateBear2BearWithTestSample.bat",
-		"/D/projects/db-wookie/scripts/authenticationScript.tests.sql",
-		"/D/projects/massive-bear/src/dispatcher/wookie.js",
-		"/C/Users/Yoann/AppData/Roaming/Sublime Text 2/Packages/Default/Default (Windows).sublime-keymap",
-		"/C/Users/Yoann/AppData/Roaming/Sublime Text 2/Packages/User/Default (Windows).sublime-keymap",
-		"/C/Users/Yoann/AppData/Roaming/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/C/Users/Yoann/AppData/Roaming/Sublime Text 2/Packages/Default/Preferences.sublime-settings",
-		"/D/projects/yolo-bear/src/js/ajaxRepository.js",
-		"/D/projects/massive-bear/src/routes/index.js",
-		"/D/projects/massive-bear/src/model/commandFileWriter.js",
-		"/D/projects/massive-bear/src/model/commandEventStore.js",
-		"/D/projects/massive-bear/src/model/gameCommands.js",
-		"/D/projects/massive-bear/www-root/js/yolo-bear.js",
-		"/D/projects/massive-bear/src/model/commands.js",
-		"/D/projects/massive-bear/src/model/driverCommands.js",
-		"/D/projects/massive-bear/src/model/executeWithGES.js",
-		"/D/projects/massive-bear/node_modules/grunt-parallel/tasks/parallel.js",
-		"/D/projects/massive-bear/node_modules/grunt-parallel/node_modules/q/q.js",
-		"/D/projects/massive-bear/package.json",
-		"/D/projects/massive-bear/src/routes/games.js",
-		"/D/projects/massive-bear/src/routes/bears.js",
-		"/D/projects/massive-bear/src/oauth.js",
-		"/C/Users/Yoann/Desktop/bearTobearWeb.bat",
-		"/C/Users/Yoann/Desktop/massivebear .bat",
-		"/D/projects/yolo-bear/src/js/google.js",
-		"/D/projects/yolo-bear/src/js/facebook.js",
-		"/D/projects/massive-bear/ReadMe.md",
-		"/D/projects/yolo-bear/src/js/massiveBear.js",
-		"/D/projects/yolo-bear/.gitignore",
-		"/D/projects/yolo-bear/src/js/main.js",
-		"/D/projects/yolo-bear/www-root/js/yolo-bear.js",
-		"/D/projects/yolo-bear/src/libs/jquery-1.11.1.min.js",
-		"/D/projects/yolo-bear/src/js/gameViewModel.js",
-		"/D/projects/yolo-bear/src/js/ajax.js",
-		"/D/projects/yolo-bear/www-root/js/yolo-bear.min.js",
-		"/D/projects/yolo-bear/src/html/signIn.html",
-		"/D/projects/yolo-bear/src/html/login.html",
-		"/D/projects/yolo-bear/package.json",
-		"/D/projects/massive-bear/.gitignore",
-		"/D/projects/massive-bear/src/html/games.html",
-		"/D/projects/massive-bear/src/js/model/driverCommands.js",
-		"/D/projects/massive-bear/src/js/model/commands.js",
-		"/D/projects/massive-bear/specs/unitTests/string.spec.js",
-		"/D/projects/massive-bear/dist/bear2bear.js",
-		"/D/projects/massive-bear/src/js/ui/google.js",
-		"/D/projects/massive-bear/src/js/model/projections.js",
-		"/D/projects/massive-bear/src/js/oauth.js",
-		"/D/projects/massive-bear/src/js/routes/games.js",
-		"/D/projects/massive-bear/src/js/ui/ajax.js",
-		"/D/projects/massive-bear/karma.conf.js",
-		"/D/projects/massive-bear/public/javascripts/main.js",
-		"/D/projects/massive-bear/model/driverCommands.js",
-		"/D/projects/massive-bear/model/commands.js",
-		"/E/gruntExample/Gruntfile.js",
-		"/D/projects/massive-bear/src/js/server.js",
-		"/D/projects/massive-bear/src/js/ui/facebook.js",
-		"/D/projects/massive-bear/src/js/ui/main.js",
-		"/D/projects/massive-bear/test-main.js",
-		"/D/projects/massive-bear/test/test.js",
-		"/D/projects/massive-bear/routes/games.js",
-		"/D/projects/massive-bear/server.js",
-		"/D/projects/massive-bear/routes/index.js"
+		"/D/projects/glowing-wookie/projections.sln"
 	],
 	"find":
 	{
@@ -315,6 +454,10 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"D:\\projects\\massive-bear\\src",
+			"D:\\projects\\massive-bear\\specs",
+			"D:\\projects\\yolo-bear",
+			"/",
 			""
 		]
 	},
@@ -323,134 +466,134 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"facebook",
-			"res",
-			"response",
-			"rows",
-			"user",
-			"res",
-			"response",
-			"retrieveJsonGames",
-			"DB",
-			"_db",
-			"listenner",
+			"essions",
+			"server",
+			"sessions",
+			"server",
+			"send",
+			"connection",
+			"_connection",
+			"connection",
+			"WebSocket",
 			"socket",
-			"glowing",
-			"fsproj",
-			"bin",
-			"deploy",
-			"bin",
-			"deploy",
-			"proj",
-			"projectionsConsole",
-			"glowing",
-			"deployDir",
-			"website",
-			"referenceBinaries",
-			"libs",
-			"Server",
-			"Scaffold",
-			"Server",
-			"build",
-			"94",
-			"createGame",
-			"messageIdProcessed",
-			"Projections",
-			"wookiePort",
-			"localhost",
-			"date",
-			"startDate",
-			"gameNbPlayers",
-			"nbPlayers",
-			"gameDateNbPlayers",
-			"startDate",
-			"gameDate",
-			"nbPlayersRequired",
-			"nbPlayers",
-			"NbPlayers",
-			"nbPlayersRequired",
-			"gameDate",
-			"startDate",
-			"date",
-			"startDate",
-			"begins",
-			"ownerId",
-			"ownerUserName",
-			"userId",
-			"ownerUserName",
-			"MetaData",
-			"CorrelationId",
-			"createGame",
-			"userName",
-			"nbPlayersRequired",
-			"name",
-			"location",
-			"date",
-			"Value",
-			"TokenId",
-			"key",
-			"selected",
-			"doNothing",
-			"createReq",
-			"wookieDispatcher",
-			"dispatcher",
-			"wookieServer",
-			"filewatcherDispatcher",
-			"save",
-			"gameId",
-			"3001",
-			"drawTeams",
-			"ajaxCall",
-			"ajaxRepository",
-			"ajaxCall",
-			"parallel",
-			"repository",
-			"_ajaxRepository",
-			"return",
-			"isGameFromEvent",
-			"_equals",
-			"equals",
-			"_equals",
-			"games",
-			"isGame",
-			"find",
-			"existsIn",
-			"_existsIn",
-			"_addTo",
-			"exis",
-			"existsIn",
-			"_exists",
-			"exists",
-			"_existsIn",
-			"gameLocation",
-			"gameDate",
-			"gameLocation",
-			"currentGame",
-			"modelGame",
-			"currentGame",
-			"gamesParsed",
-			"games",
-			"gamesParsed",
-			"gamesList",
-			"joinGame",
-			"_joinGame",
-			"sendCmd",
-			"game",
-			"gameId",
-			"game",
-			"gameId",
-			"game",
-			"gameId",
-			"username",
-			"_commandsToFile",
-			"_executeCommand",
-			"OwnerId",
-			"gameHandler",
-			"GameHandler",
-			"getBear",
-			"handlers",
-			"createRouting",
-			"gameHandler"
+			"WebSocket",
+			"addSocket",
+			"sessions",
+			"retr",
+			"retrieveSession",
+			"fnSocketDriver",
+			"sessions",
+			"_socket",
+			"session",
+			"eventStore",
+			"_getSessionId",
+			"_sessions",
+			"_session",
+			"_sessions",
+			"null",
+			"user",
+			"userSession",
+			"_user",
+			"new",
+			"session",
+			"_session",
+			"retrieveSession",
+			"addSubscription",
+			"addSocket",
+			"subscribe",
+			"actual",
+			"eventStore",
+			"eventSource",
+			"eventStore",
+			"Sessions",
+			"Session",
+			"push",
+			"retrieveSession",
+			"EventStore",
+			"Sessions",
+			"eventStore",
+			"sessions",
+			"Things",
+			"_subscriptions",
+			"counter",
+			"Error",
+			"_subscriptions",
+			"subscriptions",
+			"fnCreateSessionWithUserOnly",
+			"fnCreateSessionWithSourceOnly",
+			"fnCreateSession",
+			"fnCreateSessionWithUserOnly",
+			"source",
+			"new",
+			"user",
+			"assert",
+			"addSocket",
+			"socket",
+			"webSocket",
+			"true",
+			"predicate",
+			"session",
+			"Subscription",
+			"Session",
+			"opennedConnections",
+			"sessions",
+			"opennedConnections",
+			"sessions",
+			"Sessions",
+			"webSocket",
+			"session",
+			"passport",
+			"sessions",
+			"opennedConnections",
+			"socketDriver",
+			"fnSocketDriver",
+			"openedConnections",
+			"opennedConnections",
+			"EventStore",
+			"userSocket",
+			"EventStore",
+			"UserSocket",
+			"userSocket",
+			"repo",
+			"observable",
+			"creatingObservable",
+			"observable",
+			"stream",
+			"observable",
+			"es",
+			"Rx",
+			"es",
+			"payload",
+			"repositorySocket",
+			"UserSocket",
+			"UUserSocket",
+			"repositorySocket",
+			"assert",
+			"expect",
+			"assert",
+			"should",
+			"eventStore",
+			"webSocket",
+			"assert",
+			"should",
+			"eventStore",
+			"webSocket",
+			"should",
+			"assert",
+			"expect",
+			"assert",
+			"expect",
+			"assert",
+			"expect",
+			"repo",
+			"webSocket",
+			"WebSocket",
+			"repositorySocket",
+			"userSocket",
+			"UserSocket",
+			"repositorySocket",
+			"webSocket",
+			"eventStore"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -458,6 +601,9 @@
 		"regex": false,
 		"replace_history":
 		[
+			"new Promise(function(resolve, reject)",
+			"resolve",
+			"then",
 			"deploy",
 			"glowing",
 			"lib",
@@ -471,171 +617,38 @@
 		"show_context": true,
 		"use_buffer2": true,
 		"whole_word": false,
-		"wrap": true
+		"wrap": false
 	},
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "/D/projects/yolo-bear/www-root/games.html",
+					"file": "package.json",
 					"settings":
 					{
-						"buffer_size": 6262,
+						"buffer_size": 1588,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6254,
-								6254
+								694,
+								694
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1880.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/D/projects/yolo-bear/src/html/games.html",
-					"settings":
-					{
-						"buffer_size": 6337,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								6215,
-								6227
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 1955.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "/D/projects/yolo-bear/src/js/socket.js",
-					"settings":
-					{
-						"buffer_size": 226,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								76,
-								76
-							]
-						],
-						"settings":
-						{
-							"auto_name": "var socket = function()",
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "/D/projects/yolo-bear/src/js/yoloBear.js",
-					"settings":
-					{
-						"buffer_size": 345,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								30,
-								30
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "/D/projects/yolo-bear/src/js/app.js",
-					"settings":
-					{
-						"buffer_size": 430,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								402,
-								402
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 5,
-					"file": "/D/projects/yolo-bear/Gruntfile.js",
-					"settings":
-					{
-						"buffer_size": 5814,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2307,
-								2307
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"syntax": "Packages/JavaScript/JSON.tmLanguage",
 							"tab_size": 2,
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1026.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

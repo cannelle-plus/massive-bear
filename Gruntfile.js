@@ -25,11 +25,8 @@ module.exports = function(grunt) {
           tasks: ['yolo-bear']
         },
         devjs: {
-          files: ['src/**/*'],
-          tasks: ['devjs'],
-          options: {
-            spawn: false //Without this option specified express won't be reloaded
-          }
+          files: ['src/**/*', 'specs/**/*'],
+          tasks: ['devjs']
         },
         wwwroot : {
           files: ['www-root/**/*'],
@@ -60,15 +57,15 @@ module.exports = function(grunt) {
               ui: 'bdd',
               reporter: 'tap'
           },
-          all: { src: ['specs/unitTests/*.js'] }
+          all: { src: ['specs/**/*.js'] }
       },
       replace : {
         yoloToMAssive: {
           src : ['www-root/js/yolo-bear.js'],
           overwrite : true,
           replacements: [{
-            from:   'new fakeRepository',
-            to: 'new ajaxRepository'
+            from:   'new app(fakeAjax(global),fakeSocket());',
+            to: 'new app(new Ajax(global),new Socket());'
           }]
         }
       },
@@ -76,7 +73,7 @@ module.exports = function(grunt) {
       express: {
         options: {
           // Override defaults here
-          port : 5498 
+          // port : 5498 
         },
         web: {
           options: {
@@ -121,11 +118,11 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-parallel');
     
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'simplemocha', 'clean','copy', 'replace', 'express', "watch:devjs"]);
+    grunt.registerTask('default', ['jshint', 'simplemocha', 'clean','copy', 'replace', 'express', 'watch:devjs']);
     grunt.registerTask('yolobear', ['watch:yolobear']);
     
 
-    grunt.registerTask('devjs', ['jshint', 'simplemocha','express:web']);
+    grunt.registerTask('devjs', ['jshint', 'simplemocha']);
     grunt.registerTask('yolo-bear', ['clean', 'copy', 'replace']);
 
     grunt.registerTask('travis',['jshint', 'simplemocha']);

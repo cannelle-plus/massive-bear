@@ -21,8 +21,9 @@ var dispatcher = new require('./dispatcher/wookie')(process.env.wookieHost, proc
 
 var game = require('./model/game')(dispatcher);
 
-var ges = require('./listenner/ges');
-var socket = require('./listenner/socket');
+var EventStore = require('./listenner/eventStore');
+var Sessions = require('./listenner/sessions');
+var WebSocket = require('./listenner/webSocket');
 
 var router = require('./routes');
 
@@ -31,9 +32,6 @@ var BearHandler = require('./handlers/bears');
 
 
 var app = express();
-
-
-	
 
 // all environments
 app.set('port', process.env.PORT || 8888);
@@ -63,8 +61,11 @@ if ('development' == app.get('env')) {
 var server = http.createServer(app);
 
 //uncomment to access eventStore subscription
-ges();		
-socket(server);
+var eventStore = new EventStore();
+eventStore.connect();
+var sessions = new Sessions(eventStore);
+var webSocket = new WebSocket(server, sessions);
+
 
 server.listen(app.get('port'), function(){
 	console.log('Express server listening on port ' + app.get('port'));

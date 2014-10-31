@@ -1,6 +1,14 @@
+var uuid = require('node-uuid');
+
 var GameHandler = function(projections, commands)
 {
     //add checking on the interface projections, commands
+
+    var returnError = function(res, msg){
+        return res.status(400).send({
+            'reason' : msg
+        });
+    };
 
     var retrieveJsonGamesFor = function(res){ 
         return function(rows){
@@ -40,31 +48,42 @@ var GameHandler = function(projections, commands)
 
         // Get our form values. These rely on the "name" attributes
 
+        var id= req.body.id;
         var startDate =req.body.startDate;
         var location = req.body.location;
         var name = req.body.name;
-        var nbPlayersRequired = req.body.nbPlayersRequired;
+        var nbPlayersRequired = req.body.maxPlayers;
         var ownerId  = req.user.id;
         var userId = req.user.id;
         var userName = req.user.username;
         
+        if(!id || id.length===0)
+            returnError(res, 'Game id is missing !');
+
         if(!startDate || startDate.length===0)
-            res.status(400).send('Game date is missing !');
+            returnError(res, 'Game date is missing !');
 
         if(!location || location.length===0)
-            res.status(400).send('Game location is missing !');
+            returnError(res, 'Game location is missing !');
 
         if(!name)
-            res.status(400).send('Game name is missing !');
+            returnError(res, 'Game name is missing !');
 
         if(!nbPlayersRequired || nbPlayersRequired.length === 0)
-            res.status(400).send('Game s players number is missing !');
+            returnError(res, 'Game s players number is missing !');
 
+        commands.createGame(id,userId,userName , ownerId, startDate ,location,name, nbPlayersRequired);  
 
-        commands.createGame(userId,userName , ownerId, startDate ,location,name, nbPlayersRequired);  
-
-        // to be defined 
-        res.send("Game created  !");
+        var response = { 
+            "id" : id,
+            "userName" : userName,
+            "ownerId" : ownerId,
+            "startDate" : startDate,
+            "name" : name,
+            "nbPlayersRequired" : nbPlayersRequired
+        };
+      
+        res.send(JSON.stringify(response));
     };
 
 
@@ -79,7 +98,7 @@ var GameHandler = function(projections, commands)
             res.send("Game joigned  ! :) ");
         }  
         else
-            res.status(400).send('Game id is missing !!!');
+            returnError(res, 'Game id is missing !!!');
     };
 
     /* POST to Add abandon game */
@@ -91,7 +110,7 @@ var GameHandler = function(projections, commands)
             res.send("Game abandoned  ! ");
         }  
         else
-            res.status(400).send('Game id is missing !');
+            returnError(res, 'Game id is missing !');
 
     };
 
@@ -104,7 +123,7 @@ var GameHandler = function(projections, commands)
             res.send("Game canceled  ! ");
         }  
         else
-            res.status(400).send('Game id is missing !');
+            returnError(res, 'Game id is missing !');
     };
 
 

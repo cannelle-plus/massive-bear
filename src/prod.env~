@@ -1,6 +1,0 @@
- # some env variables
-
-  connStringBear2Bear=~//bearToBear//b2b.db
-  wookieHost=localhost
-  wookiePort=8081
-  
