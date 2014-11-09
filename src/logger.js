@@ -1,4 +1,6 @@
 var log4js = require('log4js');
 var logger = log4js.getLogger();
 
-module.export = logger;
+logger.setLevel('ERROR');
+
+module.exports = logger;
