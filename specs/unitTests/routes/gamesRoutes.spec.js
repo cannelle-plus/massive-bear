@@ -4,7 +4,6 @@ var GamesRoutes = require('../../../src/routes/gamesRoutes');
 var CommandHandler = require('../../../src/dispatcher/commandHandler');
 var Session = require('../../../src/listenner/session');
 var Rx = require('rx');
-var sinon = require('sinon');
 var Q = require('q');
 
 

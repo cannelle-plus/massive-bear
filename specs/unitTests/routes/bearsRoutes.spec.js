@@ -3,7 +3,6 @@ var expect = require('chai').expect;
 var BearsRoutes = require('../../../src/routes/bearsRoutes');
 var Session = require('../../../src/listenner/session');
 var Rx = require('rx');
-var sinon = require('sinon');
 var Q = require('q');
 
 
