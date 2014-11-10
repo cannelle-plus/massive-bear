@@ -13,12 +13,7 @@ bearRepository = function(dbPath)
 
         console.log('db created');
     });
- 
-    var _getGames = function()
-    {
-        return _db.all('SELECT * FROM GamesList');
-    }; 
-   
+  
     var _getBears = function()
     {
         return _db.all('SELECT * FROM Users');
@@ -30,7 +25,6 @@ bearRepository = function(dbPath)
     };
    
     return {
-        getGames : _getGames,
         getBears : _getBears,
         getBear : _getBear
     };

@@ -160,7 +160,7 @@ describe('Given that we have a user authentified, ', function() {
         };
 
         var postMessage = {
-            evtType: "GameJoined",
+            evtType: "gameJoined",
             payLoad: {
                 "id": 'd70efb73-8c6c-4106-97dd-7503bbf7f5fd',
                 "version": 2,
@@ -201,7 +201,7 @@ describe('Given that we have a user not authentified, ', function() {
         };
 
         var postMessage = {
-            evtType: "GameJoined",
+            evtType: "gameJoined",
             payLoad: {
                 "id": 'd70efb73-8c6c-4106-97dd-7503bbf7f5fd',
                 "version": 2,
@@ -240,7 +240,7 @@ describe('Given that we have a user  authentified, ', function() {
         };
 
         var postMessage = {
-            evtType: "GameScheduled",
+            evtType: "gameScheduled",
             payLoad: {
                 "id" : 'd70efb73-8c6c-4106-97dd-7503bbf7f5bb', 
                 name : 'gameName', 
@@ -286,7 +286,7 @@ describe('Given that we have a user not authentified, ', function() {
         };
 
         var postMessage = {
-            evtType: "GameScheduled",
+            evtType: "gameScheduled",
             payLoad: {
                 "id" : 'd70efb73-8c6c-4106-97dd-7503bbf7f5bb', 
                 name : 'gameName', 
@@ -310,6 +310,86 @@ describe('Given that we have a user not authentified, ', function() {
         
         request(app.start(currentPort()))
             .post('/api/game/schedule')
+            .send(postMessage)
+            .expect(401)
+            .end(function(err, res) {
+                expect(err).to.not.be.ok;
+                done();
+            });
+    });
+});
+
+describe('Given that we have a user  authentified, ', function() {
+    it('when we post "/api/game/abandon", we dispatch a command ', function(done) {
+
+        var source = Rx.Observable.create(function(observer) {});
+
+        var user = {
+            id: 7,
+            username: 'yoann'
+        };
+
+        var postMessage = {
+            evtType: "gameAbandonned",
+            payLoad: {
+                "id": 'd70efb73-8c6c-4106-97dd-7503bbf7f5bb',
+                "version" : 3,
+                "username" : 'yoann', 
+                "nbPlayers" : 1
+            }
+        };
+
+        var app = new App(source);
+
+        var gameRepo = new FakeGameRepo(games);
+        var commandHandler = new CommandHandler('game', fakeDispatcher);
+        var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
+
+        app.addHandlers(gameRoutes);
+        app.addUserLoggedin(user);
+        
+        request(app.start(currentPort()))
+            .post('/api/game/abandon')
+            .send(postMessage)
+            .expect(200)
+            .end(function(err, res) {
+                expect(err).to.not.be.ok;
+                expect(res.text).to.equal(JSON.stringify({ responseFromTheDispatcher: "OK" }));
+                done();
+            });
+    });
+});
+
+describe('Given that we have a user  authentified, ', function() {
+    it('when we post "/api/game/abandon", we dispatch a command ', function(done) {
+
+        var source = Rx.Observable.create(function(observer) {});
+
+        var user = {
+            id: 7,
+            username: 'yoann'
+        };
+
+        var postMessage = {
+            evtType: "gameAbandonned",
+            payLoad: {
+                "id": 'd70efb73-8c6c-4106-97dd-7503bbf7f5bb',
+                "version" : 3,
+                "username" : 'yoann', 
+                "nbPlayers" : 1
+            }
+        };
+
+        var app = new App(source);
+
+        var gameRepo = new FakeGameRepo(games);
+        var commandHandler = new CommandHandler('game', fakeDispatcher);
+        var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
+
+        app.addHandlers(gameRoutes);
+        
+        request(app.start(currentPort()))
+            .post('/api/game/abandon')
             .send(postMessage)
             .expect(401)
             .end(function(err, res) {

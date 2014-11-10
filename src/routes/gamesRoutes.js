@@ -119,9 +119,11 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 		url: "/api/game/abandon",
 		verb: "POST",
 		extract: function(req) {
+			var gameId = req.body.payLoad.id;
+
 			return {
 				"And": function(fnExecute) {
-					return fnExecute();
+					return fnExecute(gameId);
 				}
 			};
 		},
