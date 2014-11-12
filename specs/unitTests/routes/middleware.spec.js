@@ -1,7 +1,7 @@
 /*jshint expr: true*/
 var expect = require('chai').expect;
 var Middleware = require('../../../src/routes/middleware');
-var CommandHandler = require('../../../src/dispatcher/commandHandler');
+var CommandHandler = require('../../../src/commandHandler/commandHandler');
 var GamesRoutes = require('../../../src/routes/gamesRoutes');
 var BearsRoutes = require('../../../src/routes/bearsRoutes');
 var ProfileIdParam = require('../../../src/routes/profileIdParam');

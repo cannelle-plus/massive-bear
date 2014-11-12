@@ -1,7 +1,7 @@
 /*jshint expr: true*/
 var expect = require('chai').expect;
-var Sessions = require('../../src/listenner/sessions');
-var EventStore = require('../../src/listenner/eventStore');
+var Sessions = require('../../../src/eventListener/sessions');
+var EventStore = require('../../../src/eventListener/eventStore');
 
 describe('Sessions', function() {
 

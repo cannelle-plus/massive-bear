@@ -6,11 +6,14 @@ var GamesRoutes = require('./routes/gamesRoutes');
 var Rx = require('rx');
 var Q = require('q');
 var App = require('./app');
-var CommandHandler = require('./dispatcher/commandHandler');
-var EventStore = require('./listenner/eventStore');
+var CommandHandler = require('./commandHandler/commandHandler');
+var EventStore = require('./eventListener/eventStore');
+var WookieDispatcher = require('./commandHandler/wookieDispatcher');
 
-console.log("We are currently landing off using '" + process.env.NODE_ENV + "'' airways.");
-env(__dirname + '/envs/' + process.env.NODE_ENV + '.env');
+var nodeEnv = process.env.NODE_ENV || "default";
+
+console.log("We are currently landing off using '" + nodeEnv + "'' airways.");
+env(__dirname + '/envs/' + nodeEnv + '.env');
 
 //connecting to the event store to allow push notifications
 var eventStore = new EventStore();
@@ -19,24 +22,24 @@ eventStore.connect();
 var app = new App(eventStore);
 
 //creating dispatcher for commands
-var wookieDispatcher = new require('./dispatcher/wookie')(process.env.wookieHost, process.env.wookiePort);
+var wookieDispatcher = new WookieDispatcher(process.env.wookieDispatcherHost, process.env.wookieDispatcherPort);
 
 //creating repostiories to get data from db
 var bearRepo = require('./repositories/bearRepository')(process.env.connStringBear2Bear);
 var gameRepo = require('./repositories/gameRepository')(process.env.connStringBear2Bear);
 
 //creating command handler for commands
-var wookieCommandHandler = new CommandHandler('game', wookieDispatcher);
+var wookieDispatcherCommandHandler = new CommandHandler('game', wookieDispatcher);
 
 //creating routes modules
-var gameRoutes = new GamesRoutes(gameRepo, wookieCommandHandler);
+var gameRoutes = new GamesRoutes(gameRepo, wookieDispatcherCommandHandler);
 var bearsRoutes = new BearsRoutes(bearRepo);
 
 //creating routes modules to the app
 app.addHandlers(gameRoutes);
 app.addHandlers(bearsRoutes);
 
-var port = 8380;
+var port = process.env.PORT || 3000;
 
 //toggling on the logs
 app.toggleLog();

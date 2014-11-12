@@ -1,6 +1,6 @@
 /*jshint expr: true*/
 var expect = require('chai').expect;
-var EventStore = require('../../src/listenner/eventStore');
+var EventStore = require('../../../src/eventListener/eventStore');
 
 describe('eventStore ', function () {
 	it('can be instanciated', function () {

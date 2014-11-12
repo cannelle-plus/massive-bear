@@ -5,7 +5,7 @@ var GamesRoutes = require('./routes/gamesRoutes');
 var Rx = require('rx');
 var Q = require('q');
 var App = require('./app');
-var CommandHandler = require('./dispatcher/commandHandler');
+var CommandHandler = require('./commandHandler/commandHandler');
 
 var yoann = {
     id: 7,

@@ -1,1 +1,1 @@
-NODE_ENV=production node src/massiveBear.js
+NODE_ENV=production node src/server.js

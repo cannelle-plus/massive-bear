@@ -1,6 +1,6 @@
 /*jshint expr: true*/
-// var WebSocket = require('../../src/listenner/webSocket');
-// var Sessions = require('../../src/listenner/sessions');
+// var WebSocket = require('../../src/eventListener/webSocket');
+// var Sessions = require('../../src/eventListener/sessions');
 // var expect = require('chai').expect;
 
 // describe('A web socket ', function() {

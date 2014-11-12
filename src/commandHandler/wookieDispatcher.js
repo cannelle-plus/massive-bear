@@ -44,7 +44,7 @@ module.exports = function(host, port){
       catch(e)
       {
         console.log("*********************************");
-        console.log("Error while accessing wookie");
+        console.log("Error while accessing wookieDispatcher");
         console.log(e);
         console.log("*********************************");
       }

@@ -36,6 +36,27 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 		}
 	};
 
+	var isInterestedInGames = function(session) {
+		return function(games) {
+			session.addSubscription(function(evt) {
+				for (var i = games.length - 1; i >= 0; i--) {
+					if (evt.Id == games[i].id) return true;
+				}
+				return false;
+			});
+			return games;
+		};
+	};
+
+	var isInterestedInGame = function(session, gameId) {
+		return function(data) {
+			session.addSubscription(function(evt) {
+				return evt.Id == gameId;
+			});
+			return data;
+		};
+	};
+
 	this.list = {
 		url: "/api/game/list",
 		verb: "GET",
@@ -50,7 +71,9 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 			return function() {
 				assert.ok(session, 'bearsRoutes : session is not defined');
 
-				return gameRepo.getGames().then(toJson);
+				return gameRepo.getGames()
+					.then(isInterestedInGames(session))
+					.then(toJson);
 
 			};
 		}
@@ -87,7 +110,8 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 					nbPlayersRequired
 				];
 
-				return commandHandler.handles("JoinGame", id, 0, session.user().id, session.user().username, cmd);
+				return commandHandler.handles("JoinGame", id, 0, session.user().id, session.user().username, cmd)
+							         .then(isInterestedInGame(session, id));
 
 			};
 		}

@@ -1,6 +1,6 @@
 var assert = require('chai').assert;
 var logger = require('../logger');
-var Sessions = require('../listenner/sessions');
+var Sessions = require('../eventListener/sessions');
 var Q = require('q');
 
 

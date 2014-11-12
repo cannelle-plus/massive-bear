@@ -1,20 +1,12 @@
 /*jshint expr: true*/
 var expect = require('chai').expect;
 var BearsRoutes = require('../../../src/routes/bearsRoutes');
-var Session = require('../../../src/listenner/session');
+var Session = require('../../../src/eventListener/session');
 var Rx = require('rx');
 var Q = require('q');
+var ReturnDataGamesRepo = require('../../../src/repositories/returnDataGamesRepo');
+var TestData = require('../../testData');
 
-
-var fakeBearRepo = function(data) {
-    this.getBear = function() {
-        var deferred = Q.defer();
-        setTimeout(function() {
-            deferred.resolve(data);
-        }, 1);
-        return deferred.promise;
-    };
-};
 
 describe('Given nothing, ', function() {
 
@@ -36,30 +28,21 @@ describe('Given a user is authenticated, ', function() {
 
     it('when it request its profile, it receive the data of its profile', function(done) {
 
-        var user = {
-            id: 7,
-            username: 'yoann'
-        };
+        var testData = new TestData();
 
-        var bearRepo = new fakeBearRepo(user);
+        var bearRepo = new ReturnDataGamesRepo(testData.user.yoann);
 
         var bearRoutes = new BearsRoutes(bearRepo);
 
         var source = Rx.Observable.create(function(observer) {});
 
-        var session = new Session(user, source);
+        var session = new Session(testData.user.yoann, source);
 
         bearRoutes.profile.execute(session)()
             .then(function(data) {
-
-                var expected = {
-                    bear: {
-                        id: 7,
-                        username: 'yoann'
-                    }
-                };
-
-                expect(JSON.stringify(data)).to.equal(JSON.stringify(expected));
+                expect(JSON.stringify(data)).to.equal(JSON.stringify({
+                    bear: testData.user.yoann
+                }));
                 done();
             });
 
@@ -71,12 +54,9 @@ describe('Given a user is not authenticated, ', function() {
 
     it('when it request its profiles, it throws an exception ', function() {
 
-        var user = {
-            id: 7,
-            username: 'yoann'
-        };
+        var testData = new TestData();
 
-        var bearRepo = new fakeBearRepo(user);
+        var bearRepo = new ReturnDataGamesRepo(testData.user.yoann);
         var bearRoutes = new BearsRoutes(bearRepo);
 
         var executingRouteWithNoSession = function() {
@@ -91,27 +71,16 @@ describe('Given a user is not authenticated, ', function() {
 describe('Given a user is authenticated, ', function() {
 
     it('when it request the profile 4 , it receive the informations of profile 4', function() {
-        var yoann = {
-            id: 7,
-            username: 'yoann'
-        };
 
-        var julien = {
-            id: 4,
-            username: 'julien'
-        };
-
-        var bearRepo = new fakeBearRepo(julien);
-
+        var testData = new TestData();
+        var bearRepo = new ReturnDataGamesRepo(testData.user.julien);
         var bearRoutes = new BearsRoutes(bearRepo);
-
         var source = Rx.Observable.create(function(observer) {});
-
-        var session = new Session(yoann, source);
+        var session = new Session(testData.user.yoann, source);
 
         bearRoutes.profile.execute(session)(4)
             .then(function(data) {
-                expect(JSON.stringify(data)).to.equal(JSON.stringify(julien));
+                expect(JSON.stringify(data)).to.equal(JSON.stringify(testData.user.julien));
                 done();
             });
 

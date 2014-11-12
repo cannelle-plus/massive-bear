@@ -1,6 +1,7 @@
 /*jshint expr: true*/
 var expect = require('chai').expect;
-var Session = require('../../src/listenner/session');
+var Session = require('../../../src/eventListener/session');
+var EventSender = require('../../eventSender');
 var Rx = require('rx');
 
 describe('A session', function() {
@@ -92,7 +93,7 @@ describe('A session', function() {
 
     });
 
-    it('can add a socket listenner to a single subscription', function(done) {
+    it('can add a socket eventListener to a single subscription', function(done) {
 
         var source = Rx.Observable.create(function (observer) {
             observer.onNext(42);
@@ -117,7 +118,7 @@ describe('A session', function() {
 
     });
 
-    it('can add a socket listenner to two subscriptions', function(done) {
+    it('can add a socket eventListener to two subscriptions', function(done) {
 
         var source = Rx.Observable.create(function (observer) {
             observer.onNext(42);
@@ -150,7 +151,7 @@ describe('A session', function() {
     });
 
 
-    it('can add two sockets listenner to a single subscription', function(done) {
+    it('can add two sockets eventListener to a single subscription', function(done) {
 
         var source = Rx.Observable.create(function (observer) {
             observer.onNext(42);
@@ -186,7 +187,7 @@ describe('A session', function() {
 
     });
 
-    it('can add two sockets listenner to two subscriptions', function(done) {
+    it('can add two sockets eventListener to two subscriptions', function(done) {
 
         var source = Rx.Observable.create(function (observer) {
             observer.onNext(42);
@@ -255,6 +256,33 @@ describe('Givent that a session has subscribed to an eventSource', function() {
         });
 
         session.addSocket(socket);
+
+    });
+});
+
+describe('Givent that a session has a socket', function() {
+
+    it('When the session adds a subscription, a new event will trigger the socket', function(done) {
+
+        var eventSender = new EventSender();
+
+        var source = eventSender.source();
+
+        var socket = { 
+            emit : function() {
+                 done();
+            }
+        };
+
+        var session = new Session({id:'007', username:'bond'}, source);
+
+        session.addSocket(socket);
+
+        session.addSubscription(function(x){
+            return x == 46;
+        });
+
+        eventSender.sendEvent(46);
 
     });
 });

@@ -1,54 +1,13 @@
 /*jshint expr: true*/
 var expect = require('chai').expect;
 var GamesRoutes = require('../../../src/routes/gamesRoutes');
-var CommandHandler = require('../../../src/dispatcher/commandHandler');
-var Session = require('../../../src/listenner/session');
+var CommandHandler = require('../../../src/commandHandler/commandHandler');
+var Session = require('../../../src/eventListener/session');
 var Rx = require('rx');
 var Q = require('q');
-
-
-var FakeGameRepo = function(data) {
-
-    this.getGames = function() {
-        var deferred = Q.defer();
-        setTimeout(function() {
-            deferred.resolve(data);
-        }, 1);
-        return deferred.promise;
-    };
-};
-
-var fakeDispatcher = function(aggRoot, id, msg) {
-    var deferred = Q.defer();
-    setTimeout(function() {
-        deferred.resolve(msg);
-    }, 1);
-    return deferred.promise;
-};
-
-var games = [{
-    id: '4a82199e-7c30-4a95-b194-6d40127fbb89',
-    version: 1,
-    name: "test",
-    ownerId: 1,
-    ownerUserName: "julien",
-    startDate: "10/01/2014 10:00",
-    location: "playSoccer",
-    players: "julien,yoann",
-    nbPlayers: 2,
-    maxPlayers: 8
-}, {
-    id: 'd70efb73-8c6c-4106-97dd-7503bbf7f5fd',
-    version: 1,
-    name: "Joga Bonito",
-    ownerId: 1,
-    ownerUserName: "julien",
-    startDate: "10/01/2014 19:00",
-    location: "playSoccer",
-    players: "julien,yoann",
-    nbPlayers: 7,
-    maxPlayers: 8
-}];
+var ReturnDataGamesRepo = require('../../../src/repositories/returnDataGamesRepo');
+var msgDispatcher =require('../../../src/commandHandler/msgDispatcher');
+var TestData = require('../../testData');
 
 describe('Given nothing, ', function() {
 
@@ -75,24 +34,20 @@ describe('Given a user is authenticated, ', function() {
 
     it('when it requests /api/game/list, it receive the list of games', function(done) {
 
-        var user = {
-            id: 7,
-            username: 'yoann'
-        };
+        var testData = new TestData();
 
-        var gameRepo = new FakeGameRepo(games);
-        var commandHandler = new CommandHandler('game', fakeDispatcher);
+        var gameRepo = new ReturnDataGamesRepo(testData.games);
+        var commandHandler = new CommandHandler('game', msgDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
-        var session = new Session(user, source);
+        var session = new Session(testData.user.yoann, source);
 
         routes.list.execute(session)()
             .then(function(data) {
-                var expected = {
-                    gamesList: games
-                };
-                expect(JSON.stringify(data)).to.equal(JSON.stringify(expected));
+                expect(JSON.stringify(data)).to.equal(JSON.stringify({
+                    gamesList: testData.games
+                }));
                 done();
             });
     });
@@ -103,8 +58,10 @@ describe('Given a user is not authenticated, ', function() {
 
     it('when it requests /api/bear/profile, it throws an exception ', function() {
 
-        var gameRepo = new FakeGameRepo(games);
-        var commandHandler = new CommandHandler('game', fakeDispatcher);
+        var testData = new TestData();
+
+        var gameRepo = new ReturnDataGamesRepo(testData.games);
+        var commandHandler = new CommandHandler('game', msgDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var executingRouteWithNoSession = function() {
@@ -122,8 +79,10 @@ describe('Given a user is not authenticated, ', function() {
 
     it('when it requests /api/game/join, it throws an exception ', function() {
 
-        var gameRepo = new FakeGameRepo(games);
-        var commandHandler = new CommandHandler('game', fakeDispatcher);
+        var testData = new TestData();
+
+        var gameRepo = new ReturnDataGamesRepo(testData.games);
+        var commandHandler = new CommandHandler('game', msgDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var executingRouteWithNoSession = function() {
@@ -139,17 +98,14 @@ describe('Given a user is authenticated, ', function() {
 
     it('when it requests /api/game/join without gameId, it throws an exception', function() {
 
-        var user = {
-            id: 7,
-            username: 'yoann'
-        };
+        var testData = new TestData();
 
-        var gameRepo = new FakeGameRepo(games);
-        var commandHandler = new CommandHandler('game', fakeDispatcher);
+        var gameRepo = new ReturnDataGamesRepo(testData.games);
+        var commandHandler = new CommandHandler('game', msgDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
-        var session = new Session(user, source);
+        var session = new Session(testData.user.yoann, source);
 
         var executingRouteWithNoArgs = function() {
             routes.join.execute(session)();
@@ -163,18 +119,15 @@ describe('Given a user is authenticated, ', function() {
 
     it('when it requests /api/game/join, it generates a message , it sends to the dispatcher', function(done) {
 
-        var user = {
-            id: 7,
-            username: 'yoann'
-        };
+        var testData = new TestData();
 
-        var gameRepo = new FakeGameRepo(games);
-        var commandHandler = new CommandHandler('game', fakeDispatcher);
+        var gameRepo = new ReturnDataGamesRepo(testData.games);
+        var commandHandler = new CommandHandler('game', msgDispatcher);
 
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
-        var session = new Session(user, source);
+        var session = new Session(testData.user.yoann, source);
 
         routes.join.execute(session)(3)
             .then(function(data) {
@@ -198,8 +151,10 @@ describe('Given a user is not authenticated, ', function() {
 
     it('when it requests /api/game/abandon, it throws an exception ', function() {
 
-        var gameRepo = new FakeGameRepo(games);
-        var commandHandler = new CommandHandler('game', fakeDispatcher);
+        var testData = new TestData();
+
+        var gameRepo = new ReturnDataGamesRepo(testData.games);
+        var commandHandler = new CommandHandler('game', msgDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var executingRouteWithNoSession = function() {
@@ -215,17 +170,14 @@ describe('Given a user is authenticated, ', function() {
 
     it('when it requests /api/game/abandon without gameId, it throws an exception', function() {
 
-        var user = {
-            id: 7,
-            username: 'yoann'
-        };
+        var testData = new TestData();
 
-        var gameRepo = new FakeGameRepo(games);
-        var commandHandler = new CommandHandler('game', fakeDispatcher);
+        var gameRepo = new ReturnDataGamesRepo(testData.games);
+        var commandHandler = new CommandHandler('game', msgDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
-        var session = new Session(user, source);
+        var session = new Session(testData.user.yoann, source);
 
         var executingRouteWithNoArgs = function() {
             routes.abandon.execute(session)();
@@ -239,18 +191,15 @@ describe('Given a user is authenticated, ', function() {
 
     it('when it requests /api/game/abandon, it generates a message , it sends to the dispatcher', function(done) {
 
-        var user = {
-            id: 7,
-            username: 'yoann'
-        };
+        var testData = new TestData();
 
-        var gameRepo = new FakeGameRepo(games);
-        var commandHandler = new CommandHandler('game', fakeDispatcher);
+        var gameRepo = new ReturnDataGamesRepo(testData.games);
+        var commandHandler = new CommandHandler('game', msgDispatcher);
 
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
-        var session = new Session(user, source);
+        var session = new Session(testData.user.yoann, source);
 
         routes.abandon.execute(session)(3)
             .then(function(data) {

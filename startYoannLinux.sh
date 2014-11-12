@@ -1,1 +1,1 @@
-NODE_ENV=yoannLinux node src/massiveBear.js
+NODE_ENV=yoannLinux node src/server.js
