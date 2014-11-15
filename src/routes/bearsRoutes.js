@@ -16,6 +16,28 @@ var bearsRoutes = function(bearRepo) {
 		console.log(err);
 	};
 
+	
+	this.saveProfile = {
+		url : "/api/bear/profile",
+		verb: "POST",
+		extract : function(req){
+			return { "And" : function(fnExecute){
+				return fnExecute();
+			}};
+		},
+		execute : function(session) {
+			return function(profileName, bearImageId) {
+				assert.ok(session, 'bearsRoutes : session is not defined');
+				assert.ok(session, 'bearsRoutes : profileName is not defined');
+				assert.ok(session, 'bearsRoutes : bearImageId is not defined');
+
+
+				return bearRepo.saveProfile(session.user().id, profileName, bearImageId);
+
+			};
+		}
+	};
+
 	this.profile = {
 		url : "/api/bear/profile",
 		params : [profileIdParam],

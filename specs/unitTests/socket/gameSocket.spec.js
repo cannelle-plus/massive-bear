@@ -17,9 +17,9 @@ var FakeSocket = function(callBack) {
 };
 
 
-describe('Given a user is authenticated', function() {
+describe('Given a bear is authenticated', function() {
 
-    it('when it requests /api/game/list, it subscribe to the gameJoined event associated with the list', function(done) {
+    it('when it requests the list of games, it subscribe to the gameJoined event associated with the list', function(done) {
 
         var testData = new TestData();
 
@@ -30,7 +30,8 @@ describe('Given a user is authenticated', function() {
         var commandHandler = new CommandHandler('game', msgDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
-        var session = new Session(testData.user.yoann, source);
+        var session = new Session(testData.bear.yoann, source);
+
         var socket = new FakeSocket(function(evt) {
             done();
         });
@@ -45,13 +46,10 @@ describe('Given a user is authenticated', function() {
     });
 });
 
-describe('Given a user is authenticated and has requested a list of games', function() {
+describe('Given a bear is authenticated and has requested a list of games', function() {
 
     var EXPECTED_TIMEOUT = 100;
     it('when a gameJoined event of another game is triggered, it does not trigger its subscription', function(done) {
-
-        this.timeout(EXPECTED_TIMEOUT + 100); // You add this to make sure mocha test timeout will only happen as a fail-over, when either of the functions haven't called done callback.
-        var timeout = setTimeout(done, EXPECTED_TIMEOUT);
 
         var testData = new TestData();
 
@@ -61,8 +59,9 @@ describe('Given a user is authenticated and has requested a list of games', func
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler('game', msgDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
+        var evtTriggered = false;
 
-        var session = new Session(testData.user.yoann, source);
+        var session = new Session(testData.bear.yoann, source);
         var socket = new FakeSocket(function(evt) {
             done(new Error('Unexpected call'));
         });
@@ -72,14 +71,20 @@ describe('Given a user is authenticated and has requested a list of games', func
         routes.list.execute(session)()
             .then(function(data) {
                 eventSender.sendGameJoinedEvent('other id');
+                evtTriggered = true;
             });
+
+        this.timeout(EXPECTED_TIMEOUT + 100); // You add this to make sure mocha test timeout will only happen as a fail-over, when either of the functions haven't called done callback.
+        var timeout = setTimeout(function(){
+            if (evtTriggered) done();
+        }, EXPECTED_TIMEOUT);
 
     });
 });
 
-describe('Given a user is authenticated', function() {
+describe('Given a bear is authenticated', function() {
 
-    it('when it requests /api/game/list, it subscribe to the gameAbandonned event associated with the list', function(done) {
+    it('when it requests the list of games, it subscribe to the gameAbandonned event associated with the list', function(done) {
 
         var testData = new TestData();
 
@@ -90,7 +95,7 @@ describe('Given a user is authenticated', function() {
         var commandHandler = new CommandHandler('game', msgDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
-        var session = new Session(testData.user.yoann, source);
+        var session = new Session(testData.bear.yoann, source);
         var socket = new FakeSocket(function(evt) {
             done();
         });
@@ -105,9 +110,9 @@ describe('Given a user is authenticated', function() {
     });
 });
 
-describe('Given a user is authenticated', function() {
+describe('Given a bear is authenticated', function() {
 
-    it('when it requests /api/game/schedule, it subscribe to the gameScheduled event associated with the game it has just created', function(done) {
+    it('when it schedules a game, it subscribe to the gameScheduled event associated with the game it has just created', function(done) {
 
         var testData = new TestData();
 
@@ -118,7 +123,7 @@ describe('Given a user is authenticated', function() {
         var commandHandler = new CommandHandler('game', msgDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
-        var session = new Session(testData.user.yoann, source);
+        var session = new Session(testData.bear.yoann, source);
         var socket = new FakeSocket(function(evt) {
             done();
         });

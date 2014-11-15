@@ -30,7 +30,7 @@ describe('Given nothing, ', function() {
     });
 });
 
-describe('Given a user is authenticated, ', function() {
+describe('Given a bear is authenticated, ', function() {
 
     it('when it requests /api/game/list, it receive the list of games', function(done) {
 
@@ -41,7 +41,7 @@ describe('Given a user is authenticated, ', function() {
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
-        var session = new Session(testData.user.yoann, source);
+        var session = new Session(testData.bear.yoann, source);
 
         routes.list.execute(session)()
             .then(function(data) {
@@ -54,7 +54,7 @@ describe('Given a user is authenticated, ', function() {
 });
 
 
-describe('Given a user is not authenticated, ', function() {
+describe('Given a bear is not authenticated, ', function() {
 
     it('when it requests /api/bear/profile, it throws an exception ', function() {
 
@@ -75,7 +75,7 @@ describe('Given a user is not authenticated, ', function() {
 
 
 
-describe('Given a user is not authenticated, ', function() {
+describe('Given a bear is not authenticated, ', function() {
 
     it('when it requests /api/game/join, it throws an exception ', function() {
 
@@ -94,7 +94,7 @@ describe('Given a user is not authenticated, ', function() {
     });
 });
 
-describe('Given a user is authenticated, ', function() {
+describe('Given a bear is authenticated, ', function() {
 
     it('when it requests /api/game/join without gameId, it throws an exception', function() {
 
@@ -105,7 +105,7 @@ describe('Given a user is authenticated, ', function() {
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
-        var session = new Session(testData.user.yoann, source);
+        var session = new Session(testData.bear.yoann, source);
 
         var executingRouteWithNoArgs = function() {
             routes.join.execute(session)();
@@ -115,7 +115,7 @@ describe('Given a user is authenticated, ', function() {
     });
 });
 
-describe('Given a user is authenticated, ', function() {
+describe('Given a bear is authenticated, ', function() {
 
     it('when it requests /api/game/join, it generates a message , it sends to the dispatcher', function(done) {
 
@@ -127,7 +127,7 @@ describe('Given a user is authenticated, ', function() {
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
-        var session = new Session(testData.user.yoann, source);
+        var session = new Session(testData.bear.yoann, source);
 
         routes.join.execute(session)(3)
             .then(function(data) {
@@ -147,7 +147,7 @@ describe('Given a user is authenticated, ', function() {
     });
 });
 
-describe('Given a user is not authenticated, ', function() {
+describe('Given a bear is not authenticated, ', function() {
 
     it('when it requests /api/game/abandon, it throws an exception ', function() {
 
@@ -166,7 +166,7 @@ describe('Given a user is not authenticated, ', function() {
     });
 });
 
-describe('Given a user is authenticated, ', function() {
+describe('Given a bear is authenticated, ', function() {
 
     it('when it requests /api/game/abandon without gameId, it throws an exception', function() {
 
@@ -177,7 +177,7 @@ describe('Given a user is authenticated, ', function() {
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
-        var session = new Session(testData.user.yoann, source);
+        var session = new Session(testData.bear.yoann, source);
 
         var executingRouteWithNoArgs = function() {
             routes.abandon.execute(session)();
@@ -187,7 +187,7 @@ describe('Given a user is authenticated, ', function() {
     });
 });
 
-describe('Given a user is authenticated, ', function() {
+describe('Given a bear is authenticated, ', function() {
 
     it('when it requests /api/game/abandon, it generates a message , it sends to the dispatcher', function(done) {
 
@@ -199,7 +199,7 @@ describe('Given a user is authenticated, ', function() {
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
-        var session = new Session(testData.user.yoann, source);
+        var session = new Session(testData.bear.yoann, source);
 
         routes.abandon.execute(session)(3)
             .then(function(data) {

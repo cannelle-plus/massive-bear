@@ -19,6 +19,12 @@ bearRepository = function(dbPath)
         return _db.all('SELECT * FROM Users');
     };
 
+    var _saveProfile = function()
+    {
+        //do something useful here
+        // return _db.all('SELECT * FROM Users');
+    };
+
     var _getBear = function(userId)
     {
         return _db.get('SELECT * FROM Users WHERE userId='+userId);

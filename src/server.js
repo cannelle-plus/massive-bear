@@ -9,6 +9,7 @@ var App = require('./app');
 var CommandHandler = require('./commandHandler/commandHandler');
 var EventStore = require('./eventListener/eventStore');
 var WookieDispatcher = require('./commandHandler/wookieDispatcher');
+var socialAuth = require('./auth/socialAuth');
 
 var nodeEnv = process.env.NODE_ENV || "default";
 
@@ -19,7 +20,7 @@ env(__dirname + '/envs/' + nodeEnv + '.env');
 var eventStore = new EventStore();
 eventStore.connect();
 
-var app = new App(eventStore);
+var app = new App(eventStore, socialAuth);
 
 //creating dispatcher for commands
 var wookieDispatcher = new WookieDispatcher(process.env.wookieDispatcherHost, process.env.wookieDispatcherPort);
@@ -39,7 +40,7 @@ var bearsRoutes = new BearsRoutes(bearRepo);
 app.addHandlers(gameRoutes);
 app.addHandlers(bearsRoutes);
 
-var port = process.env.PORT || 3000;
+var port = process.env.PORT || 8888;
 
 //toggling on the logs
 app.toggleLog();

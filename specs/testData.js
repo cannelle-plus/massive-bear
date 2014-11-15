@@ -23,7 +23,7 @@ var testData = function() {
         maxPlayers: 8
     }];
 
-    this.user = {
+    this.bear = {
         yoann: {
             id: 7,
             username: 'yoann'

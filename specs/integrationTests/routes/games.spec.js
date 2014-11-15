@@ -7,26 +7,26 @@ var GamesRoutes = require('../../../src/routes/gamesRoutes');
 var currentPort = require('../currentPort');
 var Rx = require('rx');
 var App = require('../../../src/app');
+var authStaticUser = require('../../../src/auth/authStaticUser');
 var Q = require('q');
 var request = require('supertest');
 var TestData = require('../../testData');
 
 
 
-describe('Given that we have a user authentified, ', function() {
+describe('Given that we have a bear authentified, ', function() {
     it('when we get "/api/game/list", we receive the list of games', function(done) {
 
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source);
+        var app = new App(source, authStaticUser(testData.bear.yoann));
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler('game', oKDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
-        app.addUserLoggedin(testData.user.yoann);
 
         request(app.start(currentPort()))
             .get('/api/game/list')
@@ -41,20 +41,19 @@ describe('Given that we have a user authentified, ', function() {
     });
 });
 
-describe('Given that we have a user not authentified, ', function() {
+describe('Given that we have a bear not authentified, ', function() {
     it('when we get "/api/game/list", we receive an unauthentified response 401', function(done) {
 
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source);
+        var app = new App(source, authStaticUser(testData.bear.yoann));
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler('game', oKDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
-        app.addUserLoggedin(testData.user.yoann);
 
         request(app.start(currentPort()))
             .get('/api/game/list')
@@ -65,20 +64,19 @@ describe('Given that we have a user not authentified, ', function() {
     });
 });
 
-describe('Given that we have a user authentified, ', function() {
+describe('Given that we have a bear authentified, ', function() {
     it('when we get "/games", we receive the games.html file', function(done) {
 
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source);
+        var app = new App(source, authStaticUser(testData.bear.yoann));
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler('game', oKDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
-        app.addUserLoggedin(testData.user.yoann);
 
         request(app.start(currentPort()))
             .get('/games')
@@ -91,20 +89,19 @@ describe('Given that we have a user authentified, ', function() {
     });
 });
 
-describe('Given that we have a user authentified, ', function() {
+describe('Given that we have a bear authentified, ', function() {
     it('when we post "/api/game/join", we dispatch a command ', function(done) {
 
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source);
+        var app = new App(source, authStaticUser(testData.bear.yoann));
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler('game', oKDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
-        app.addUserLoggedin(testData.user.yoann);
 
         request(app.start(currentPort()))
             .post('/api/game/join')
@@ -118,13 +115,13 @@ describe('Given that we have a user authentified, ', function() {
     });
 });
 
-describe('Given that we have a user not authentified, ', function() {
+describe('Given that we have a bear not authentified, ', function() {
     it('when we post "/api/game/join", we receive an unauthorized  response 401 ', function(done) {
 
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source);
+        var app = new App(source, authStaticUser());
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler('game', oKDispatcher);
@@ -143,20 +140,19 @@ describe('Given that we have a user not authentified, ', function() {
     });
 });
 
-describe('Given that we have a user  authentified, ', function() {
+describe('Given that we have a bear  authentified, ', function() {
     it('when we post "/api/game/schedule", we dispatch a command ', function(done) {
 
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source);
+        var app = new App(source, authStaticUser(testData.bear.yoann));
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler('game', oKDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
-        app.addUserLoggedin(testData.user.yoann);
 
         request(app.start(currentPort()))
             .post('/api/game/schedule')
@@ -170,13 +166,13 @@ describe('Given that we have a user  authentified, ', function() {
     });
 });
 
-describe('Given that we have a user not authentified, ', function() {
+describe('Given that we have a bear not authentified, ', function() {
     it('when we post "/api/game/schedule", we receive an unauthorized response 401 ', function(done) {
 
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source);
+        var app = new App(source, authStaticUser());
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler('game', oKDispatcher);
@@ -195,21 +191,20 @@ describe('Given that we have a user not authentified, ', function() {
     });
 });
 
-describe('Given that we have a user  authentified, ', function() {
+describe('Given that we have a bear  authentified, ', function() {
     it('when we post "/api/game/abandon", we dispatch a command ', function(done) {
 
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
         
-        var app = new App(source);
+        var app = new App(source, authStaticUser(testData.bear.yoann));
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler('game', oKDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
-        app.addUserLoggedin(testData.user.yoann);
 
         request(app.start(currentPort()))
             .post('/api/game/abandon')
@@ -223,13 +218,13 @@ describe('Given that we have a user  authentified, ', function() {
     });
 });
 
-describe('Given that we have a user  authentified, ', function() {
+describe('Given that we have a bear  not authentified, ', function() {
     it('when we post "/api/game/abandon", we dispatch a command ', function(done) {
 
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source);
+        var app = new App(source, authStaticUser());
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler('game', oKDispatcher);

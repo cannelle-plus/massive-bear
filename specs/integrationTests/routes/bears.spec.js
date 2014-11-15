@@ -1,4 +1,4 @@
-/*jshint expr: true*/
+ /*jshint expr: true*/
 var expect = require('chai').expect;
 var express = require('express');
 var Middleware = require('../../../src/routes/middleware');
@@ -8,6 +8,7 @@ var BearsRoutes = require('../../../src/routes/bearsRoutes');
 var Rx = require('rx');
 var Q = require('q');
 var App = require('../../../src/app');
+var authStaticUser = require('../../../src/auth/authStaticUser');
 var currentPort = require('../currentPort');
 var ReturnDataGamesRepo = require('../../../src/repositories/returnDataGamesRepo');
 var TestData = require('../../testData');
@@ -15,19 +16,18 @@ var TestData = require('../../testData');
 var request = require('supertest');
 
 
-describe('Given that we have a user authentified, ', function() {
-	it('when we get "/api/bear/profile", we receive its user ', function(done) {
+describe('Given that we have a bear authentified, ', function() {
+	it('when we get "/api/bear/profile", we receive its bear ', function(done) {
 
 		var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-		var app = new App(source);
+		var app = new App(source, authStaticUser(testData.bear.yoann));
 
-		var bearRepo = new ReturnDataGamesRepo(testData.user.yoann);
+		var bearRepo = new ReturnDataGamesRepo(testData.bear.yoann);
 		var bearsRoutes = new BearsRoutes(bearRepo);
 
 		app.addHandlers(bearsRoutes);
-		app.addUserLoggedin(testData.user.yoann);
 
 		request(app.start(currentPort()))
 			.get('/api/bear/profile')
@@ -35,7 +35,7 @@ describe('Given that we have a user authentified, ', function() {
 			.end(function(err, res) {
 				expect(err).to.not.be.ok;
 				expect(res.text).to.equal(JSON.stringify({
-					bear: testData.user.yoann
+					bear: testData.bear.yoann
 				}));
 				done();
 			});
@@ -44,19 +44,18 @@ describe('Given that we have a user authentified, ', function() {
 
 
 
-describe('Given that we have a user authentified, ', function() {
-	it('when we get "/api/bear/profile/8" (another user), we receive this user ', function(done) {
+describe('Given that we have a bear authentified, ', function() {
+	it('when we get "/api/bear/profile/8" (another bear), we receive this bear ', function(done) {
 
 		var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-		var app = new App(source);
+		var app = new App(source, authStaticUser(testData.bear.yoann));
 
-		var bearRepo = new ReturnDataGamesRepo(testData.user.julien);
+		var bearRepo = new ReturnDataGamesRepo(testData.bear.julien);
 		var bearsRoutes = new BearsRoutes(bearRepo);
 
 		app.addHandlers(bearsRoutes);
-		app.addUserLoggedin(testData.user.yoann);
 
 		request(app.start(currentPort()))
 			.get('/api/bear/profile/8')
@@ -64,7 +63,7 @@ describe('Given that we have a user authentified, ', function() {
 			.end(function(err, res) {
 				expect(err).to.not.be.ok;
 				expect(res.text).to.equal(JSON.stringify({
-					bear: testData.user.julien
+					bear: testData.bear.julien
 				}));
 				done();
 			});
@@ -72,16 +71,16 @@ describe('Given that we have a user authentified, ', function() {
 });
 
 
-describe('Given that we have a user not authentified, ', function() {
+describe('Given that we have a bear not authentified, ', function() {
 	it('when we get "/api/bear/profile", we receive an unauthorized response 401 ', function(done) {
 
 
 		var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-		var app = new App(source);
+		var app = new App(source, authStaticUser());
 
-		var bearRepo = new ReturnDataGamesRepo(testData.user.yoann);
+		var bearRepo = new ReturnDataGamesRepo(testData.bear.yoann);
 		var bearsRoutes = new BearsRoutes(bearRepo);
 
 		app.addHandlers(bearsRoutes);
@@ -95,16 +94,16 @@ describe('Given that we have a user not authentified, ', function() {
 	});
 });
 
-describe('Given that we have a user not authentified, ', function() {
+describe('Given that we have a bear not authentified, ', function() {
 	it('when we get "/api/bear/profile/8", we receive an unauthorized response 401 ', function(done) {
 
 
 		var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-		var app = new App(source);
+		var app = new App(source, authStaticUser());
 
-		var bearRepo = new ReturnDataGamesRepo(testData.user.julien);
+		var bearRepo = new ReturnDataGamesRepo(testData.bear.julien);
 		var bearsRoutes = new BearsRoutes(bearRepo);
 
 		app.addHandlers(bearsRoutes);

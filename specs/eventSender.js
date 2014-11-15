@@ -44,8 +44,8 @@ var EventSender = function() {
 		// _subject.onNext(wookieEvt('40e31565-fc54-42f0-d704-5bf2d925f654',7, 'yoann', 'CreateGame',['test', '007', '2014-10-16 18:00', 'Playsoccer', '4']))
 		_subject.onNext(wookieEvt({
 			"id" : id,
-			userId : testData.user.tom.id,
-			userName : testData.user.tom.userName,
+			userId : testData.bear.tom.id,
+			userName : testData.bear.tom.userName,
 			evtType :'GameJoined', 
 			fields : []
 		}));
@@ -54,8 +54,8 @@ var EventSender = function() {
 	this.sendGameAbandonnedEvent = function(id){
 		_subject.onNext(wookieEvt({
 			"id" : id,
-			userId : testData.user.tom.id,
-			userName : testData.user.tom.userName,
+			userId : testData.bear.tom.id,
+			userName : testData.bear.tom.userName,
 			evtType :'GameAbandonned', 
 			fields : []
 		}));	
@@ -64,8 +64,8 @@ var EventSender = function() {
 	this.sendGameScheduledEvent = function(id){
 		_subject.onNext(wookieEvt({
 			"id" : id,
-			userId : testData.user.tom.id,
-			userName : testData.user.tom.userName,
+			userId : testData.bear.tom.id,
+			userName : testData.bear.tom.userName,
 			evtType :'GameScheduled', 
 			fields : ['test', '007', '2014-10-16 18:00', 'Playsoccer', '4']
 		}));	

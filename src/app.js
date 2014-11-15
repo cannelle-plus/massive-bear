@@ -6,14 +6,11 @@ var bodyParser = require('body-parser');
 var path = require('path');
 var logger = require('morgan');
 var favicon = require('serve-favicon');
-var config = require('./oauth.js');
 var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
-var passport = require('passport');
-var FacebookStrategy = require('passport-facebook').Strategy;
-var GoogleStrategy = require('passport-google').Strategy;
 
-var app = function(eventSource) {
+
+var app = function(eventSource, authenticate) {
 
 	var _handlers = [];
 
@@ -31,63 +28,11 @@ var app = function(eventSource) {
 	app.use(bodyParser.json());
 	app.use(methodOverride());
 
-
-	// serialize and deserialize
-	passport.serializeUser(function(user, done) {
-		done(null, user);
-	});
-	passport.deserializeUser(function(obj, done) {
-		done(null, obj);
-	});
-
-	// config social authentication
-	passport.use(new FacebookStrategy({
-			clientID: config.facebook.clientID,
-			clientSecret: config.facebook.clientSecret,
-			callbackURL: config.facebook.callbackURL
-		},
-		function(accessToken, refreshToken, profile, done) {
-			process.nextTick(function() {
-				return done(null, profile);
-			});
-		}
-	));
-
-	passport.use(new GoogleStrategy({
-			returnURL: config.google.returnURL,
-			realm: config.google.realm
-		},
-		function(identifier, profile, done) {
-			process.nextTick(function() {
-				profile.identifier = identifier;
-				return done(null, profile);
-			});
-		}
-	));
-
 	app.use(expressSession({
 		secret: 'my_precious',
 		saveUninitialized: true,
 		resave: true
 	}));
-
-	app.use(passport.initialize());
-	app.use(passport.session());
-
-	app.get('/auth/facebook', passport.authenticate('facebook'), function(req, res) {});
-	app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-			failureRedirect: '/login'
-		}),
-		function(req, res) {
-			res.redirect('/games');
-		});
-
-	app.get('/auth/google', passport.authenticate('google'), function(req, res) {});
-	app.get('/auth/google/callback', passport.authenticate('google', {
-		failureRedirect: '/login'
-	}), function(req, res) {
-		res.redirect('/games');
-	});
 
 	var options = {
 		root: './www-root/',
@@ -112,7 +57,6 @@ var app = function(eventSource) {
 		res.redirect('/');
 	});
 
-
 	this.addHandlers = function(handlers) {
 		_handlers.push(handlers);
 	};
@@ -128,12 +72,11 @@ var app = function(eventSource) {
 
 	this.start = function(port) {
 
-
 		for (var i = _handlers.length - 1; i >= 0; i--) {
 			middleware.addRoutes(_handlers[i]);
 		}
 
-
+		authenticate(app, middleware);
 
 		// apply the routes to our application
 		app.use('/', router);

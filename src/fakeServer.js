@@ -66,14 +66,22 @@ var games = [{
 var fakeDispatcher = function(aggRoot, id, msg) {
     var deferred = Q.defer();
     setTimeout(function() {
-        deferred.resolve({ responseFromTheDispatcher: "OK" });
+        deferred.resolve({
+            responseFromTheDispatcher: "OK"
+        });
     }, 1);
     return deferred.promise;
 };
 
 var source = Rx.Observable.create(function(observer) {});
+var authStaticUser = function(user) {
+    return function(app, middleware) {
 
-var app = new App(source);
+        middleware.login(user);
+    };
+};
+
+var app = new App(source, authStaticUser(yoann));
 
 var gameRepo = new FakeGameRepo(games);
 var commandHandler = new CommandHandler('game', fakeDispatcher);

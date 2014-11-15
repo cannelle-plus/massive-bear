@@ -4,6 +4,22 @@
 		"selected_items":
 		[
 			[
+				"lo",
+				"log"
+			],
+			[
+				"bear",
+				"bearImageId"
+			],
+			[
+				"profile",
+				"profileName"
+			],
+			[
+				"auth",
+				"authentication"
+			],
+			[
 				"game",
 				"gameScheduled"
 			],
@@ -66,10 +82,6 @@
 			[
 				"jso",
 				"jsonData"
-			],
-			[
-				"profile",
-				"profileId"
 			],
 			[
 				"exp",
@@ -144,10 +156,6 @@
 				"games"
 			],
 			[
-				"bear",
-				"bearRepo"
-			],
-			[
 				"expec",
 				"expected"
 			],
@@ -159,30 +167,6 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "src/app.js",
-			"settings":
-			{
-				"buffer_size": 3310,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "specs/integrationTests/currentPort.js",
-			"settings":
-			{
-				"buffer_size": 120,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "src/server.js",
-			"settings":
-			{
-				"buffer_size": 1740,
-				"line_ending": "Unix"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -259,15 +243,43 @@
 	[
 		"/home/yoann/bearToBear/massive-bear",
 		"/home/yoann/bearToBear/massive-bear/specs",
-		"/home/yoann/bearToBear/massive-bear/specs/integrationTests",
-		"/home/yoann/bearToBear/massive-bear/src"
+		"/home/yoann/bearToBear/massive-bear/specs/unitTests",
+		"/home/yoann/bearToBear/massive-bear/specs/unitTests/routes",
+		"/home/yoann/bearToBear/massive-bear/src",
+		"/home/yoann/bearToBear/massive-bear/src/auth",
+		"/home/yoann/bearToBear/massive-bear/src/repositories",
+		"/home/yoann/bearToBear/massive-bear/src/routes"
 	],
 	"file_history":
 	[
-		"/home/yoann/bearToBear/massive-bear/src/routes/gamesRoutes.js",
-		"/home/yoann/bearToBear/massive-bear/specs/unitTests/socket/gameSocket.spec.js",
-		"/home/yoann/bearToBear/massive-bear/Gruntfile.js",
+		"/home/yoann/bearToBear/massive-bear/src/auth/oauth.js",
+		"/home/yoann/bearToBear/massive-bear/src/auth/socialAuth.js",
 		"/home/yoann/bearToBear/massive-bear/src/server.js",
+		"/home/yoann/bearToBear/massive-bear/dataFacebook.txt",
+		"/home/yoann/bearToBear/massive-bear/src/routes/bearsRoutes.js",
+		"/home/yoann/bearToBear/massive-bear/specs/unitTests/routes/bearsRoutes.spec.js",
+		"/home/yoann/bearToBear/massive-bear/specs/testData.js",
+		"/home/yoann/bearToBear/massive-bear/src/repositories/bearRepository.js",
+		"/home/yoann/bearToBear/massive-bear/src/repositories/returnDataGamesRepo.js",
+		"/home/yoann/bearToBear/massive-bear/package.json",
+		"/home/yoann/bearToBear/massive-bear/specs/unitTests/routes/gamesRoutes.spec.js",
+		"/home/yoann/bearToBear/massive-bear/specs/unitTests/socket/gameSocket.spec.js",
+		"/home/yoann/bearToBear/massive-bear/specs/unitTests/socket/webSocket.spec.js",
+		"/home/yoann/bearToBear/massive-bear/specs/unitTests/socket/session.spec.js",
+		"/home/yoann/bearToBear/massive-bear/specs/integrationTests/routes/bears.spec.js",
+		"/home/yoann/bearToBear/massive-bear/specs/eventSender.js",
+		"/home/yoann/bearToBear/massive-bear/src/routes/middleware.js",
+		"/home/yoann/bearToBear/massive-bear/src/fakeServer.js",
+		"/home/yoann/bearToBear/massive-bear/src/app.js",
+		"/home/yoann/bearToBear/massive-bear/specs/unitTests/routes/middleware.spec.js",
+		"/home/yoann/bearToBear/massive-bear/specs/integrationTests/routes/games.spec.js",
+		"/home/yoann/bearToBear/massive-bear/src/auth/authStaticUser.js",
+		"/home/yoann/bearToBear/massive-bear/src/auth/bear.js",
+		"/home/yoann/bearToBear/massive-bear/specs/unitTests/model/bear.spec.js",
+		"/home/yoann/bearToBear/massive-bear/facebookscript.txt",
+		"/home/yoann/bearToBear/massive-bear/src/oauth.js",
+		"/home/yoann/bearToBear/massive-bear/src/routes/gamesRoutes.js",
+		"/home/yoann/bearToBear/massive-bear/Gruntfile.js",
 		"/home/yoann/bearToBear/massive-bear/src/envs/default.env",
 		"/home/yoann/bearToBear/massive-bear/src/envs/yoannLinux.env",
 		"/home/yoann/bearToBear/massive-bear/src/envs/yoannWindows.env",
@@ -275,47 +287,31 @@
 		"/home/yoann/bearToBear/massive-bear/startProd.sh",
 		"/home/yoann/bearToBear/massive-bear/startYoannLinux.sh",
 		"/home/yoann/bearToBear/massive-bear/src/eventListener/webSocket.js",
-		"/home/yoann/bearToBear/massive-bear/specs/eventSender.js",
-		"/home/yoann/bearToBear/massive-bear/specs/testData.js",
 		"/home/yoann/bearToBear/massive-bear/src/eventListener/eventStore.js",
 		"/home/yoann/bearToBear/massive-bear/src/repositories/gameRepository.js",
-		"/home/yoann/bearToBear/massive-bear/specs/unitTests/socket/session.spec.js",
 		"/home/yoann/bearToBear/massive-bear/src/eventListener/session.js",
-		"/home/yoann/bearToBear/massive-bear/specs/unitTests/routes/gamesRoutes.spec.js",
 		"/home/yoann/bearToBear/massive-bear/src/massiveBear.js",
-		"/home/yoann/bearToBear/massive-bear/specs/unitTests/routes/bearsRoutes.spec.js",
 		"/home/yoann/bearToBear/massive-bear/node_modules/karma/node_modules/connect/node_modules/multiparty/CHANGELOG.md",
 		"/home/yoann/bearToBear/massive-bear/src/commandHandler/wookie.js",
 		"/home/yoann/bearToBear/massive-bear/src/envs/production.env",
 		"/home/yoann/bearToBear/massive-bear/src/commandHandler/msgDispatcher.js",
-		"/home/yoann/bearToBear/massive-bear/specs/integrationTests/routes/games.spec.js",
-		"/home/yoann/bearToBear/massive-bear/specs/integrationTests/routes/bears.spec.js",
-		"/home/yoann/bearToBear/massive-bear/src/repositories/returnDataGamesRepo.js",
 		"/home/yoann/bearToBear/massive-bear/specs/integrationTests/currentPort.js",
 		"/home/yoann/bearToBear/massive-bear/src/commandHandler/oKDispatcher.js",
-		"/home/yoann/bearToBear/massive-bear/src/fakeServer.js",
-		"/home/yoann/bearToBear/massive-bear/specs/unitTests/routes/middleware.spec.js",
 		"/home/yoann/bearToBear/massive-bear/src/commandHandler/OKDispatcher.js",
 		"/home/yoann/bearToBear/massive-bear/specs/unitTests/eventStore/eventStore.spec.js",
 		"/home/yoann/bearToBear/massive-bear/specs/unitTests/eventStore/sessions.spec.js",
-		"/home/yoann/bearToBear/massive-bear/specs/unitTests/socket/webSocket.spec.js",
-		"/home/yoann/bearToBear/massive-bear/src/routes/middleware.js",
 		"/home/yoann/bearToBear/massive-bear/test-main.js_old",
 		"/home/yoann/bearToBear/massive-bear/specs/unitTests/eventStore.spec.js_old",
 		"/home/yoann/bearToBear/massive-bear/:memory",
 		"/home/yoann/bearToBear/massive-bear/commandes.txt",
-		"/home/yoann/bearToBear/massive-bear/src/app.js",
 		"/home/yoann/bearToBear/massive-bear/src/routes/index.js",
 		"/home/yoann/bearToBear/massive-bear/src/routes/sessionHandler.js",
 		"/home/yoann/bearToBear/massive-bear/src/model/game.js",
-		"/home/yoann/bearToBear/massive-bear/src/repositories/bearRepository.js",
 		"/home/yoann/bearToBear/massive-bear/.ntvs_analysis.dat",
 		"/home/yoann/bearToBear/massive-bear/src/server2.js",
 		"/home/yoann/bearToBear/massive-bear/src/routes/authRoutes.js",
-		"/home/yoann/bearToBear/massive-bear/package.json",
 		"/home/yoann/bearToBear/massive-bear/src/handlers/gamesHandler.js",
 		"/home/yoann/bearToBear/massive-bear/src/handlers/games.js",
-		"/home/yoann/bearToBear/massive-bear/src/routes/bearsRoutes.js",
 		"/home/yoann/bearToBear/massive-bear/src/routes/app.js",
 		"/home/yoann/bearToBear/massive-bear/specs/integrationTests/test.js",
 		"/home/yoann/bearToBear/massive-bear/specs/integrationTests/routes/app.spec.js",
@@ -366,6 +362,66 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"1388221448136137",
+			"done",
+			"session",
+			"bearImageId",
+			"session",
+			"profileName",
+			"saveProfile",
+			"hasbeenCalled",
+			"toHavebeenCalled",
+			"hasbeenCalled",
+			"saveProfile",
+			"FakeBearRepo",
+			"mock",
+			"BearRepo",
+			"returnDataGamesRepo",
+			"evtTriggered",
+			"var",
+			"user",
+			"bear",
+			"authStaticbear",
+			"authStaticUser",
+			"user",
+			"User",
+			"user",
+			"User",
+			"user",
+			"User",
+			"user",
+			"User",
+			"user",
+			"User",
+			"user",
+			"User",
+			"user",
+			"User",
+			"user",
+			"usser",
+			"user",
+			"var app = new App(source);",
+			"authStaticUser",
+			"App",
+			"app",
+			"authStaticUser",
+			"authenticate",
+			"auth",
+			"authUser",
+			"authStaticUser",
+			"authUser",
+			"socialAuth",
+			"middleware",
+			"authenticate",
+			"middleware",
+			"authentication",
+			"eventSource",
+			"authenticate",
+			"auth",
+			"socialAuth",
+			"passport",
+			"authentication",
+			"passport",
 			"nodeEnv",
 			"massiveBear",
 			"gameId",
@@ -433,67 +489,7 @@
 			"games",
 			"(user)",
 			"var source = Rx.Observable.create(function(observer) {});",
-			"games",
-			"(games)",
-			"games",
-			"testData",
-			"yoann",
-			"data",
-			"testData",
-			"currentPort",
-			"FakeGameRepo",
-			"ReturnDataGamesRepo",
-			"commandHandler",
-			"oKDispatcher",
-			"ReturnDataGamesRepo",
-			" =",
-			"ReturnDataGamesRepo",
-			"FakeGameRepo",
-			"ReturnDataGamesRepo",
-			"OKDispatcher",
-			"oKDispatcher",
-			"OKDispatcher",
-			"oKDispatcher",
-			"fakeDispatcher",
-			"CommandHandler",
-			"OKDispatcher",
-			"fakeDispatcher",
-			"OKDispatcher",
-			"../../../src/dispatcher/commandHandler",
-			"dispatcher",
-			"/dispatcher",
-			"listenner",
-			"yoann",
-			"gameRoutes",
-			"bearsRoutes",
-			"addRoutes",
-			"addHandlers",
-			"source",
-			"eventStore",
-			"EventStore",
-			"command",
-			"dispatcher",
-			"commandHandler",
-			"wookieCommandHandler",
-			"dispatcher",
-			"wookieDispatcher",
-			"fakeDispatcher",
-			"dispatcher",
-			"projections",
-			"port",
-			"errorhandler",
-			"errorHandler",
-			"toggleLog",
-			"logger",
-			"http",
-			"port",
-			"gameRepo",
-			"passport",
-			"gamesRoutes",
-			"authRoutes",
-			"gameRepo",
-			"passport",
-			"authRoutes"
+			"games"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -516,94 +512,8 @@
 	"groups":
 	[
 		{
-			"selected": 2,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "src/app.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 3310,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2503,
-								2503
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 945.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 1,
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "specs/integrationTests/currentPort.js",
-					"semi_transient": true,
-					"settings":
-					{
-						"buffer_size": 120,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								13,
-								13
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": -0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 2,
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "src/server.js",
-					"semi_transient": false,
-					"settings":
-					{
-						"buffer_size": 1740,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								1705,
-								1705
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 146.0,
-						"zoom_level": 1.0
-					},
-					"stack_index": 0,
-					"type": "text"
-				}
 			]
 		}
 	],
@@ -663,7 +573,7 @@
 		[
 			[
 				"",
-				"~/bearToBear/yolo-bear/yolobear.sublime-project"
+				"~/bearToBear/yolo-bear/yolobear.sublime-workspace"
 			]
 		],
 		"width": 380.0

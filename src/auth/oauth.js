@@ -1,8 +1,8 @@
 var ids = {
 	facebook: {
-	 clientID: '695210287226746',
-	 clientSecret: 'f51c6bb5cd976fc5ce966a44551c820f',
-	 callbackURL: 'http://127.0.0.1:8888/auth/facebook/callback'
+		clientID: '1536474526596015',
+		clientSecret: '97f0961242c1f94abf45d3eaeb243399',
+		callbackURL: 'http://localhost:8888/auth/facebook/callback'
 	},
 	// twitter: {
 	//  consumerKey: 'get_your_own',
@@ -15,8 +15,8 @@ var ids = {
 	//  callbackURL: "http://127.0.0.1:1337/auth/github/callback"
 	// },
 	google: {
-	 returnURL: 'http://127.0.0.1:8888/auth/google/callback',
-	 realm: 'http://127.0.0.1:1337'
+		returnURL: 'http://127.0.0.1:8888/auth/google/callback',
+		realm: 'http://127.0.0.1:8888'
 	}
 };
 
