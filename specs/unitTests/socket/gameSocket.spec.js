@@ -129,7 +129,7 @@ describe('Given a bear is authenticated', function() {
         });
 
         session.addSocket(socket);
-        var evt = testData.events.gameScheduled.payLoad;
+        var evt = testData.yoloEvents.gameScheduled.payLoad;
 
         routes.schedule.execute(session)(evt.id, evt.ownerId, evt.ownerUserName, evt.ownerId, evt.startDate, evt.location, evt.name, evt.nbPlayers)
             .then(function(data) {

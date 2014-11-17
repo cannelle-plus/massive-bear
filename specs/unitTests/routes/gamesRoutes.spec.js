@@ -6,7 +6,7 @@ var Session = require('../../../src/eventListener/session');
 var Rx = require('rx');
 var Q = require('q');
 var ReturnDataGamesRepo = require('../../../src/repositories/returnDataGamesRepo');
-var msgDispatcher =require('../../../src/commandHandler/msgDispatcher');
+var msgDispatcher = require('../../../src/commandHandler/msgDispatcher');
 var TestData = require('../../testData');
 
 describe('Given nothing, ', function() {
@@ -131,18 +131,13 @@ describe('Given a bear is authenticated, ', function() {
 
         routes.join.execute(session)(3)
             .then(function(data) {
-                try {
-                    expect(data).to.be.ok;
-                    expect(data.Id).to.equal(3);
-                    expect(data.MetaData.UserId).to.equal(7);
-                    expect(data.MetaData.UserName).to.equal("yoann");
-                    expect(data.PayLoad.Case).to.equal("JoinGame");
-                    expect(JSON.stringify(data.PayLoad.Fields)).to.equal(JSON.stringify([]));
-                    done();
-                } catch (err) {
-                    console.log(err);
-                }
-
+                expect(data).to.be.ok;
+                expect(data.Id).to.equal(3);
+                expect(data.MetaData.UserId).to.equal(7);
+                expect(data.MetaData.UserName).to.equal("yoann");
+                expect(data.PayLoad.Case).to.equal("JoinGame");
+                expect(JSON.stringify(data.PayLoad.Fields)).to.equal(JSON.stringify([]));
+                done();
             });
     });
 });

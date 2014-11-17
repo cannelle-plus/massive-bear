@@ -105,7 +105,7 @@ describe('Given that we have a bear authentified, ', function() {
 
         request(app.start(currentPort()))
             .post('/api/game/join')
-            .send(testData.events.gameJoined)
+            .send(testData.yoloEvents.gameJoined)
             .expect(200)
             .end(function(err, res) {
                 expect(err).to.not.be.ok;
@@ -131,7 +131,7 @@ describe('Given that we have a bear not authentified, ', function() {
 
         request(app.start(currentPort()))
             .post('/api/game/join')
-            .send(testData.events.gameJoined)
+            .send(testData.yoloEvents.gameJoined)
             .expect(401)
             .end(function(err, res) {
                 expect(err).to.not.be.ok;
@@ -156,7 +156,7 @@ describe('Given that we have a bear  authentified, ', function() {
 
         request(app.start(currentPort()))
             .post('/api/game/schedule')
-            .send(testData.events.gameScheduled)
+            .send(testData.yoloEvents.gameScheduled)
             .expect(200)
             .end(function(err, res) {
                 expect(err).to.not.be.ok;
@@ -182,7 +182,7 @@ describe('Given that we have a bear not authentified, ', function() {
 
         request(app.start(currentPort()))
             .post('/api/game/schedule')
-            .send(testData.events.gameScheduled)
+            .send(testData.yoloEvents.gameScheduled)
             .expect(401)
             .end(function(err, res) {
                 expect(err).to.not.be.ok;
@@ -208,7 +208,7 @@ describe('Given that we have a bear  authentified, ', function() {
 
         request(app.start(currentPort()))
             .post('/api/game/abandon')
-            .send(testData.events.gameAbandonned)
+            .send(testData.yoloEvents.gameAbandonned)
             .expect(200)
             .end(function(err, res) {
                 expect(err).to.not.be.ok;
@@ -234,7 +234,7 @@ describe('Given that we have a bear  not authentified, ', function() {
 
         request(app.start(currentPort()))
             .post('/api/game/abandon')
-            .send(testData.events.gameAbandonned)
+            .send(testData.yoloEvents.gameAbandonned)
             .expect(401)
             .end(function(err, res) {
                 expect(err).to.not.be.ok;

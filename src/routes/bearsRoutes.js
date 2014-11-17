@@ -1,10 +1,10 @@
 var assert = require('chai').assert;
 var profileIdParam = require('./profileIdParam');
 
-var bearsRoutes = function(bearRepo) {
+var bearsRoutes = function(bearRepo, commandHandler) {
 
 	assert.ok(bearRepo, 'bearsRoutes : bearRepo is not defined');
-
+	assert.ok(commandHandler, 'bearsRoutes : commandHandler is not defined');
 
 	var toJson = function(user) {
 		return {
@@ -21,18 +21,27 @@ var bearsRoutes = function(bearRepo) {
 		url : "/api/bear/profile",
 		verb: "POST",
 		extract : function(req){
+			var profileId = req.body.payLoad.id;
+			var profileUserName  = req.body.payLoad.username;
+			var profileAvatarId  = req.body.payLoad.avatarId;
+
 			return { "And" : function(fnExecute){
-				return fnExecute();
+				return fnExecute(profileId, profileUserName, profileAvatarId);
 			}};
 		},
 		execute : function(session) {
-			return function(profileName, bearImageId) {
+			return function(profileId, profileName, bearAvatarId) {
 				assert.ok(session, 'bearsRoutes : session is not defined');
-				assert.ok(session, 'bearsRoutes : profileName is not defined');
-				assert.ok(session, 'bearsRoutes : bearImageId is not defined');
+				assert.ok(profileId, 'bearsRoutes : profileId is not defined');
+				assert.ok(profileName, 'bearsRoutes : profileName is not defined');
+				assert.ok(bearAvatarId, 'bearsRoutes : bearAvatarId is not defined');
 
+				var cmd = [
+					profileName,
+					bearAvatarId
+				];
 
-				return bearRepo.saveProfile(session.user().id, profileName, bearImageId);
+				return commandHandler.handles("SignIn", profileId, 0, session.user().id, session.user().username, cmd);
 
 			};
 		}

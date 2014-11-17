@@ -41,7 +41,8 @@ var testData = function() {
         responseFromTheDispatcher: "OK" 
     };
 
-    this.events = {
+    //events coming fomYolo
+    this.yoloEvents = {
         gameJoined : {
             evtType: "gameJoined",
             payLoad: {
@@ -72,6 +73,15 @@ var testData = function() {
                 "version": 3,
                 "username": 'yoann',
                 "nbPlayers": 1
+            }
+        },
+        signedIn : {
+            evtType: "signedIn",
+            payLoad: {
+                "id": 'd70efb73-8c6c-4106-97dd-7503bbf7dddd',
+                "version": 0,
+                "username": 'yoann', 
+                "avatarId": 1
             }
         }
         

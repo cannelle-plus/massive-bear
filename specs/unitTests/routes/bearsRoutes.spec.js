@@ -7,23 +7,25 @@ var Q = require('q');
 var ReturnDataGamesRepo = require('../../../src/repositories/returnDataGamesRepo');
 var BearRepo = require('../../../src/repositories/bearRepository');
 var TestData = require('../../testData');
+var CommandHandler = require('../../../src/commandHandler/commandHandler');
+var msgDispatcher = require('../../../src/commandHandler/msgDispatcher');
 
-var FakeBearRepo = function() {
-    this.toHavebeenCalled = false;
-    this.withArgs = [];
+// var FakeBearRepo = function() {
+//     this.toHavebeenCalled = false;
+//     this.withArgs = [];
 
-    this.saveProfile = function() {
-        this.toHavebeenCalled = true;
-        this.withArgs = arguments;
+//     this.saveProfile = function() {
+//         this.toHavebeenCalled = true;
+//         this.withArgs = arguments;
 
-        var deferred = Q.defer();
-        setTimeout(function() {
-            deferred.resolve();
-        }, 1);
-        return deferred.promise;
+//         var deferred = Q.defer();
+//         setTimeout(function() {
+//             deferred.resolve();
+//         }, 1);
+//         return deferred.promise;
 
-    };
-};
+//     };
+// };
 
 
 describe('Given nothing, ', function() {
@@ -35,7 +37,12 @@ describe('Given nothing, ', function() {
         };
         expect(fnCreateBearsRoutes).to.throw();
 
-        var bearRoutes = new BearsRoutes({});
+        var fnCreateBearsRoutesWithRepoOnly = function() {
+            return new BearsRoutes({});
+        };
+        expect(fnCreateBearsRoutesWithRepoOnly).to.throw();
+
+        var bearRoutes = new BearsRoutes({}, {});
 
         expect(bearRoutes).to.be.ok;
 
@@ -49,8 +56,9 @@ describe('Given a bear is authenticated, ', function() {
         var testData = new TestData();
 
         var bearRepo = new ReturnDataGamesRepo(testData.bear.yoann);
+        var commandHandler = new CommandHandler('bear', msgDispatcher);
 
-        var bearRoutes = new BearsRoutes(bearRepo);
+        var bearRoutes = new BearsRoutes(bearRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
 
@@ -75,7 +83,8 @@ describe('Given a bear is not authenticated, ', function() {
         var testData = new TestData();
 
         var bearRepo = new ReturnDataGamesRepo(testData.bear.yoann);
-        var bearRoutes = new BearsRoutes(bearRepo);
+        var commandHandler = new CommandHandler('bear', msgDispatcher);
+        var bearRoutes = new BearsRoutes(bearRepo, commandHandler);
 
         var executingRouteWithNoSession = function() {
             bearRoutes.profile.execute()();
@@ -92,7 +101,9 @@ describe('Given a bear is authenticated, ', function() {
 
         var testData = new TestData();
         var bearRepo = new ReturnDataGamesRepo(testData.bear.julien);
-        var bearRoutes = new BearsRoutes(bearRepo);
+        var commandHandler = new CommandHandler('bear', msgDispatcher);
+
+        var bearRoutes = new BearsRoutes(bearRepo, commandHandler);
         var source = Rx.Observable.create(function(observer) {});
         var session = new Session(testData.bear.yoann, source);
 
@@ -106,38 +117,42 @@ describe('Given a bear is authenticated, ', function() {
 });
 
 describe('Given a bear is authenticated, ', function() {
-
-    it('when it post its profile, it save its profile with the repo', function(done) {
+    it('when it signs in, it sends a message to the server', function(done) {
 
         var testData = new TestData();
-        var bearRepo = new FakeBearRepo();
+        var bearRepo = new ReturnDataGamesRepo(testData.bear.yoann);
 
-        var bearRoutes = new BearsRoutes(bearRepo);
+        var commandHandler = new CommandHandler('bear', msgDispatcher);
+
+        var bearRoutes = new BearsRoutes(bearRepo, commandHandler);
         var source = Rx.Observable.create(function(observer) {});
         var session = new Session(testData.bear.yoann, source);
 
+        var profileId = 65;
         var profileName = 'toto';
         var bearImageId = 1;
 
-        bearRoutes.saveProfile.execute(session)(profileName, bearImageId)
+        bearRoutes.saveProfile.execute(session)(profileId, profileName, bearImageId)
             .then(function(data) {
-                expect(bearRepo.toHavebeenCalled).to.be.ok;
-                expect(bearRepo.withArgs[0]).to.equal(testData.bear.yoann.id);
-                expect(bearRepo.withArgs[1]).to.equal(profileName);
-                expect(bearRepo.withArgs[2]).to.equal(bearImageId);
+                expect(data).to.be.ok;
+                expect(data.Id).to.equal(profileId);
+                expect(data.MetaData.UserId).to.equal(testData.bear.yoann.id);
+                expect(data.MetaData.UserName).to.equal(testData.bear.yoann.username);
+                expect(data.PayLoad.Case).to.equal("SignIn");
+                expect(JSON.stringify(data.PayLoad.Fields)).to.equal(JSON.stringify([profileName, bearImageId]));
                 done();
             });
-
     });
 });
 
 describe('Given a bear is not authenticated, ', function() {
-    it('when it post its profile, it save its profile with the repo', function() {
+    it('when it signs in, it throws an exception', function() {
 
         var testData = new TestData();
-        var bearRepo = new FakeBearRepo();
+        var bearRepo = new ReturnDataGamesRepo(testData.bear.yoann);
+        var commandHandler = new CommandHandler('bear', msgDispatcher);
 
-        var bearRoutes = new BearsRoutes(bearRepo);
+        var bearRoutes = new BearsRoutes(bearRepo, commandHandler);
         var source = Rx.Observable.create(function(observer) {});
 
         var profileName = 'toto';
