@@ -1,11 +1,13 @@
 var express = require('express');
-var Middleware = require('./routes/middleware');
-var BearsRoutes = require('./routes/bearsRoutes');
-var GamesRoutes = require('./routes/gamesRoutes');
+var Middleware = require('../src/routes/middleware');
+var BearsRoutes = require('../src/routes/bearsRoutes');
+var GamesRoutes = require('../src/routes/gamesRoutes');
 var Rx = require('rx');
 var Q = require('q');
-var App = require('./app');
-var CommandHandler = require('./commandHandler/commandHandler');
+var App = require('../src/app');
+var CommandHandler = require('../src/commandHandler/commandHandler');
+
+var authStaticUser = require('./helper/authStaticUser.helper');
 
 var yoann = {
     id: 7,
@@ -63,28 +65,24 @@ var games = [{
     maxPlayers: 9
 }];
 
-var fakeDispatcher = function(aggRoot, id, msg) {
-    var deferred = Q.defer();
-    setTimeout(function() {
-        deferred.resolve({
-            responseFromTheDispatcher: "OK"
-        });
-    }, 1);
-    return deferred.promise;
+var fakeDispatcher = function(aggRoot) {
+    return function(id, msg) {
+        var deferred = Q.defer();
+        setTimeout(function() {
+            deferred.resolve({
+                responseFromTheDispatcher: "OK"
+            });
+        }, 1);
+        return deferred.promise;
+    };
 };
 
 var source = Rx.Observable.create(function(observer) {});
-var authStaticUser = function(user) {
-    return function(app, middleware) {
-
-        middleware.login(user);
-    };
-};
 
 var app = new App(source, authStaticUser(yoann));
 
 var gameRepo = new FakeGameRepo(games);
-var commandHandler = new CommandHandler('game', fakeDispatcher);
+var commandHandler = new CommandHandler(fakeDispatcher('game'));
 var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
 app.addHandlers(gameRoutes);

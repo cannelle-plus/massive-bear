@@ -1,6 +1,6 @@
 var Rx = require('rx');
 var uuid = require('node-uuid');
-var TestData = require('./testData');
+var TestData = require('./testData.helper');
 
 //event example
 var wookieEvt = function(options) {

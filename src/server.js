@@ -29,12 +29,9 @@ var wookieDispatcher = new WookieDispatcher(process.env.wookieDispatcherHost, pr
 var bearRepo = require('./repositories/bearRepository')(process.env.connStringBear2Bear);
 var gameRepo = require('./repositories/gameRepository')(process.env.connStringBear2Bear);
 
-//creating command handler for commands
-var wookieDispatcherCommandHandler = new CommandHandler('game', wookieDispatcher);
-
 //creating routes modules
-var gameRoutes = new GamesRoutes(gameRepo, wookieDispatcherCommandHandler);
-var bearsRoutes = new BearsRoutes(bearRepo);
+var gameRoutes = new GamesRoutes(gameRepo, new CommandHandler(wookieDispatcher('game')));
+var bearsRoutes = new BearsRoutes(bearRepo, new CommandHandler(wookieDispatcher('bear')));
 
 //creating routes modules to the app
 app.addHandlers(gameRoutes);

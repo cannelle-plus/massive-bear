@@ -1,14 +1,16 @@
 /*jshint expr: true*/
 var expect = require('chai').expect;
+var TestData = require('../../helper/testData.helper');
+var ReturnDataGamesRepo = require('../../helper/returnDataGamesRepo.helper');
+var msgDispatcher = require('../../helper/msgDispatcher.helper');
+
+var Rx = require('rx');
+
 var Middleware = require('../../../src/routes/middleware');
 var CommandHandler = require('../../../src/commandHandler/commandHandler');
 var GamesRoutes = require('../../../src/routes/gamesRoutes');
 var BearsRoutes = require('../../../src/routes/bearsRoutes');
 var ProfileIdParam = require('../../../src/routes/profileIdParam');
-var Rx = require('rx');
-var TestData = require('../../testData');
-var ReturnDataGamesRepo = require('../../../src/repositories/returnDataGamesRepo');
-var msgDispatcher = require('../../../src/commandHandler/msgDispatcher');
 
 
 var FakeApp = function() {
@@ -140,7 +142,7 @@ describe('Given that we have a middleware, ', function() {
 		var middleware = new Middleware(fakeApp, source);
 
 		var gameRepo = new ReturnDataGamesRepo(testData.games);
-		var commandHandler = new CommandHandler('game', msgDispatcher);
+		var commandHandler = new CommandHandler(msgDispatcher('game'));
 		var gamesRoutes = new GamesRoutes(gameRepo, commandHandler);
 
 
@@ -163,7 +165,7 @@ describe('Given that we have a middleware, ', function() {
 		var middleware = new Middleware(fakeApp, source);
 
 		var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', msgDispatcher);
+        var commandHandler = new CommandHandler(msgDispatcher('game'));
         var gamesRoutes = new GamesRoutes(gameRepo, commandHandler);
 
 		middleware.addRoutes(gamesRoutes);
@@ -191,7 +193,7 @@ describe('Given that we have a middleware, ', function() {
         };
 
 		var bearRepo = new ReturnDataGamesRepo(user);
-		var commandHandler = new CommandHandler('bear', msgDispatcher);
+		var commandHandler = new CommandHandler(msgDispatcher('bear'));
         var bearsRoutes = new BearsRoutes(bearRepo, commandHandler);
 
 		middleware.addRoutes(bearsRoutes);

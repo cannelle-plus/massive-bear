@@ -1,17 +1,19 @@
 /*jshint expr: true*/
 var expect = require('chai').expect;
-var CommandHandler = require('../../../src/commandHandler/commandHandler');
-var oKDispatcher = require('../../../src/commandHandler/oKDispatcher');
-var ReturnDataGamesRepo = require('../../../src/repositories/returnDataGamesRepo');
-var GamesRoutes = require('../../../src/routes/gamesRoutes');
-var currentPort = require('../currentPort');
+var currentPort = require('../../helper/currentPort.helper');
+var ReturnDataGamesRepo = require('../../helper/returnDataGamesRepo.helper');
+var authStaticUser = require('../../helper/authStaticUser.helper');
+var oKDispatcher = require('../../helper/oKDispatcher.helper');
+var gameDispatcher = oKDispatcher('game');
+var TestData = require('../../helper/testData.helper');
+
 var Rx = require('rx');
-var App = require('../../../src/app');
-var authStaticUser = require('../../../src/auth/authStaticUser');
 var Q = require('q');
 var request = require('supertest');
-var TestData = require('../../testData');
 
+var CommandHandler = require('../../../src/commandHandler/commandHandler');
+var GamesRoutes = require('../../../src/routes/gamesRoutes');
+var App = require('../../../src/app');
 
 
 describe('Given that we have a bear authentified, ', function() {
@@ -23,7 +25,7 @@ describe('Given that we have a bear authentified, ', function() {
         var app = new App(source, authStaticUser(testData.bear.yoann));
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', oKDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
@@ -50,7 +52,7 @@ describe('Given that we have a bear not authentified, ', function() {
         var app = new App(source, authStaticUser(testData.bear.yoann));
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', oKDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
@@ -73,7 +75,7 @@ describe('Given that we have a bear authentified, ', function() {
         var app = new App(source, authStaticUser(testData.bear.yoann));
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', oKDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
@@ -98,7 +100,7 @@ describe('Given that we have a bear authentified, ', function() {
         var app = new App(source, authStaticUser(testData.bear.yoann));
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', oKDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
@@ -124,7 +126,7 @@ describe('Given that we have a bear not authentified, ', function() {
         var app = new App(source, authStaticUser());
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', oKDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
@@ -149,7 +151,7 @@ describe('Given that we have a bear  authentified, ', function() {
         var app = new App(source, authStaticUser(testData.bear.yoann));
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', oKDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
@@ -175,7 +177,7 @@ describe('Given that we have a bear not authentified, ', function() {
         var app = new App(source, authStaticUser());
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', oKDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
@@ -201,7 +203,7 @@ describe('Given that we have a bear  authentified, ', function() {
         var app = new App(source, authStaticUser(testData.bear.yoann));
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', oKDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);
@@ -227,7 +229,7 @@ describe('Given that we have a bear  not authentified, ', function() {
         var app = new App(source, authStaticUser());
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', oKDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
 
         app.addHandlers(gameRoutes);

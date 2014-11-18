@@ -1,14 +1,16 @@
 /*jshint expr: true*/
 var expect = require('chai').expect;
-var BearsRoutes = require('../../../src/routes/bearsRoutes');
-var Session = require('../../../src/eventListener/session');
+var ReturnDataGamesRepo = require('../../helper/returnDataGamesRepo.helper');
+var TestData = require('../../helper/testData.helper');
+var msgDispatcher = require('../../helper/msgDispatcher.helper');
+
 var Rx = require('rx');
 var Q = require('q');
-var ReturnDataGamesRepo = require('../../../src/repositories/returnDataGamesRepo');
+
+var BearsRoutes = require('../../../src/routes/bearsRoutes');
+var Session = require('../../../src/eventListener/session');
 var BearRepo = require('../../../src/repositories/bearRepository');
-var TestData = require('../../testData');
 var CommandHandler = require('../../../src/commandHandler/commandHandler');
-var msgDispatcher = require('../../../src/commandHandler/msgDispatcher');
 
 // var FakeBearRepo = function() {
 //     this.toHavebeenCalled = false;
@@ -26,6 +28,8 @@ var msgDispatcher = require('../../../src/commandHandler/msgDispatcher');
 
 //     };
 // };
+
+var bearDispatcher = msgDispatcher('bear');
 
 
 describe('Given nothing, ', function() {
@@ -56,7 +60,7 @@ describe('Given a bear is authenticated, ', function() {
         var testData = new TestData();
 
         var bearRepo = new ReturnDataGamesRepo(testData.bear.yoann);
-        var commandHandler = new CommandHandler('bear', msgDispatcher);
+        var commandHandler = new CommandHandler(bearDispatcher);
 
         var bearRoutes = new BearsRoutes(bearRepo, commandHandler);
 
@@ -83,7 +87,7 @@ describe('Given a bear is not authenticated, ', function() {
         var testData = new TestData();
 
         var bearRepo = new ReturnDataGamesRepo(testData.bear.yoann);
-        var commandHandler = new CommandHandler('bear', msgDispatcher);
+        var commandHandler = new CommandHandler(bearDispatcher);
         var bearRoutes = new BearsRoutes(bearRepo, commandHandler);
 
         var executingRouteWithNoSession = function() {
@@ -101,7 +105,7 @@ describe('Given a bear is authenticated, ', function() {
 
         var testData = new TestData();
         var bearRepo = new ReturnDataGamesRepo(testData.bear.julien);
-        var commandHandler = new CommandHandler('bear', msgDispatcher);
+        var commandHandler = new CommandHandler(bearDispatcher);
 
         var bearRoutes = new BearsRoutes(bearRepo, commandHandler);
         var source = Rx.Observable.create(function(observer) {});
@@ -122,7 +126,7 @@ describe('Given a bear is authenticated, ', function() {
         var testData = new TestData();
         var bearRepo = new ReturnDataGamesRepo(testData.bear.yoann);
 
-        var commandHandler = new CommandHandler('bear', msgDispatcher);
+        var commandHandler = new CommandHandler(bearDispatcher);
 
         var bearRoutes = new BearsRoutes(bearRepo, commandHandler);
         var source = Rx.Observable.create(function(observer) {});
@@ -150,7 +154,7 @@ describe('Given a bear is not authenticated, ', function() {
 
         var testData = new TestData();
         var bearRepo = new ReturnDataGamesRepo(testData.bear.yoann);
-        var commandHandler = new CommandHandler('bear', msgDispatcher);
+        var commandHandler = new CommandHandler(bearDispatcher);
 
         var bearRoutes = new BearsRoutes(bearRepo, commandHandler);
         var source = Rx.Observable.create(function(observer) {});

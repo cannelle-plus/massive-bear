@@ -1,13 +1,16 @@
 /*jshint expr: true*/
 var expect = require('chai').expect;
+var ReturnDataGamesRepo = require('../../helper/returnDataGamesRepo.helper');
+var msgDispatcher = require('../../helper/msgDispatcher.helper');
+var gameDispatcher = msgDispatcher('game');
+var TestData = require('../../helper/testData.helper');
+
+var Rx = require('rx');
+var Q = require('q');
+
 var GamesRoutes = require('../../../src/routes/gamesRoutes');
 var CommandHandler = require('../../../src/commandHandler/commandHandler');
 var Session = require('../../../src/eventListener/session');
-var Rx = require('rx');
-var Q = require('q');
-var ReturnDataGamesRepo = require('../../../src/repositories/returnDataGamesRepo');
-var msgDispatcher = require('../../../src/commandHandler/msgDispatcher');
-var TestData = require('../../testData');
 
 describe('Given nothing, ', function() {
 
@@ -30,14 +33,14 @@ describe('Given nothing, ', function() {
     });
 });
 
-describe('Given a bear is authenticated, ', function() {
+describe('Given a bear is authentified, ', function() {
 
     it('when it requests /api/game/list, it receive the list of games', function(done) {
 
         var testData = new TestData();
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', msgDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
@@ -54,14 +57,14 @@ describe('Given a bear is authenticated, ', function() {
 });
 
 
-describe('Given a bear is not authenticated, ', function() {
+describe('Given a bear is not authentified, ', function() {
 
     it('when it requests /api/bear/profile, it throws an exception ', function() {
 
         var testData = new TestData();
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', msgDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var executingRouteWithNoSession = function() {
@@ -75,14 +78,14 @@ describe('Given a bear is not authenticated, ', function() {
 
 
 
-describe('Given a bear is not authenticated, ', function() {
+describe('Given a bear is not authentified, ', function() {
 
     it('when it requests /api/game/join, it throws an exception ', function() {
 
         var testData = new TestData();
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', msgDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var executingRouteWithNoSession = function() {
@@ -94,14 +97,14 @@ describe('Given a bear is not authenticated, ', function() {
     });
 });
 
-describe('Given a bear is authenticated, ', function() {
+describe('Given a bear is authentified, ', function() {
 
     it('when it requests /api/game/join without gameId, it throws an exception', function() {
 
         var testData = new TestData();
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', msgDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
@@ -115,14 +118,14 @@ describe('Given a bear is authenticated, ', function() {
     });
 });
 
-describe('Given a bear is authenticated, ', function() {
+describe('Given a bear is authentified, ', function() {
 
     it('when it requests /api/game/join, it generates a message , it sends to the dispatcher', function(done) {
 
         var testData = new TestData();
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', msgDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
 
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
@@ -142,14 +145,14 @@ describe('Given a bear is authenticated, ', function() {
     });
 });
 
-describe('Given a bear is not authenticated, ', function() {
+describe('Given a bear is not authentified, ', function() {
 
     it('when it requests /api/game/abandon, it throws an exception ', function() {
 
         var testData = new TestData();
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', msgDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var executingRouteWithNoSession = function() {
@@ -161,14 +164,14 @@ describe('Given a bear is not authenticated, ', function() {
     });
 });
 
-describe('Given a bear is authenticated, ', function() {
+describe('Given a bear is authentified, ', function() {
 
     it('when it requests /api/game/abandon without gameId, it throws an exception', function() {
 
         var testData = new TestData();
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', msgDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var source = Rx.Observable.create(function(observer) {});
@@ -182,14 +185,14 @@ describe('Given a bear is authenticated, ', function() {
     });
 });
 
-describe('Given a bear is authenticated, ', function() {
+describe('Given a bear is authentified, ', function() {
 
     it('when it requests /api/game/abandon, it generates a message , it sends to the dispatcher', function(done) {
 
         var testData = new TestData();
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', msgDispatcher);
+        var commandHandler = new CommandHandler(gameDispatcher);
 
         var routes = new GamesRoutes(gameRepo, commandHandler);
 

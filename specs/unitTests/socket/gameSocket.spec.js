@@ -1,14 +1,16 @@
 /*jshint expr: true*/
 var expect = require('chai').expect;
+var ReturnDataGamesRepo = require('../../helper/returnDataGamesRepo.helper');
+var msgDispatcher = require('../../helper/msgDispatcher.helper');
+var TestData = require('../../helper/testData.helper');
+var EventSender = require('../../helper/eventSender.helper');
+
+var Rx = require('rx');
+
 var Session = require('../../../src/eventListener/session');
 var GamesRoutes = require('../../../src/routes/gamesRoutes');
 var CommandHandler = require('../../../src/commandHandler/commandHandler');
 var Session = require('../../../src/eventListener/session');
-var Rx = require('rx');
-var ReturnDataGamesRepo = require('../../../src/repositories/returnDataGamesRepo');
-var msgDispatcher = require('../../../src/commandHandler/msgDispatcher');
-var TestData = require('../../testData');
-var EventSender = require('../../eventSender');
 
 var FakeSocket = function(callBack) {
     this.emit = function() {
@@ -17,7 +19,7 @@ var FakeSocket = function(callBack) {
 };
 
 
-describe('Given a bear is authenticated', function() {
+describe('Given a bear is authentified', function() {
 
     it('when it requests the list of games, it subscribe to the gameJoined event associated with the list', function(done) {
 
@@ -27,7 +29,7 @@ describe('Given a bear is authenticated', function() {
         var source = eventSender.source();
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', msgDispatcher);
+        var commandHandler = new CommandHandler(msgDispatcher('game'));
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var session = new Session(testData.bear.yoann, source);
@@ -57,7 +59,7 @@ describe('Given a bear is authenticated and has requested a list of games', func
         var source = eventSender.source();
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', msgDispatcher);
+        var commandHandler = new CommandHandler(msgDispatcher('game'));
         var routes = new GamesRoutes(gameRepo, commandHandler);
         var evtTriggered = false;
 
@@ -92,7 +94,7 @@ describe('Given a bear is authenticated', function() {
         var source = eventSender.source();
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', msgDispatcher);
+        var commandHandler = new CommandHandler(msgDispatcher('game'));
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var session = new Session(testData.bear.yoann, source);
@@ -120,7 +122,7 @@ describe('Given a bear is authenticated', function() {
         var source = eventSender.source();
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
-        var commandHandler = new CommandHandler('game', msgDispatcher);
+        var commandHandler = new CommandHandler(msgDispatcher('game'));
         var routes = new GamesRoutes(gameRepo, commandHandler);
 
         var session = new Session(testData.bear.yoann, source);

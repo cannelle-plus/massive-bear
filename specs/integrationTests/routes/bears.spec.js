@@ -1,21 +1,21 @@
  /*jshint expr: true*/
 var expect = require('chai').expect;
 var express = require('express');
-var Middleware = require('../../../src/routes/middleware');
-var CommandHandler = require('../../../src/commandHandler/commandHandler');
-var msgDispatcher =require('../../../src/commandHandler/msgDispatcher');
-var BearsRoutes = require('../../../src/routes/bearsRoutes');
+var ReturnDataGamesRepo = require('../../helper/returnDataGamesRepo.helper');
+var oKDispatcher = require('../../helper/oKDispatcher.helper');
+var authStaticUser = require('../../helper/authStaticUser.helper');
+var bearMsgDispatcher = oKDispatcher('bear');
+var TestData = require('../../helper/testData.helper');
+var currentPort = require('../../helper/currentPort.helper');
+
 var Rx = require('rx');
 var Q = require('q');
+
+var Middleware = require('../../../src/routes/middleware');
+var CommandHandler = require('../../../src/commandHandler/commandHandler');
+var BearsRoutes = require('../../../src/routes/bearsRoutes');
 var App = require('../../../src/app');
-var authStaticUser = require('../../../src/auth/authStaticUser');
-var currentPort = require('../currentPort');
-var ReturnDataGamesRepo = require('../../../src/repositories/returnDataGamesRepo');
-var TestData = require('../../testData');
-var oKDispatcher = require('../../../src/commandHandler/oKDispatcher');
-
 var request = require('supertest');
-
 
 describe('Given that we have a bear authentified, ', function() {
 	it('when we get "/api/bear/profile", we receive its bear ', function(done) {
@@ -26,7 +26,7 @@ describe('Given that we have a bear authentified, ', function() {
 		var app = new App(source, authStaticUser(testData.bear.yoann));
 
 		var bearRepo = new ReturnDataGamesRepo(testData.bear.yoann);
-		var commandHandler = new CommandHandler('bear', msgDispatcher);
+		var commandHandler = new CommandHandler(bearMsgDispatcher);
 		var bearsRoutes = new BearsRoutes(bearRepo, commandHandler);
 
 		app.addHandlers(bearsRoutes);
@@ -41,7 +41,7 @@ describe('Given that we have a bear authentified, ', function() {
 				}));
 				done();
 			});
-	});
+		});
 });
 
 
@@ -55,7 +55,7 @@ describe('Given that we have a bear authentified, ', function() {
 		var app = new App(source, authStaticUser(testData.bear.yoann));
 
 		var bearRepo = new ReturnDataGamesRepo(testData.bear.julien);
-		var commandHandler = new CommandHandler('bear', msgDispatcher);
+		var commandHandler = new CommandHandler(bearMsgDispatcher);
 		var bearsRoutes = new BearsRoutes(bearRepo, commandHandler);
 
 		app.addHandlers(bearsRoutes);
@@ -84,7 +84,7 @@ describe('Given that we have a bear not authentified, ', function() {
 		var app = new App(source, authStaticUser());
 
 		var bearRepo = new ReturnDataGamesRepo(testData.bear.yoann);
-		var commandHandler = new CommandHandler('bear', msgDispatcher);
+		var commandHandler = new CommandHandler(bearMsgDispatcher);
 		var bearsRoutes = new BearsRoutes(bearRepo, commandHandler);
 
 		app.addHandlers(bearsRoutes);
@@ -108,7 +108,7 @@ describe('Given that we have a bear not authentified, ', function() {
 		var app = new App(source, authStaticUser());
 
 		var bearRepo = new ReturnDataGamesRepo(testData.bear.julien);
-		var commandHandler = new CommandHandler('bear', msgDispatcher);
+		var commandHandler = new CommandHandler(bearMsgDispatcher);
 		var bearsRoutes = new BearsRoutes(bearRepo, commandHandler);
 
 		app.addHandlers(bearsRoutes);
@@ -132,7 +132,7 @@ describe('Given that we have a bear authentified, ', function() {
 		var app = new App(source, authStaticUser(testData.bear.yoann));
 
 		var bearRepo = new ReturnDataGamesRepo(testData.bear.julien);
-		var commandHandler = new CommandHandler('bear', oKDispatcher);
+		var commandHandler = new CommandHandler(oKDispatcher('bear'));
 		var bearsRoutes = new BearsRoutes(bearRepo, commandHandler);
 
 		app.addHandlers(bearsRoutes);

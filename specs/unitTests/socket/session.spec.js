@@ -1,7 +1,7 @@
 /*jshint expr: true*/
 var expect = require('chai').expect;
 var Session = require('../../../src/eventListener/session');
-var EventSender = require('../../eventSender');
+var EventSender = require('../../helper/eventSender.helper');
 var Rx = require('rx');
 
 describe('A session', function() {
