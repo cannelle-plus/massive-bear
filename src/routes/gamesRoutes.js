@@ -23,16 +23,24 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 		verb: "GET",
 		extract: function() {},
 		execute: function() {},
-		handles: function(req, res) {
-			var options = {
-				root: './www-root/',
-				dotfiles: 'deny',
-				headers: {
-					'x-timestamp': Date.now(),
-					'x-sent': true
+		handles: function(session) {
+			return function(req, res) {
+
+				if (session) {
+
+					var options = {
+						root: './www-root/',
+						dotfiles: 'deny',
+						headers: {
+							'x-timestamp': Date.now(),
+							'x-sent': true
+						}
+					};
+					res.sendFile('games.html', options);
+				} else {
+					res.redirect(302, "/");
 				}
 			};
-			res.sendFile('games.html', options);
 		}
 	};
 
@@ -111,7 +119,7 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 				];
 
 				return commandHandler.handles("JoinGame", id, 0, session.user().id, session.user().username, cmd)
-							         .then(isInterestedInGame(session, id));
+					.then(isInterestedInGame(session, id));
 
 			};
 		}

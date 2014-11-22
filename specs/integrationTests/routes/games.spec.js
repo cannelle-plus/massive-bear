@@ -91,6 +91,32 @@ describe('Given that we have a bear authentified, ', function() {
     });
 });
 
+describe('Given that we have a bear not authentified, ', function() {
+    it('when we get "/games", we receive a redirection to "/"', function(done) {
+        
+        var testData = new TestData();
+        var source = Rx.Observable.create(function(observer) {});
+
+        var app = new App(source, authStaticUser());
+
+        var gameRepo = new ReturnDataGamesRepo(testData.games);
+        var commandHandler = new CommandHandler(gameDispatcher);
+        var gameRoutes = new GamesRoutes(gameRepo, commandHandler);
+
+        app.addHandlers(gameRoutes);
+
+        request(app.start(currentPort()))
+            .get('/games')
+            .expect(302)
+            .end(function(err, res) {
+                expect(err).to.not.be.ok;
+                expect(res.header.location).to.equal('/');
+                done();
+            });
+    });
+});
+
+
 describe('Given that we have a bear authentified, ', function() {
     it('when we post "/api/game/join", we dispatch a command ', function(done) {
 

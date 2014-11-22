@@ -1,3 +1,5 @@
+var Bear = require('../../src/model/bear');
+
 var testData = function() {
     this.games = [{
         id: '4a82199e-7c30-4a95-b194-6d40127fbb89',
@@ -24,18 +26,9 @@ var testData = function() {
     }];
 
     this.bear = {
-        yoann: {
-            id: 7,
-            username: 'yoann'
-        },
-        julien: {
-            id: 8,
-            username: 'julien'
-        },
-        tom: {
-            id: 9,
-            username: 'tom'
-        }
+        yoann: new Bear( 7, 'yoann', 1),
+        julien: new Bear( 8, 'julien', 1),
+        tom: new Bear( 9, 'tom', 1)
     };  
     this.responseFromTheDispatcher = { 
         responseFromTheDispatcher: "OK" 

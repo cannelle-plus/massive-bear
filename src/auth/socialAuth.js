@@ -3,7 +3,7 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google').Strategy;
 var config = require('./oauth.js');
 
-var socialAuth = function(app, middleware) {
+var socialAuth = function(app, middleware, bearRepo) {
 
 	// serialize and deserialize
 	passport.serializeUser(function(user, done) {
@@ -14,6 +14,27 @@ var socialAuth = function(app, middleware) {
 		console.log(obj);
 		done(null, obj);
 	});
+
+	var hasSignedIn = function(user){
+		var bear = bearRepo.hasSignedIn(user.id);
+
+		return bear;
+	};
+
+	var redirectTo = function(req, res) {
+		var bear = hasSignedIn(req.user);
+
+		if (bear)
+		{
+			middleware.login(bear);
+			res.redirect('/games');
+		}
+		else
+		{
+			middleware.login(req.user);
+			res.redirect('/signin');
+		}
+	};
 
 	// config social authentication
 	passport.use(new FacebookStrategy({
@@ -44,21 +65,10 @@ var socialAuth = function(app, middleware) {
 	app.use(passport.session());
 
 	app.get('/auth/facebook', passport.authenticate('facebook'), function(req, res) {});
-	app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-			failureRedirect: '/login'
-		}),
-		function(req, res) {
-			console.log(req.user);
-			middleware.login(req.user);
-			res.redirect('/games');
-		});
+	app.get('/auth/facebook/callback', passport.authenticate('facebook', {failureRedirect: '/login'	}),redirectTo );
 
 	app.get('/auth/google', passport.authenticate('google'), function(req, res) {});
-	app.get('/auth/google/callback', passport.authenticate('google', {
-		failureRedirect: '/login'
-	}), function(req, res) {
-		res.redirect('/games');
-	});
+	app.get('/auth/google/callback', passport.authenticate('google', { failureRedirect: '/login' }), redirectTo );
 
 };
 

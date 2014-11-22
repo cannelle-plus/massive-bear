@@ -40,6 +40,20 @@ var middleware = function(router, source) {
 		};
 	};
 
+	var _withSession = function(handles) {
+		return function(req, res, next) {
+			//fake user loggein
+			req.user = {
+				id: 7,
+				username: 'yoann'
+			};
+
+			var session = _sessions.retrieveSession(req.user);
+
+			handles(session)(req,res);
+		};
+	};
+
 	var _defaultHandles = function(extractInfosFrom, ExecuteIn) {
 		return function(req, res, next) {
 
@@ -51,8 +65,7 @@ var middleware = function(router, source) {
 
 			var session = _sessions.retrieveSession(req.user);
 
-			if (!session)
-			{
+			if (!session) {
 				res.status(401).send("session unavailable");
 				return next();
 			}
@@ -64,8 +77,7 @@ var middleware = function(router, source) {
 						res.send(err.statusCode, {
 							error: err.message
 						});
-					}
-					else {
+					} else {
 						res.send(500, {
 							error: 'Unexpected error'
 						});
@@ -89,7 +101,7 @@ var middleware = function(router, source) {
 		_assertRoute(route);
 
 		if (route.handles)
-			router[route.verb.toLowerCase()](route.url,route.handles);
+			router[route.verb.toLowerCase()](route.url, _withSession(route.handles));
 		else
 			router[route.verb.toLowerCase()](route.url, _defaultHandles(route.extract, route.execute));
 	};
@@ -133,8 +145,8 @@ var middleware = function(router, source) {
 		_addParam(param);
 	};
 
-	this.login = function(user) {
-		_sessions.save(user);
+	this.login = function(bear) {
+		_sessions.save(bear);
 	};
 
 };

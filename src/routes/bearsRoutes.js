@@ -16,20 +16,47 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 		console.log(err);
 	};
 
-	
-	this.saveProfile = {
-		url : "/api/bear/profile",
-		verb: "POST",
-		extract : function(req){
-			var profileId = req.body.payLoad.id;
-			var profileUserName  = req.body.payLoad.username;
-			var profileAvatarId  = req.body.payLoad.avatarId;
+	this.signin = {
+		url: "/signin",
+		verb: "GET",
+		extract: function() {},
+		execute: function() {},
+		handles: function(session) {
+			return function(req, res) {
 
-			return { "And" : function(fnExecute){
-				return fnExecute(profileId, profileUserName, profileAvatarId);
-			}};
+				if (session) {
+					var options = {
+						root: './www-root/',
+						dotfiles: 'deny',
+						headers: {
+							'x-timestamp': Date.now(),
+							'x-sent': true
+						}
+					};
+					res.sendFile("signin.html", options);
+				} else {
+					res.redirect(302,"/");
+				}
+			};
+		}
+	};
+
+
+	this.saveProfile = {
+		url: "/api/bear/profile",
+		verb: "POST",
+		extract: function(req) {
+			var profileId = req.body.payLoad.id;
+			var profileUserName = req.body.payLoad.username;
+			var profileAvatarId = req.body.payLoad.avatarId;
+
+			return {
+				"And": function(fnExecute) {
+					return fnExecute(profileId, profileUserName, profileAvatarId);
+				}
+			};
 		},
-		execute : function(session) {
+		execute: function(session) {
 			return function(profileId, profileName, bearAvatarId) {
 				assert.ok(session, 'bearsRoutes : session is not defined');
 				assert.ok(profileId, 'bearsRoutes : profileId is not defined');
@@ -48,41 +75,45 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 	};
 
 	this.profile = {
-		url : "/api/bear/profile",
-		params : [profileIdParam],
+		url: "/api/bear/profile",
+		params: [profileIdParam],
 		verb: "GET",
-		extract : function(req){
-			return { "And" : function(fnExecute){
-				return fnExecute();
-			}};
+		extract: function(req) {
+			return {
+				"And": function(fnExecute) {
+					return fnExecute();
+				}
+			};
 		},
-		execute : function(session) {
+		execute: function(session) {
 			return function() {
 				assert.ok(session, 'bearsRoutes : session is not defined');
 
 				return bearRepo.getBear(session.user().id)
-					           .then(toJson);
+					.then(toJson);
 
 			};
 		}
 	};
 
 	this.profileOtherUser = {
-		url : "/api/bear/profile/:profileId",
-		params : [profileIdParam],
+		url: "/api/bear/profile/:profileId",
+		params: [profileIdParam],
 		verb: "GET",
-		extract : function(req){
+		extract: function(req) {
 			var profileId = req.profileId;
-			return { "And" : function(fnExecute){
-				return fnExecute(profileId);
-			}};
+			return {
+				"And": function(fnExecute) {
+					return fnExecute(profileId);
+				}
+			};
 		},
-		execute : function(session) {
+		execute: function(session) {
 			return function(profileId) {
 				assert.ok(session, 'bearsRoutes : session is not defined');
 
 				return bearRepo.getBear(profileId)
-					           .then(toJson);
+					.then(toJson);
 
 			};
 		}

@@ -16,7 +16,7 @@ bearRepository = function(dbPath)
   
     var _getBears = function()
     {
-        return _db.all('SELECT * FROM Users');
+        return _db.all('SELECT * FROM Bears');
     };
 
     var _saveProfile = function()
@@ -25,14 +25,21 @@ bearRepository = function(dbPath)
         // return _db.all('SELECT * FROM Users');
     };
 
-    var _getBear = function(userId)
+    var _getBear = function(bearId)
     {
-        return _db.get('SELECT * FROM Users WHERE userId='+userId);
+        return _db.get('SELECT * FROM Bears WHERE bearId='+bearId);
+    };
+
+    var _hasSignedIn = function(userId)
+    {
+        return _db.get('SELECT * FROM Bears as b inner join users as u on b.bearId=u.bearId  WHERE u.userId="'+userId +'"');
     };
    
     return {
         getBears : _getBears,
-        getBear : _getBear
+        getBear : _getBear,
+        saveProfile : _saveProfile,
+        hasSignedIn : _hasSignedIn
     };
 
 };
