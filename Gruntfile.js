@@ -57,7 +57,10 @@ module.exports = function(grunt) {
               ui: 'bdd',
               reporter: 'landing'
           },
-          all: { src: ['specs/**/*.js'] }
+          all: { src: ['specs/**/*.js'] },
+          travis : { src: ['specs/integrationTests/api/**/*.js',
+                           'specs/unitTests/**/*.js'
+                           ] },
       },
       replace : {
         yoloToMAssive: {
@@ -125,7 +128,7 @@ module.exports = function(grunt) {
     grunt.registerTask('devjs', ['jshint', 'simplemocha']);
     grunt.registerTask('yolo-bear', ['clean', 'copy', 'replace']);
 
-    grunt.registerTask('travis',['jshint', 'simplemocha']);
+    grunt.registerTask('travis',['jshint', 'simplemocha:travis']);
 
 };
 
