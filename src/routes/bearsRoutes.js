@@ -23,7 +23,7 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 		execute: function() {},
 		handles: function(session) {
 			return function(req, res) {
-
+				
 				if (session) {
 					var options = {
 						root: './www-root/',
@@ -68,7 +68,12 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 					bearAvatarId
 				];
 
-				return commandHandler.handles("SignIn", profileId, 0, session.user().id, session.user().username, cmd);
+				//the profileId has now been setup so we arrange our little setup for this first exploration of bear to bear
+				var userId = session.bear().id;
+				session.id = profileId;
+				session.userId = userId;
+
+				return commandHandler.handles("SignIn", profileId, 0, userId, profileName, cmd);
 
 			};
 		}
@@ -89,7 +94,7 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 			return function() {
 				assert.ok(session, 'bearsRoutes : session is not defined');
 
-				return bearRepo.getBear(session.user().id)
+				return bearRepo.getBear(session.bear().userId)
 					.then(toJson);
 
 			};

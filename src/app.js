@@ -34,21 +34,21 @@ var app = function(eventSource, authenticate) {
 		resave: true
 	}));
 
-	var options = {
-		root: './www-root/',
-		dotfiles: 'deny',
-		headers: {
-			'x-timestamp': Date.now(),
-			'x-sent': true
-		}
-	};
-
 	// Send login form
 	app.get('/login', function(req, res) {
 		if (req.isAuthenticated())
 			res.redirect('/games');
-		else
+		else {
+			var options = {
+				root: './www-root/',
+				dotfiles: 'deny',
+				headers: {
+					'x-timestamp': Date.now(),
+					'x-sent': true
+				}
+			};
 			res.sendFile('login.html', options);
+		}
 	});
 
 	// Disable user auth token
@@ -66,17 +66,17 @@ var app = function(eventSource, authenticate) {
 		middleware.login(user);
 	};
 
-	this.toggleLog= function(){
+	this.toggleLog = function() {
 		app.use(logger('dev'));
 	};
 
 	this.start = function(port) {
 
+		authenticate(app, middleware);
+
 		for (var i = _handlers.length - 1; i >= 0; i--) {
 			middleware.addRoutes(_handlers[i]);
 		}
-
-		authenticate(app, middleware);
 
 		// apply the routes to our application
 		app.use('/', router);

@@ -41,12 +41,7 @@ var middleware = function(router, source) {
 	};
 
 	var _withSession = function(handles) {
-		return function(req, res, next) {
-			//fake user loggein
-			req.user = {
-				id: 7,
-				username: 'yoann'
-			};
+		return function(req, res) {
 
 			var session = _sessions.retrieveSession(req.user);
 
@@ -56,12 +51,6 @@ var middleware = function(router, source) {
 
 	var _defaultHandles = function(extractInfosFrom, ExecuteIn) {
 		return function(req, res, next) {
-
-			//fake user loggein
-			req.user = {
-				id: 7,
-				username: 'yoann'
-			};
 
 			var session = _sessions.retrieveSession(req.user);
 

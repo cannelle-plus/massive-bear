@@ -118,7 +118,7 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 					nbPlayersRequired
 				];
 
-				return commandHandler.handles("JoinGame", id, 0, session.user().id, session.user().username, cmd)
+				return commandHandler.handles("JoinGame", id, 0, session.bear().userId, session.bear().username, cmd)
 					.then(isInterestedInGame(session, id));
 
 			};
@@ -141,7 +141,7 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 				assert.ok(session, 'bearsRoutes : session is not defined');
 				assert.ok(id, 'bearsRoutes : id is not defined');
 
-				return commandHandler.handles("JoinGame", id, 0, session.user().id, session.user().username, []);
+				return commandHandler.handles("JoinGame", id, 0, session.bear().userId, session.bear().username, []);
 
 			};
 		}
@@ -164,7 +164,7 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 				assert.ok(session, 'bearsRoutes : session is not defined');
 				assert.ok(id, 'bearsRoutes : id is not defined');
 
-				return commandHandler.handles("AbandonGame", id, 0, session.user().id, session.user().username, []);
+				return commandHandler.handles("AbandonGame", id, 0, session.bear().userId, session.bear().username, []);
 			};
 		}
 	};

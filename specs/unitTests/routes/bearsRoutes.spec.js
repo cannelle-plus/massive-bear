@@ -130,7 +130,7 @@ describe('Given a bear is authenticated, ', function() {
 
         var bearRoutes = new BearsRoutes(bearRepo, commandHandler);
         var source = Rx.Observable.create(function(observer) {});
-        var session = new Session(testData.bear.yoann, source);
+        var session = new Session({ id:'007', username:'yoann'}, source);
 
         var profileId = 65;
         var profileName = 'toto';
@@ -138,13 +138,18 @@ describe('Given a bear is authenticated, ', function() {
 
         bearRoutes.saveProfile.execute(session)(profileId, profileName, bearImageId)
             .then(function(data) {
-                expect(data).to.be.ok;
-                expect(data.Id).to.equal(profileId);
-                expect(data.MetaData.UserId).to.equal(testData.bear.yoann.id);
-                expect(data.MetaData.UserName).to.equal(testData.bear.yoann.username);
-                expect(data.PayLoad.Case).to.equal("SignIn");
-                expect(JSON.stringify(data.PayLoad.Fields)).to.equal(JSON.stringify([profileName, bearImageId]));
-                done();
+                try {
+                    expect(data).to.be.ok;
+                    expect(data.Id).to.equal(profileId);
+                    expect(data.MetaData.UserId).to.equal("007");
+                    expect(data.MetaData.UserName).to.equal(profileName);
+                    expect(data.PayLoad.Case).to.equal("SignIn");
+                    expect(JSON.stringify(data.PayLoad.Fields)).to.equal(JSON.stringify([profileName, bearImageId]));
+                    done();
+                } catch (e) {
+                    console.log(e);
+                }
+
             });
     });
 });

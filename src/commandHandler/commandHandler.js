@@ -3,15 +3,15 @@ var uuid = require('node-uuid');
 module.exports = function(dispatcher) {
     // Le controller va se charger du traitement des commandes
 
-    this.handles = function(commandType, id, version, userId, userName, cmd) {
+    this.handles = function(commandType, id, version, bearId, bearName, cmd) {
         //to be added an uuid for the message to garanty at-least once.
         var msg = {
             "Id": id,
             "Version": version,
             "MetaData": {
                 "CorrelationId": uuid.v1(),
-                "UserId": userId,
-                "UserName": userName
+                "UserId": bearId,
+                "UserName": bearName
             },
             "PayLoad": {
                 "Case": commandType,

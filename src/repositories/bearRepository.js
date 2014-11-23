@@ -21,7 +21,7 @@ bearRepository = function(dbPath)
 
     var _saveProfile = function()
     {
-        //do something useful here
+        //do something useful here add friends , something what!!!
         // return _db.all('SELECT * FROM Users');
     };
 

@@ -1,18 +1,18 @@
 var assert = require('chai').assert;
 var logger = require('../logger');
 
-var Session = function(userSession, eventSource){
+var Session = function(bearSession, eventSource){
 
-	assert.ok(userSession, 'Session : user is not defined');
+	assert.ok(bearSession, 'Session : bearSession is not defined');
 	assert.ok(eventSource, 'Session : eventSource is not defined');
 
 	var _subscriptions = [];
 	var _sockets = [];
 	var send = null;
-	var _user = userSession;
+	var _bear = bearSession;
 
-	this.user = function (){
-		return _user;
+	this.bear = function (){
+		return _bear;
 	};
 
 	var _subscribeToSocket = function(subscription, socket){

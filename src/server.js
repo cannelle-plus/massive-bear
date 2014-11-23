@@ -3,6 +3,7 @@ var express = require('express');
 var Middleware = require('./routes/middleware');
 var BearsRoutes = require('./routes/bearsRoutes');
 var GamesRoutes = require('./routes/gamesRoutes');
+var HomeRoutes = require('./routes/homeRoutes');
 var Rx = require('rx');
 var Q = require('q');
 var App = require('./app');
@@ -20,7 +21,7 @@ env(__dirname + '/envs/' + nodeEnv + '.env');
 var eventStore = new EventStore();
 eventStore.connect();
 
-var app = new App(eventStore, socialAuth);
+
 
 //creating dispatcher for commands
 var wookieDispatcher = new WookieDispatcher(process.env.wookieDispatcherHost, process.env.wookieDispatcherPort);
@@ -29,15 +30,20 @@ var wookieDispatcher = new WookieDispatcher(process.env.wookieDispatcherHost, pr
 var bearRepo = require('./repositories/bearRepository')(process.env.connStringBear2Bear);
 var gameRepo = require('./repositories/gameRepository')(process.env.connStringBear2Bear);
 
+var app = new App(eventStore, socialAuth(bearRepo));
+
 //creating routes modules
 var gameRoutes = new GamesRoutes(gameRepo, new CommandHandler(wookieDispatcher('game')));
 var bearsRoutes = new BearsRoutes(bearRepo, new CommandHandler(wookieDispatcher('bear')));
+var homeRoutes = new HomeRoutes();
 
 //creating routes modules to the app
 app.addHandlers(gameRoutes);
 app.addHandlers(bearsRoutes);
+app.addHandlers(homeRoutes);
 
-var port = process.env.PORT || 8888;
+// var port = process.env.PORT || 8888;
+var port =  8888;
 
 //toggling on the logs
 app.toggleLog();

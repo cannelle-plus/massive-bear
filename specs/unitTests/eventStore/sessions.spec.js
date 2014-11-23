@@ -2,6 +2,7 @@
 var expect = require('chai').expect;
 var Sessions = require('../../../src/eventListener/sessions');
 var EventStore = require('../../../src/eventListener/eventStore');
+var Bear = require('../../../src/model/bear');
 
 describe('Sessions', function() {
 
@@ -11,7 +12,6 @@ describe('Sessions', function() {
     	var sessions = new Sessions(eventStore);
 
     	expect(sessions).to.be.ok;
-
     });
 
 });
@@ -40,15 +40,16 @@ describe('Given a session from a user has been saved', function() {
     	var eventStore = new EventStore();
     	var sessions = new Sessions(eventStore);
 
-    	var user = {id:'007', username:'bond'};
+    	var bear = new Bear('007', '123', 'bond', '3');
+        var user = {id :'123', username: 'bond'};
 
-    	sessions.save(user);
+    	sessions.save(bear);
 		
     	 var session = sessions.retrieveSession(user);
 
 		expect(session).to.be.ok;
-		expect(session.user()).to.be.ok;
-		expect(session.user().id).to.equal('007');
+		expect(session.bear()).to.be.ok;
+		expect(session.bear().id).to.equal('007');
 		expect(session.addSubscription).to.be.ok;
 		expect(session.addSocket).to.be.ok;		
 
@@ -61,19 +62,21 @@ describe('Given two sessions have been saved', function() {
     	var eventStore = new EventStore();
     	var sessions = new Sessions(eventStore);
 
-    	var user1 = {id:'007', username:'bond'};
-    	var user2 = {id:'008', username:'yoann'};
+    	var bear = new Bear('007', '123', 'bond', '3');
+        var bear2 = new Bear('008', '456', 'yoann', '3');
+        
+        var user1 = { id : '123', username :'bond'};
 
-    	sessions.save(user1);
-    	sessions.save(user2);
+    	sessions.save(bear);
+    	sessions.save(bear2);
 		
     	 var session = sessions.retrieveSession(user1);
 
 		expect(session).to.be.ok;
 		expect(session.addSubscription).to.be.ok;
 		expect(session.addSocket).to.be.ok;		
-		expect(session.user()).to.be.ok;
-		expect(session.user().id).to.equal('007');
+		expect(session.bear()).to.be.ok;
+		expect(session.bear().id).to.equal('007');
 
     });
 });

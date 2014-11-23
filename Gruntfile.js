@@ -55,9 +55,9 @@ module.exports = function(grunt) {
               timeout: 500,
               ignoreLeaks: true,
               ui: 'bdd',
-              reporter: 'landing'
+              reporter: 'spec'
           },
-          all: { src: ['specs/**/*.js'] },
+          views: { src: ['specs/integrationTests/views/**/*.js'] },
           travis : { src: ['specs/integrationTests/api/**/*.js',
                            'specs/unitTests/**/*.js'
                            ] },
@@ -121,12 +121,10 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-parallel');
     
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'simplemocha', 'clean','copy', 'replace', 'express', 'watch:devjs']);
-    grunt.registerTask('yolobear', ['watch:yolobear']);
+    grunt.registerTask('default', ['jshint', 'simplemocha:travis', 'clean','copy', 'replace','simplemocha:views', 'express', 'watch']);
     
 
     grunt.registerTask('devjs', ['jshint', 'simplemocha']);
-    grunt.registerTask('yolo-bear', ['clean', 'copy', 'replace']);
 
     grunt.registerTask('travis',['jshint', 'simplemocha:travis']);
 

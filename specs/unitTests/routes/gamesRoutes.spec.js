@@ -35,7 +35,7 @@ describe('Given nothing, ', function() {
 
 describe('Given a bear is authentified, ', function() {
 
-    it('when it requests /api/game/list, it receive the list of games', function(done) {
+    it('when it requests the list of game, it receive the list of games', function(done) {
 
         var testData = new TestData();
 
@@ -59,7 +59,7 @@ describe('Given a bear is authentified, ', function() {
 
 describe('Given a bear is not authentified, ', function() {
 
-    it('when it requests /api/bear/profile, it throws an exception ', function() {
+    it('when it requests its profile, it throws an exception ', function() {
 
         var testData = new TestData();
 
@@ -80,7 +80,7 @@ describe('Given a bear is not authentified, ', function() {
 
 describe('Given a bear is not authentified, ', function() {
 
-    it('when it requests /api/game/join, it throws an exception ', function() {
+    it('when it joins a game, it throws an exception ', function() {
 
         var testData = new TestData();
 
@@ -99,7 +99,7 @@ describe('Given a bear is not authentified, ', function() {
 
 describe('Given a bear is authentified, ', function() {
 
-    it('when it requests /api/game/join without gameId, it throws an exception', function() {
+    it('when it join a game without gameId, it throws an exception', function() {
 
         var testData = new TestData();
 
@@ -120,7 +120,7 @@ describe('Given a bear is authentified, ', function() {
 
 describe('Given a bear is authentified, ', function() {
 
-    it('when it requests /api/game/join, it generates a message , it sends to the dispatcher', function(done) {
+    it('when it joins a game, it dispatchs a message', function(done) {
 
         var testData = new TestData();
 
@@ -134,13 +134,18 @@ describe('Given a bear is authentified, ', function() {
 
         routes.join.execute(session)(3)
             .then(function(data) {
-                expect(data).to.be.ok;
-                expect(data.Id).to.equal(3);
-                expect(data.MetaData.UserId).to.equal(7);
-                expect(data.MetaData.UserName).to.equal("yoann");
-                expect(data.PayLoad.Case).to.equal("JoinGame");
-                expect(JSON.stringify(data.PayLoad.Fields)).to.equal(JSON.stringify([]));
-                done();
+                try {
+                    expect(data).to.be.ok;
+                    expect(data.Id).to.equal(3);
+                    expect(data.MetaData.UserId).to.equal(7);
+                    expect(data.MetaData.UserName).to.equal("yoann");
+                    expect(data.PayLoad.Case).to.equal("JoinGame");
+                    expect(JSON.stringify(data.PayLoad.Fields)).to.equal(JSON.stringify([]));
+                    done();
+                } catch (e) {
+                    console.log(e);
+                }
+
             });
     });
 });
@@ -166,7 +171,7 @@ describe('Given a bear is not authentified, ', function() {
 
 describe('Given a bear is authentified, ', function() {
 
-    it('when it requests /api/game/abandon without gameId, it throws an exception', function() {
+    it('when it abandons a game without gameId, it throws an exception', function() {
 
         var testData = new TestData();
 
@@ -187,7 +192,7 @@ describe('Given a bear is authentified, ', function() {
 
 describe('Given a bear is authentified, ', function() {
 
-    it('when it requests /api/game/abandon, it generates a message , it sends to the dispatcher', function(done) {
+    it('when it abandons a game, it dispatchs a message', function(done) {
 
         var testData = new TestData();
 

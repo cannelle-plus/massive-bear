@@ -11,17 +11,20 @@ var Sessions = function(eventStore){
 		return 'session' + id;
 	};
 
-	this.save = function(user){
-		assert.ok(user, 'Sessions : user is not defined');		
-		assert.ok(user.id, 'Sessions : user has no id defined');		
+	this.save = function(bear){
+		assert.ok(bear, 'Sessions : bear is not defined');		
+		assert.ok(bear.userId, 'Sessions : bear has no userId defined');		
 
-		_sessions[_getSessionId(user.id)] = new Session(user, eventStore);
+		_sessions[_getSessionId(bear.userId)] = new Session(bear, eventStore);
 
-		return _sessions[_getSessionId(user.id)];
+		return _sessions[_getSessionId(bear.userId)];
 	};
 
 	this.retrieveSession = function(user){
-		assert.ok(user, 'Sessions : user is not defined');		
+		
+		if (!user)
+			return null;
+
 		assert.ok(user.id, 'Sessions : user has no id defined');		
 
 		return _sessions[_getSessionId(user.id)];
