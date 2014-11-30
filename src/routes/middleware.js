@@ -4,14 +4,14 @@ var Sessions = require('../eventListener/sessions');
 var Q = require('q');
 
 
-
-var middleware = function(router, source) {
+var middleware = function( router, source) {
 	var _params = {};
 
 	assert.ok(router, 'middleware : router is not defined');
 	assert.ok(source, 'middleware : source is not defined');
 
 	var _sessions = new Sessions(source);
+	var _webSockets = null;
 
 	// router.use(function(req, res, next) {
 	// 	res.promise = function(promise) {
@@ -52,27 +52,33 @@ var middleware = function(router, source) {
 	var _defaultHandles = function(extractInfosFrom, ExecuteIn) {
 		return function(req, res, next) {
 
+
 			var session = _sessions.retrieveSession(req.user);
 
 			if (!session) {
 				res.status(401).send("session unavailable");
-				return next();
 			}
+			else
+			{
+				// console.log('***********session bear ***************************');
+				// console.log(session.bear());
+				// console.log('**************************************');
 
-			extractInfosFrom(req).And(ExecuteIn(session))
-				.then(_returnJsonTo(res))
-				.fail(function(err) {
-					if (err.statusCode) {
-						res.send(err.statusCode, {
-							error: err.message
-						});
-					} else {
-						res.send(500, {
-							error: 'Unexpected error'
-						});
-					}
-				})
-				.done();
+				extractInfosFrom(req).And(ExecuteIn(session))
+					.then(_returnJsonTo(res))
+					.fail(function(err) {
+						if (err.statusCode) {
+							res.status(err.statusCode).send(err.message);
+						} else {
+							
+							res.status(500).send({
+								error: err
+							});
+						}
+					})
+					.done();
+
+			}
 		};
 
 	};
@@ -135,7 +141,15 @@ var middleware = function(router, source) {
 	};
 
 	this.login = function(bear) {
-		_sessions.save(bear);
+		// console.log('***********save bear ***************************');
+		// console.log(bear);
+		// console.log('**************************************');
+		return _sessions.save(bear);
+	};
+
+	this.activateWebSocket = function(http, WebSocket){
+		
+		_webSockets = new WebSocket(http, _sessions);
 	};
 
 };

@@ -42,39 +42,33 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 	};
 
 
-	this.saveProfile = {
-		url: "/api/bear/profile",
+	this.saveProfile = { 
+		url: "/api/bear/signin",
 		verb: "POST",
 		extract: function(req) {
-			var profileId = req.body.payLoad.id;
-			var profileUserName = req.body.payLoad.username;
-			var profileAvatarId = req.body.payLoad.avatarId;
-
+			var bearUsername = req.body.bearUsername;
+			var avatarId = req.body.avatarId;				
 			return {
 				"And": function(fnExecute) {
-					return fnExecute(profileId, profileUserName, profileAvatarId);
+					return fnExecute(bearUsername,avatarId);
 				}
 			};
 		},
-		execute: function(session) {
-			return function(profileId, profileName, bearAvatarId) {
-				assert.ok(session, 'bearsRoutes : session is not defined');
-				assert.ok(profileId, 'bearsRoutes : profileId is not defined');
-				assert.ok(profileName, 'bearsRoutes : profileName is not defined');
-				assert.ok(bearAvatarId, 'bearsRoutes : bearAvatarId is not defined');
+		execute: function(session) { 
+			return function(bearUsername,avatarId) {
+
+				var currentBear = session.bear();
+
+				currentBear.signIn(bearUsername,avatarId);
 
 				var cmd = [
-					profileName,
-					bearAvatarId
+					bearUsername,
+					avatarId
 				];
 
-				//the profileId has now been setup so we arrange our little setup for this first exploration of bear to bear
-				var userId = session.bear().id;
-				session.id = profileId;
-				session.userId = userId;
-
-				return commandHandler.handles("SignIn", profileId, 0, userId, profileName, cmd);
-
+				//dispatch the command to the wookie
+				return commandHandler.handles("SignIn", currentBear.bearId, 0, currentBear, cmd);
+				
 			};
 		}
 	};

@@ -6,17 +6,11 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 	assert.ok(gameRepo, 'gamesRoutes : gameRepo is not defined');
 	assert.ok(commandHandler, 'gamesRoutes : commandHandler is not defined');
 
-
-
 	var toJson = function(games) {
 		return {
 			gamesList: games
 		};
 	};
-
-	// var writeError = function(err) {
-	// 	console.log(err);
-	// };
 
 	this.games = {
 		url: "/games",
@@ -46,21 +40,29 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 
 	var isInterestedInGames = function(session) {
 		return function(games) {
-			session.addSubscription(function(evt) {
-				for (var i = games.length - 1; i >= 0; i--) {
-					if (evt.Id == games[i].id) return true;
-				}
-				return false;
-			});
+			
+			console.log(session);
+			if (session){
+				session.addSubscription(function(x,idx, obs) {
+					for (var i = games.length - 1; i >= 0; i--) {
+						if (x.Id == games[i].id) return true;
+					}
+					return false;
+				});	
+			}
+			
 			return games;
 		};
 	};
 
 	var isInterestedInGame = function(session, gameId) {
 		return function(data) {
+			
+			console.log('subscription');
 			session.addSubscription(function(evt) {
 				return evt.Id == gameId;
 			});
+			
 			return data;
 		};
 	};
@@ -77,11 +79,11 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 		},
 		execute: function(session) {
 			return function() {
-				assert.ok(session, 'bearsRoutes : session is not defined');
+				assert.ok(session, 'gamesRoutes : session is not defined');
 
 				return gameRepo.getGames()
-					.then(isInterestedInGames(session))
-					.then(toJson);
+						.then(isInterestedInGames(session))
+						.then(toJson);
 
 			};
 		}
@@ -96,30 +98,29 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 			var location = req.body.payLoad.location;
 			var name = req.body.payLoad.name;
 			var nbPlayersRequired = req.body.payLoad.maxPlayers;
-			var ownerId = req.user.id;
-			var userId = req.user.id;
-			var userName = req.user.username;
 			return {
 				"And": function(fnExecute) {
-					return fnExecute(id, userId, userName, ownerId, startDate, location, name, nbPlayersRequired);
+					return fnExecute(id,  startDate, location, name, nbPlayersRequired);
 				}
 			};
 		},
 		execute: function(session) {
-			return function(id, userId, userName, ownerId, startDate, location, name, nbPlayersRequired) {
-				assert.ok(session, 'bearsRoutes : session is not defined');
-				assert.ok(id, 'bearsRoutes : id is not defined');
+			return function(id,  startDate, location, name, nbPlayersRequired) {
+				assert.ok(session, 'gamesRoutes : schedule : session is not defined');
+				assert.ok(id, 'gamesRoutes : schedule :id is not defined');
+
+				var currentBear = session.bear();
 
 				var cmd = [
 					name,
-					ownerId,
-					startDate,
+					currentBear.bearId,
+					startDate + ':00.000',
 					location,
 					nbPlayersRequired
 				];
 
-				return commandHandler.handles("JoinGame", id, 0, session.bear().userId, session.bear().username, cmd)
-					.then(isInterestedInGame(session, id));
+				return commandHandler.handles("ScheduleGame", id, 0, currentBear, cmd)
+						.then(isInterestedInGame(session, id));
 
 			};
 		}
@@ -138,10 +139,10 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 		},
 		execute: function(session) {
 			return function(id) {
-				assert.ok(session, 'bearsRoutes : session is not defined');
-				assert.ok(id, 'bearsRoutes : id is not defined');
+				assert.ok(session, 'gamesRoutes : join: session is not defined');
+				assert.ok(id, 'gamesRoutes : join: id is not defined');
 
-				return commandHandler.handles("JoinGame", id, 0, session.bear().userId, session.bear().username, []);
+				return commandHandler.handles("JoinGame", id, 0, session.bear(), []);
 
 			};
 		}
@@ -161,10 +162,10 @@ var gamesRoutes = function(gameRepo, commandHandler) {
 		},
 		execute: function(session) {
 			return function(id) {
-				assert.ok(session, 'bearsRoutes : session is not defined');
-				assert.ok(id, 'bearsRoutes : id is not defined');
+				assert.ok(session, 'gamesRoutes : abandon : session is not defined');
+				assert.ok(id, 'gamesRoutes : abandon : id is not defined');
 
-				return commandHandler.handles("AbandonGame", id, 0, session.bear().userId, session.bear().username, []);
+				return commandHandler.handles("AbandonGame", id, 0, session.bear(), []);
 			};
 		}
 	};

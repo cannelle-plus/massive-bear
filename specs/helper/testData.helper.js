@@ -1,5 +1,6 @@
 var Bear = require('../../src/model/bear');
 
+
 var y = new Bear( 1, 7, 'yoann', 1);
 var j = new Bear( 2, 8,'julien', 1);
 var t = new Bear( 3, 9, 'tom', 1);
@@ -73,17 +74,19 @@ var testData = function() {
                 "nbPlayers": 1
             }
         },
-        signedIn : {
-            evtType: "signedIn",
+        hasSignedIn : {
+            evtType: "hasSignedIn",
             payLoad: {
-                "id": 'd70efb73-8c6c-4106-97dd-7503bbf7dddd',
-                "version": 0,
-                "username": 'yoann', 
-                "avatarId": 1
+                "bearId" : 'd70efb73-996c-4107-97dd-7503bbf7f5bb', 
+                "bearUsername" : 'yoann', 
+                'socialId' : '1234567890', 
+                'avatarId' : 2
             }
         }
         
+        
     };
+    
 };
 
 module.exports = testData;

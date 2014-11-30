@@ -3,6 +3,7 @@ var expect = require('chai').expect;
 var express = require('express');
 var authStaticUser = require('../../helper/authStaticUser.helper');
 var currentPort = require('../../helper/currentPort.helper');
+var WebSocket = require('../../helper/webSocket.helper');
 
 var Rx = require('rx');
 var Q = require('q');
@@ -17,7 +18,7 @@ describe('Given that we have a bear not authentified, ', function() {
         
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source, authStaticUser());
+        var app = new App(source, authStaticUser(), WebSocket);
 
         var homeRoutes = new HomeRoutes();
 
@@ -42,7 +43,7 @@ describe('Given that we have a bear authentified, ', function() {
         var source = Rx.Observable.create(function(observer) {});
         var testData = new TestData();
 
-        var app = new App(source, authStaticUser(testData.bear.yoann));
+        var app = new App(source, authStaticUser(testData.bear.yoann), WebSocket);
 
         var homeRoutes = new HomeRoutes();
 

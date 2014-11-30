@@ -1,7 +1,7 @@
 var assert = require('chai').assert;
 var logger = require('../logger');
 
-var Session = function(bearSession, eventSource){
+var Session = function(bearSession,  eventSource){
 
 	assert.ok(bearSession, 'Session : bearSession is not defined');
 	assert.ok(eventSource, 'Session : eventSource is not defined');
@@ -10,6 +10,8 @@ var Session = function(bearSession, eventSource){
 	var _sockets = [];
 	var send = null;
 	var _bear = bearSession;
+
+	this.id = _bear.socialId;
 
 	this.bear = function (){
 		return _bear;
@@ -30,6 +32,8 @@ var Session = function(bearSession, eventSource){
 	};
 
 	this.addSubscription = function(predicate){
+
+		// console.log(eventSource);
 		//create the observable
 		var _observable = eventSource.where(predicate);
 
@@ -55,5 +59,5 @@ var Session = function(bearSession, eventSource){
 	};
 	
 };
-
+	
 module.exports = Session;

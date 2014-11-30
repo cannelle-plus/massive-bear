@@ -7,6 +7,7 @@
  var bearMsgDispatcher = oKDispatcher('bear');
  var TestData = require('../../helper/testData.helper');
  var currentPort = require('../../helper/currentPort.helper');
+  var WebSocket = require('../../helper/webSocket.helper');
 
  var Rx = require('rx');
  var Q = require('q');
@@ -25,7 +26,7 @@
              var testData = new TestData();
              var source = Rx.Observable.create(function(observer) {});
 
-             var app = new App(source, authStaticUser(testData.bear.yoann));
+             var app = new App(source, authStaticUser(testData.bear.yoann), WebSocket);
 
              var bearRepo = new ReturnDataGamesRepo(testData.bear.julien);
              var commandHandler = new CommandHandler(oKDispatcher('bear'));
@@ -52,7 +53,7 @@
              var testData = new TestData();
              var source = Rx.Observable.create(function(observer) {});
 
-             var app = new App(source, authStaticUser());
+             var app = new App(source, authStaticUser(), WebSocket);
 
              var bearRepo = new ReturnDataGamesRepo(testData.bear.julien);
              var commandHandler = new CommandHandler(oKDispatcher('bear'));
@@ -70,4 +71,8 @@
                  });
          });
      });
+
+         
+
+        
  });

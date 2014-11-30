@@ -1,7 +1,7 @@
 var QSQL = require('q-sqlite3');
 
 
-gameRepository = function(dbPath)
+var GameRepository = function(dbPath)
 {
     var _dbPath = dbPath;
     var _db = null;
@@ -14,17 +14,14 @@ gameRepository = function(dbPath)
         console.log('db created');
     });
  
-    var _getGames = function()
+    this.getGames = function()
     {
         return _db.all('SELECT * FROM GamesList');
     }; 
-   
-    return {
-        getGames : _getGames
-    };
+       
 
 };
 
       
 
-module.exports = bearRepository;
+module.exports = GameRepository;

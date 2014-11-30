@@ -3,34 +3,29 @@ var FacebookStrategy = require('passport-facebook').Strategy;
 var GoogleStrategy = require('passport-google').Strategy;
 var config = require('./oauth.js');
 var uuid = require('node-uuid');
+var Bear = require('../model/bear');
 
 var socialAuth = function(bearRepo) {
 	return function(app, middleware) {
 
 		// serialize and deserialize
 		passport.serializeUser(function(user, done) {
-			console.log(user);
+			// console.log('**********serialize user ***************************************');
+			// console.log(user)
+			// console.log('*************************************************');
 			done(null, user);
 		});
 		passport.deserializeUser(function(obj, done) {
-			console.log(obj);
+			// console.log('**********deserialize obj ***************************************');
+			// console.log(obj)
+			// console.log('*************************************************');
 			done(null, obj);
 		});
 
 
 		var redirectTo = function(req, res) {
-
-
-			bearRepo.hasSignedIn(req.user.id)
-				.then(function(bear) {
-					middleware.login(bear);
-					res.redirect('/games');
-				})
-				.catch(function() {
-					req.user.userId = req.user.id;
-					middleware.login(req.user);
-					res.redirect('/signin');
-				});
+			
+			
 		};
 
 		// config social authentication
@@ -41,7 +36,35 @@ var socialAuth = function(bearRepo) {
 			},
 			function(accessToken, refreshToken, profile, done) {
 				process.nextTick(function() {
-					return done(null, profile);
+					bearRepo.hasSignedIn(profile.id)
+							.then(function(bear) {
+								if (bear){
+									//do the bindings
+									bear.userId = uuid.v1();
+									bear.hasSignedIn = true;
+
+									middleware.login(bear);
+
+									// console.log('**********bear session ***************************************');
+									// console.log(bear.userId);
+									// console.log('*************************************************');
+									done(null,{ userId : bear.userId } );	
+								}
+								else
+								{
+									var newBear = new Bear(uuid.v1(), profile.id, "A renseigner", 1, false);
+
+									newBear.userId = uuid.v1();
+
+									middleware.login(newBear);
+
+									done(null, { userId : newBear.userId } );	
+								}
+								
+							})
+							.catch(function(err) {
+								done(err);
+							});
 				});
 			}
 		));
@@ -61,15 +84,22 @@ var socialAuth = function(bearRepo) {
 		app.use(passport.initialize());
 		app.use(passport.session());
 
+
 		app.get('/auth/facebook', passport.authenticate('facebook'), function(req, res) {});
 		app.get('/auth/facebook/callback', passport.authenticate('facebook', {
-			failureRedirect: '/login'
-		}), redirectTo);
+			successRedirect : "/games",
+			failureRedirect: '/'
+		}));
 
-		app.get('/auth/google', passport.authenticate('google'), function(req, res) {});
-		app.get('/auth/google/callback', passport.authenticate('google', {
-			failureRedirect: '/login'
-		}), redirectTo);
+		// app.get('/auth/google', passport.authenticate('google'), function(req, res) {});
+		// app.get('/auth/google/callback', passport.authenticate('google', {
+		// 	failureRedirect: '/login'
+		// }), redirectTo);
+
+		app.use(function (req, res, next) {
+	  		req.isAuthenticated();
+	  		next();
+	    });
 
 	};
 };

@@ -22,7 +22,7 @@ describe('Given no session has been saved', function() {
     	var eventStore = new EventStore();
     	var sessions = new Sessions(eventStore);
 
-    	var user = {id:'007', username:'bond'};
+    	var user = {userId:'007', username:'bond'};
 
 		var session = sessions.retrieveSession(user);
 
@@ -41,7 +41,8 @@ describe('Given a session from a user has been saved', function() {
     	var sessions = new Sessions(eventStore);
 
     	var bear = new Bear('007', '123', 'bond', '3');
-        var user = {id :'123', username: 'bond'};
+        bear.userId = 567;
+        var user = {userId :'567', username: 'bond'};
 
     	sessions.save(bear);
 		
@@ -49,7 +50,7 @@ describe('Given a session from a user has been saved', function() {
 
 		expect(session).to.be.ok;
 		expect(session.bear()).to.be.ok;
-		expect(session.bear().id).to.equal('007');
+		expect(session.bear().bearId).to.equal('007');
 		expect(session.addSubscription).to.be.ok;
 		expect(session.addSocket).to.be.ok;		
 
@@ -63,9 +64,11 @@ describe('Given two sessions have been saved', function() {
     	var sessions = new Sessions(eventStore);
 
     	var bear = new Bear('007', '123', 'bond', '3');
+        bear.userId = 567;
         var bear2 = new Bear('008', '456', 'yoann', '3');
+        bear2.userId = 789;
         
-        var user1 = { id : '123', username :'bond'};
+        var user1 = { userId : '567', username :'bond'};
 
     	sessions.save(bear);
     	sessions.save(bear2);
@@ -76,7 +79,7 @@ describe('Given two sessions have been saved', function() {
 		expect(session.addSubscription).to.be.ok;
 		expect(session.addSocket).to.be.ok;		
 		expect(session.bear()).to.be.ok;
-		expect(session.bear().id).to.equal('007');
+		expect(session.bear().bearId).to.equal('007');
 
     });
 });

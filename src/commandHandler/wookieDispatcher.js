@@ -1,4 +1,5 @@
 var http = require('http');
+var Q = require('q');
 
 module.exports = function(host, port) {
   if (!host) throw 'host of eventStore not given';
@@ -20,8 +21,6 @@ module.exports = function(host, port) {
       }
     };
 
-    console.log(options);
-
     // Set up the request
     return http.request(options, function(res) {
       res.setEncoding('utf8');
@@ -30,11 +29,11 @@ module.exports = function(host, port) {
       });
     });
   };
-  return function(aggRoot) {
-    return function(id, msg) {
-      try {
-        console.log(cmd);
-        var data = JSON.stringify(cmd);
+var callWookie = function(id, msg, aggRoot){
+  try{
+
+        console.log(msg);
+        var data = JSON.stringify(msg);
         var req = createReq(aggRoot, id, data.length);
 
         // post the data
@@ -46,7 +45,16 @@ module.exports = function(host, port) {
         console.log(e);
         console.log("*********************************");
       }
+};
 
+  return function(aggRoot) {
+    return function(id, msg) {
+      var deferred = Q.defer();
+      setTimeout(function() {
+        callWookie(id, msg, aggRoot);
+        deferred.resolve(msg);
+      }, 1);
+      return deferred.promise;
     };
   };
 

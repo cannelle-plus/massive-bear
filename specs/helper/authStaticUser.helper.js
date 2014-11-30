@@ -1,21 +1,30 @@
-var authStaticUser = function(bear) {
+var uuid = require('node-uuid');
+
+var authStaticUser = function(bear, source) {
 	return function(app, middleware) {
 
-		//save the session bear
-		if (bear) middleware.login(bear);
+		if (bear){
 
-		//add the bear authtentication to the current request
-		app.use(function(req, res, next) {
+			bear.userId = uuid.v1();
 
-			if (bear) req.user = {
-					id: bear.userId,
+			//save the session bear
+			 var bearSession = middleware.login(bear);
+
+
+			//add the bear authtentication to the current request
+			app.use(function(req, res, next) {
+
+				req.user = {
+					userId : bear.userId,
 					userName: bear.username
 				};
 
 
 
-			next();
-		});
+				next();
+			});	
+		}
+		
 	};
 };
 

@@ -15,6 +15,8 @@ var Sessions = function(eventStore){
 		assert.ok(bear, 'Sessions : bear is not defined');		
 		assert.ok(bear.userId, 'Sessions : bear has no userId defined');		
 
+		// console.log("***********saving session***********");
+
 		_sessions[_getSessionId(bear.userId)] = new Session(bear, eventStore);
 
 		return _sessions[_getSessionId(bear.userId)];
@@ -25,9 +27,9 @@ var Sessions = function(eventStore){
 		if (!user)
 			return null;
 
-		assert.ok(user.id, 'Sessions : user has no id defined');		
+		assert.ok(user.userId, 'Sessions : user has no userId defined');		
 
-		return _sessions[_getSessionId(user.id)];
+		return _sessions[_getSessionId(user.userId)];
 	};
 
 	// 

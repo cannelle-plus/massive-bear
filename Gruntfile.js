@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 
       watch: {
         yolobear : {
-          files: ['../yolo-bear/www-root/**/*'],
+          files: ['../yolo-bear/dist/**/*'],
           tasks: ['yolo-bear']
         },
         devjs: {
@@ -45,7 +45,7 @@ module.exports = function(grunt) {
         wwwroot : {
           files: [
             // includes files within path and its sub-directories
-            {expand: true, cwd:'../yolo-bear/www-root/', src: ['**'], dest: 'www-root'}
+            {expand: true, cwd:'../yolo-bear/dist/', src: ['**'], dest: 'www-root'}
           ]
         }
       },
@@ -62,17 +62,6 @@ module.exports = function(grunt) {
                            'specs/unitTests/**/*.js'
                            ] },
       },
-      replace : {
-        yoloToMAssive: {
-          src : ['www-root/js/yolo-bear.js'],
-          overwrite : true,
-          replacements: [{
-            from:   'new app(fakeAjax(global),fakeSocket());',
-            to: 'new app(new Ajax(global),new Socket());'
-          }]
-        }
-      },
-
       express: {
         options: {
           // Override defaults here
@@ -117,14 +106,12 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-clean');
     grunt.loadNpmTasks('grunt-simple-mocha');
     grunt.loadNpmTasks('grunt-express-server');
-    grunt.loadNpmTasks('grunt-text-replace');
     grunt.loadNpmTasks('grunt-parallel');
+
     
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'simplemocha:travis', 'clean','copy', 'replace','simplemocha:views', 'express', 'watch']);
-    
-
-    grunt.registerTask('devjs', ['jshint', 'simplemocha']);
+    grunt.registerTask('default', ['jshint', 'simplemocha:travis', 'clean','copy', 'simplemocha:views',  'watch']);
+    grunt.registerTask('yolo-bear', ['clean','copy', 'simplemocha:views']);
 
     grunt.registerTask('travis',['jshint', 'simplemocha:travis']);
 

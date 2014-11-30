@@ -6,6 +6,7 @@ var authStaticUser = require('../../helper/authStaticUser.helper');
 var oKDispatcher = require('../../helper/oKDispatcher.helper');
 var gameDispatcher = oKDispatcher('game');
 var TestData = require('../../helper/testData.helper');
+var WebSocket = require('../../helper/webSocket.helper');
 
 var Rx = require('rx');
 var Q = require('q');
@@ -22,7 +23,7 @@ describe('Given that we have a bear authentified, ', function() {
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source, authStaticUser(testData.bear.yoann));
+        var app = new App(source, authStaticUser(testData.bear.yoann), WebSocket);
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler(gameDispatcher);
@@ -49,7 +50,7 @@ describe('Given that we have a bear not authentified, ', function() {
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source, authStaticUser(testData.bear.yoann));
+        var app = new App(source, authStaticUser(testData.bear.yoann), WebSocket);
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler(gameDispatcher);
@@ -73,7 +74,7 @@ describe('Given that we have a bear authentified, ', function() {
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source, authStaticUser(testData.bear.yoann));
+        var app = new App(source, authStaticUser(testData.bear.yoann), WebSocket);
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler(gameDispatcher);
@@ -99,7 +100,7 @@ describe('Given that we have a bear not authentified, ', function() {
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source, authStaticUser());
+        var app = new App(source, authStaticUser(), WebSocket);
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler(gameDispatcher);
@@ -124,7 +125,7 @@ describe('Given that we have a bear  authentified, ', function() {
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source, authStaticUser(testData.bear.yoann));
+        var app = new App(source, authStaticUser(testData.bear.yoann), WebSocket);
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler(gameDispatcher);
@@ -150,7 +151,7 @@ describe('Given that we have a bear not authentified, ', function() {
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source, authStaticUser());
+        var app = new App(source, authStaticUser(), WebSocket);
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler(gameDispatcher);
@@ -176,7 +177,7 @@ describe('Given that we have a bear  authentified, ', function() {
         var source = Rx.Observable.create(function(observer) {});
 
         
-        var app = new App(source, authStaticUser(testData.bear.yoann));
+        var app = new App(source, authStaticUser(testData.bear.yoann), WebSocket);
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler(gameDispatcher);
@@ -202,7 +203,7 @@ describe('Given that we have a bear  not authentified, ', function() {
         var testData = new TestData();
         var source = Rx.Observable.create(function(observer) {});
 
-        var app = new App(source, authStaticUser());
+        var app = new App(source, authStaticUser(), WebSocket);
 
         var gameRepo = new ReturnDataGamesRepo(testData.games);
         var commandHandler = new CommandHandler(gameDispatcher);

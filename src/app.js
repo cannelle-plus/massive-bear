@@ -1,3 +1,4 @@
+var assert = require('chai').assert;
 var express = require('express');
 var expressSession = require('express-session');
 var Middleware = require('./routes/middleware');
@@ -10,12 +11,19 @@ var methodOverride = require('method-override');
 var errorHandler = require('errorhandler');
 
 
-var app = function(eventSource, authenticate) {
+
+
+var app = function(eventSource, authenticate, WebSocket) {
+
+	assert.ok(eventSource, 'app : eventSource is not defined');
+	assert.ok(authenticate, 'app : authenticate is not defined');
+	assert.ok(WebSocket, 'app : WebSocket is not defined');
 
 	var _handlers = [];
 
 	var router = express.Router();
 	var app = express();
+	var http =  null;
 
 	var middleware = new Middleware(router, eventSource);
 
@@ -81,10 +89,16 @@ var app = function(eventSource, authenticate) {
 		// apply the routes to our application
 		app.use('/', router);
 
-		app.listen(port);
+		http = require('http').Server(app);
 
-		return app;
+		middleware.activateWebSocket(http, WebSocket);
+
+		http.listen(port);
+
+
+		return http;
 	};
+
 };
 
 module.exports = app;

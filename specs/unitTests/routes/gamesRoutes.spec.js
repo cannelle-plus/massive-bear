@@ -137,8 +137,8 @@ describe('Given a bear is authentified, ', function() {
                 try {
                     expect(data).to.be.ok;
                     expect(data.Id).to.equal(3);
-                    expect(data.MetaData.UserId).to.equal(7);
-                    expect(data.MetaData.UserName).to.equal("yoann");
+                    expect(data.MetaData.UserId).to.equal(testData.bear.yoann.bearId);
+                    expect(data.MetaData.UserName).to.equal(testData.bear.yoann.bearUsername);
                     expect(data.PayLoad.Case).to.equal("JoinGame");
                     expect(JSON.stringify(data.PayLoad.Fields)).to.equal(JSON.stringify([]));
                     done();
@@ -209,8 +209,8 @@ describe('Given a bear is authentified, ', function() {
                 try {
                     expect(data).to.be.ok;
                     expect(data.Id).to.equal(3);
-                    expect(data.MetaData.UserId).to.equal(7);
-                    expect(data.MetaData.UserName).to.equal("yoann");
+                    expect(data.MetaData.UserId).to.equal(testData.bear.yoann.bearId);
+                    expect(data.MetaData.UserName).to.equal(testData.bear.yoann.bearUsername);
                     expect(data.PayLoad.Case).to.equal("AbandonGame");
                     expect(JSON.stringify(data.PayLoad.Fields)).to.equal(JSON.stringify([]));
                     done();

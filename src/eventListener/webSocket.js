@@ -11,11 +11,9 @@ var webSocket = function(server, sessions){
 	    var _socket = socket;
 
 	    socket.on('login', function(user){
-			var session = sessions.retrieveSession(user);
-	    	if (!session)
-	    		session = sessions.save(user);
+			// var session = sessions.retrieveSession(user);
 
-	    	session.addSocket(_socket);
+	  //   	session.addSocket(_socket);
 
 	    });
 
