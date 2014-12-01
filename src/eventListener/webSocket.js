@@ -1,19 +1,22 @@
 // Chargement de socket.io
+var expressSession = require('express-session');
 
 
 var webSocket = function(server, sessions){
 
 	if (!sessions) throw 'sessions not defined';
 
-	var io = require('socket.io')(server);
+	var io = require('socket.io').listen(server);
+
 	io.on('connection', function (socket) {
 	    
 	    var _socket = socket;
 
-	    socket.on('login', function(user){
-			// var session = sessions.retrieveSession(user);
+	    socket.on('login', function(token){
+			var session = sessions.retrieveSession({userId : token});
 
-	  //   	session.addSocket(_socket);
+			if (session)
+	     		session.addSocket(_socket);
 
 	    });
 

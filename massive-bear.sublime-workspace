@@ -283,21 +283,17 @@
 	},
 	"buffers":
 	[
-		{
-			"file": "Gruntfile.js",
-			"settings":
-			{
-				"buffer_size": 3118,
-				"line_ending": "Windows"
-			}
-		}
 	],
 	"build_system": "",
 	"command_palette":
 	{
-		"height": 127.0,
+		"height": 380.0,
 		"selected_items":
 		[
+			[
+				"packa",
+				"Package Control: Install Package"
+			],
 			[
 				"grunt",
 				"Grunt"
@@ -313,13 +309,9 @@
 			[
 				"Package Control: ",
 				"Package Control: Install Package"
-			],
-			[
-				"packa",
-				"Preferences: Browse Packages"
 			]
 		],
-		"width": 416.0
+		"width": 536.0
 	},
 	"console":
 	{
@@ -336,23 +328,31 @@
 	},
 	"file_history":
 	[
-		"/D/projects/massive-bear/src/routes/gamesRoutes.js",
-		"/D/projects/massive-bear/specs/helper/testData.helper.js",
+		"/D/projects/massive-bear/src/eventListener/webSocket.js",
 		"/D/projects/massive-bear/src/model/bear.js",
+		"/D/projects/massive-bear/startYoannWindows.bat",
+		"/D/projects/massive-bear/specs/integrationTests/api/bears.spec.js",
+		"/D/projects/massive-bear/src/routes/bearsRoutes.js",
+		"/D/projects/massive-bear/src/repositories/bearRepository.js",
+		"/D/projects/massive-bear/src/auth/socialAuth.js",
+		"/D/projects/massive-bear/specs/helper/authStaticUser.helper.js",
+		"/D/projects/massive-bear/specs/helper/testData.helper.js",
+		"/D/projects/massive-bear/Gruntfile.js",
+		"/D/projects/massive-bear/specs/unitTests/routes/bearsRoutes.spec.js",
+		"/D/projects/massive-bear/src/eventListener/sessions.js",
+		"/D/projects/massive-bear/specs/unitTests/eventStore/eventStore.spec.js",
+		"/D/projects/massive-bear/src/app.js",
+		"/C/Users/Yoann/Desktop/glowing - Copy.bat",
+		"/C/Users/Yoann/Desktop/massivebear - Copy.bat",
+		"/D/projects/massive-bear/src/routes/gamesRoutes.js",
 		"/D/projects/massive-bear/specs/unitTests/routes/gamesRoutes.spec.js",
 		"/D/projects/massive-bear/specs/unitTests/socket/session.spec.js",
 		"/D/projects/massive-bear/specs/unitTests/eventStore/sessions.spec.js",
 		"/D/projects/massive-bear/specs/integrationTests/api/games.spec.js",
 		"/D/projects/massive-bear/specs/integrationTests/views/bears.spec.js",
-		"/D/projects/massive-bear/specs/integrationTests/api/bears.spec.js",
 		"/D/projects/massive-bear/specs/fakeServer.js",
-		"/D/projects/massive-bear/src/auth/socialAuth.js",
 		"/D/projects/massive-bear/src/routes/middleware.js",
 		"/D/projects/massive-bear/src/eventListener/session.js",
-		"/D/projects/massive-bear/src/eventListener/sessions.js",
-		"/D/projects/massive-bear/src/routes/bearsRoutes.js",
-		"/D/projects/massive-bear/specs/helper/authStaticUser.helper.js",
-		"/D/projects/massive-bear/specs/unitTests/routes/bearsRoutes.spec.js",
 		"/D/projects/massive-bear/src/commandHandler/wookieDispatcher.js",
 		"/D/projects/massive-bear/src/commandHandler/commandHandler.js",
 		"/D/projects/massive-bear/specs/helper/msgDispatcher.helper.js",
@@ -361,18 +361,13 @@
 		"/D/projects/massive-bear/specs/helper/webSocket.helper.js",
 		"/D/projects/massive-bear/specs/helper/eventSender.helper.js",
 		"/D/projects/massive-bear/src/repositories/gameRepository.js",
-		"/D/projects/massive-bear/src/repositories/bearRepository.js",
 		"/D/projects/massive-bear/node_modules/q-sqlite3/lib/q-sqlite3.js",
-		"/D/projects/massive-bear/src/eventListener/webSocket.js",
 		"/D/projects/massive-bear/src/auth/oauth.js",
-		"/D/projects/massive-bear/specs/unitTests/eventStore/eventStore.spec.js",
 		"/D/projects/db-wookie/scripts/authenticationScript.sql",
 		"/D/projects/db-wookie/scripts/authenticationScript.tests.sql",
 		"/D/projects/massive-bear/specs/integrationTests/views/home.spec.js",
 		"/D/projects/massive-bear/specs/integrationTests/views/games.spec.js",
-		"/D/projects/massive-bear/src/app.js",
 		"/D/projects/massive-bear/specs/helper/returnDataGamesRepo.helper.js",
-		"/D/projects/massive-bear/startYoannWindows.bat",
 		"/D/projects/massive-bear/startYoannWindows .bat",
 		"/D/projects/massive-bear/src/envs/yoannWindows.env",
 		"/D/projects/massive-bear/package.json",
@@ -398,7 +393,6 @@
 		"/D/projects/yolo-bear/package.json",
 		"/D/projects/massive-bear/specs/unitTests/repositorySocket.spec.js",
 		"/D/projects/yolo-bear/Gruntfile.js",
-		"/D/projects/massive-bear/Gruntfile.js",
 		"/D/projects/massive-bear/specs/integrationTests/test.js",
 		"/D/projects/massive-bear/src/listenner/repositorySocket.js",
 		"/D/projects/massive-bear/src/listenner/ges.js",
@@ -461,9 +455,7 @@
 		"/D/projects/yolo-bear/src/libs/socket.io/socket.io-1.1.0.js",
 		"/D/projects/massive-bear/src/.env",
 		"/D/projects/massive-bear/src/handlers/bears.js",
-		"/D/projects/massive-bear/www-root/games.html",
-		"/D/projects/massive-bear/www-root/login.html",
-		"/D/projects/massive-bear/.sublime-grunt.cache"
+		"/D/projects/massive-bear/www-root/games.html"
 	],
 	"find":
 	{
@@ -489,6 +481,20 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"bear",
+			"yoann",
+			"nn",
+			"userId",
+			"bearId",
+			"travis",
+			"source",
+			"toJson",
+			"user",
+			"MongoStore",
+			"session_secret",
+			"my_precious",
+			"sessionStore",
+			"expressSession",
 			"default",
 			"yoann.username",
 			"bearUsername",
@@ -602,21 +608,7 @@
 			"var app = new App(source, authStaticUser());",
 			"var app = new App(source, authStaticUser(testData.bear.yoann));",
 			"eventSource",
-			"WebSocket",
-			"eventSource",
-			"authenticate",
-			"router",
-			"middleware",
-			"router",
-			"eventSource",
-			"var app = new App(source, authStaticUser());",
-			"var app = new App(source, authStaticUser(testData.bear.yoann));",
-			"WebSocket",
-			"currentPort",
-			"webSocket",
-			"currentPort",
-			"WebSocket",
-			"data"
+			"WebSocket"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -646,141 +638,8 @@
 	"groups":
 	[
 		{
-			"selected": 0,
 			"sheets":
 			[
-				{
-					"buffer": 0,
-					"file": "Gruntfile.js",
-					"settings":
-					{
-						"buffer_size": 3118,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								886,
-								886
-							]
-						],
-						"settings":
-						{
-							"codeintel": true,
-							"codeintel_config":
-							{
-								"JavaScript":
-								{
-									"codeintel_max_recursive_dir_depth": 2,
-									"codeintel_scan_files_in_project": false,
-									"javascriptExtraPaths":
-									[
-									]
-								},
-								"PHP":
-								{
-									"codeintel_max_recursive_dir_depth": 5,
-									"codeintel_scan_files_in_project": false,
-									"phpExtraPaths":
-									[
-									]
-								},
-								"Python":
-								{
-									"env":
-									{
-									}
-								}
-							},
-							"codeintel_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_live": true,
-							"codeintel_live_enabled_languages":
-							[
-								"JavaScript",
-								"Mason",
-								"XBL",
-								"XUL",
-								"RHTML",
-								"SCSS",
-								"Python",
-								"HTML",
-								"Ruby",
-								"Python3",
-								"XML",
-								"Sass",
-								"XSLT",
-								"Django",
-								"HTML5",
-								"Perl",
-								"CSS",
-								"Twig",
-								"Less",
-								"Smarty",
-								"Node.js",
-								"Tcl",
-								"TemplateToolkit",
-								"PHP"
-							],
-							"codeintel_max_recursive_dir_depth": 10,
-							"codeintel_scan_exclude_dir":
-							{
-								"JavaScript":
-								[
-									"/build/",
-									"/min/"
-								]
-							},
-							"codeintel_scan_files_in_project": true,
-							"codeintel_selected_catalogs":
-							[
-								"PyWin32",
-								"jQuery",
-								"Rails"
-							],
-							"codeintel_snippets": true,
-							"codeintel_syntax_map":
-							{
-								"Python Django": "Python"
-							},
-							"codeintel_tooltips": "popup",
-							"sublime_auto_complete": true,
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 168.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				}
 			]
 		}
 	],

@@ -20,7 +20,7 @@
  var request = require('supertest');
 
  describe('Integration Tests : bear api, ', function() {
- 	describe('Given that we have a bear authentified, ', function() {
+ 	describe('Given that we have a bear authentified and signed in, ', function() {
  		it('when we get "/api/bear/profile", we receive its bear ', function(done) {
 
  			var testData = new TestData();
@@ -38,7 +38,7 @@
  				.get('/api/bear/profile')
  				.expect(200)
  				.end(function(err, res) {
- 					expect(err).to.not.be.ok;
+ 					expect(err).to.not.be.ok; 
  					expect(res.text).to.equal(JSON.stringify({
  						bear: testData.bear.yoann
  					}));
@@ -46,6 +46,33 @@
  				});
  		});
  	});
+
+    describe('Given that we have a bear authentified but not signedIn, ', function() {
+        it('when we get "/api/bear/profile", we receive its bear ', function(done) {
+
+            var testData = new TestData();
+            var source = Rx.Observable.create(function(observer) {});
+
+            var app = new App(source, authStaticUser(testData.bear.yoann), WebSocket);
+
+            var bearRepo = new ReturnDataGamesRepo();
+            var commandHandler = new CommandHandler(bearMsgDispatcher);
+            var bearsRoutes = new BearsRoutes(bearRepo, commandHandler);
+
+            app.addHandlers(bearsRoutes);
+
+            request(app.start(currentPort()))
+                .get('/api/bear/profile')
+                .expect(200)
+                .end(function(err, res) {
+                    expect(err).to.not.be.ok; 
+                    expect(res.text).to.equal(JSON.stringify({
+                        bear: testData.bear.yoann
+                    }));
+                    done();
+                });
+        });
+    });
 
 
 

@@ -113,6 +113,8 @@ module.exports = function(grunt) {
     grunt.registerTask('default', ['jshint', 'simplemocha:travis', 'clean','copy', 'simplemocha:views',  'watch']);
     grunt.registerTask('yolo-bear', ['clean','copy', 'simplemocha:views']);
 
+    grunt.registerTask('devjs',['jshint', 'simplemocha']);
+
     grunt.registerTask('travis',['jshint', 'simplemocha:travis']);
 
 };

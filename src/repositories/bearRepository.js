@@ -27,7 +27,8 @@ var BearRepository = function(dbPath)
 
     this.getBear = function(bearId)
     {
-        return _db.get('SELECT * FROM Bears WHERE bearId='+bearId);
+        var sql = 'SELECT * FROM Bears WHERE bearId=$bearId';   
+        return _db.get(sql,{$bearId : bearId});
     };
 
     this.hasSignedIn = function(socialId)

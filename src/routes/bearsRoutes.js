@@ -23,7 +23,7 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 		execute: function() {},
 		handles: function(session) {
 			return function(req, res) {
-				
+
 				if (session) {
 					var options = {
 						root: './www-root/',
@@ -35,31 +35,31 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 					};
 					res.sendFile("signin.html", options);
 				} else {
-					res.redirect(302,"/");
+					res.redirect(302, "/");
 				}
 			};
 		}
 	};
 
 
-	this.saveProfile = { 
+	this.saveProfile = {
 		url: "/api/bear/signin",
 		verb: "POST",
 		extract: function(req) {
 			var bearUsername = req.body.bearUsername;
-			var avatarId = req.body.avatarId;				
+			var avatarId = req.body.avatarId;
 			return {
 				"And": function(fnExecute) {
-					return fnExecute(bearUsername,avatarId);
+					return fnExecute(bearUsername, avatarId);
 				}
 			};
 		},
-		execute: function(session) { 
-			return function(bearUsername,avatarId) {
+		execute: function(session) {
+			return function(bearUsername, avatarId) {
 
 				var currentBear = session.bear();
 
-				currentBear.signIn(bearUsername,avatarId);
+				currentBear.signIn(bearUsername, avatarId);
 
 				var cmd = [
 					bearUsername,
@@ -68,14 +68,13 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 
 				//dispatch the command to the wookie
 				return commandHandler.handles("SignIn", currentBear.bearId, 0, currentBear, cmd);
-				
+
 			};
 		}
 	};
 
 	this.profile = {
 		url: "/api/bear/profile",
-		params: [profileIdParam],
 		verb: "GET",
 		extract: function(req) {
 			return {
@@ -88,8 +87,20 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 			return function() {
 				assert.ok(session, 'bearsRoutes : session is not defined');
 
-				return bearRepo.getBear(session.bear().userId)
-					.then(toJson);
+				return bearRepo.getBear(session.bear().bearId)
+					.then(function(bear) {
+						//retrieve the tokenId
+						if (bear){
+							bear.userId = session.bear().userId;
+							return toJson(bear);
+						}
+
+						return toJson(session.bear());
+							
+					})
+					.catch(function(err){
+						console.log(err);
+					});
 
 			};
 		}

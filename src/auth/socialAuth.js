@@ -42,6 +42,7 @@ var socialAuth = function(bearRepo) {
 									//do the bindings
 									bear.userId = uuid.v1();
 									bear.hasSignedIn = true;
+									
 
 									middleware.login(bear);
 
@@ -54,7 +55,7 @@ var socialAuth = function(bearRepo) {
 								{
 									var newBear = new Bear(uuid.v1(), profile.id, "A renseigner", 1, false);
 
-									newBear.userId = uuid.v1();
+									newBear.userId = uuid.v4();
 
 									middleware.login(newBear);
 
