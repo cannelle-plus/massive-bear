@@ -16,38 +16,13 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 		console.log(err);
 	};
 
-	this.signin = {
-		url: "/signin",
-		verb: "GET",
-		extract: function() {},
-		execute: function() {},
-		handles: function(session) {
-			return function(req, res) {
-
-				if (session) {
-					var options = {
-						root: './www-root/',
-						dotfiles: 'deny',
-						headers: {
-							'x-timestamp': Date.now(),
-							'x-sent': true
-						}
-					};
-					res.sendFile("signin.html", options);
-				} else {
-					res.redirect(302, "/");
-				}
-			};
-		}
-	};
-
 
 	this.saveProfile = {
 		url: "/api/bear/signin",
 		verb: "POST",
 		extract: function(req) {
-			var bearUsername = req.body.bearUsername;
-			var avatarId = req.body.avatarId;
+			var bearUsername = req.body.payLoad.bearUsername;
+			var avatarId = req.body.payLoad.avatarId;
 			return {
 				"And": function(fnExecute) {
 					return fnExecute(bearUsername, avatarId);
@@ -63,8 +38,10 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 
 				var cmd = [
 					bearUsername,
+					currentBear.socialId,
 					avatarId
 				];
+
 
 				//dispatch the command to the wookie
 				return commandHandler.handles("SignIn", currentBear.bearId, 0, currentBear, cmd);
@@ -89,16 +66,10 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 
 				return bearRepo.getBear(session.bear().bearId)
 					.then(function(bear) {
-						//retrieve the tokenId
-						if (bear){
-							bear.userId = session.bear().userId;
-							return toJson(bear);
-						}
-
 						return toJson(session.bear());
-							
+
 					})
-					.catch(function(err){
+					.catch(function(err) {
 						console.log(err);
 					});
 

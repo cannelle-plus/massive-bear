@@ -86,10 +86,6 @@ module.exports = function(grunt) {
             {
             grunt:true,
             args : ['watch:devjs']
-            },
-            {
-            grunt:true,
-            args : ['watch:wwwroot']
             }
           ]
         }
@@ -110,7 +106,7 @@ module.exports = function(grunt) {
 
     
     // Default task(s).
-    grunt.registerTask('default', ['jshint', 'simplemocha:travis', 'clean','copy', 'simplemocha:views',  'watch']);
+    grunt.registerTask('default', ['clean','copy',   'watch']);
     grunt.registerTask('yolo-bear', ['clean','copy', 'simplemocha:views']);
 
     grunt.registerTask('devjs',['jshint', 'simplemocha']);

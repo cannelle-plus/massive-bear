@@ -13,6 +13,8 @@ var Bear = function(bearId, socialId, bearUsername, avatarId, hasSignedIn) {
 	assert.ok(bearUsername, 'Bear : bearUsername is not defined');
 	assert.ok(avatarId, 'Bear : avatarId is not defined');
 
+	var _self = this;
+
 	this.bearId =bearId;
 	this.socialId = socialId;
 	this.bearUsername = bearUsername;
@@ -20,8 +22,8 @@ var Bear = function(bearId, socialId, bearUsername, avatarId, hasSignedIn) {
 	this.hasSignedIn = hasSignedIn;
 
 	this.signIn = function(bearUsername,avatarId){
-		this.bearUsername = bearUsername;
-		this.avatarId = avatarId;
+		_self.bearUsername = bearUsername;
+		_self.avatarId = avatarId;
 	};
 	
 };

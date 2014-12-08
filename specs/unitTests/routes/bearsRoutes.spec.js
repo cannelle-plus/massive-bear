@@ -120,3 +120,33 @@ describe('Given a bear is authenticated, ', function() {
     });
 });
 
+describe('Given a bear is authentified, ', function() {
+
+    it('when it signs in, it dispatchs a message', function(done) {
+
+        var testData = new TestData();
+        var bearRepo = new ReturnDataGamesRepo(testData.bear.julien);
+        var commandHandler = new CommandHandler(bearDispatcher);
+
+        var bearRoutes = new BearsRoutes(bearRepo, commandHandler);
+        var source = Rx.Observable.create(function(observer) {});
+        var session = new Session(testData.bear.yoann, source);
+
+        bearRoutes.saveProfile.execute(session)("jason", 3)
+            .then(function(data) {
+                try {
+                    console.log(data);
+                    expect(data).to.be.ok;
+                    expect(data.Id).to.equal(testData.bear.yoann.bearId);
+                    expect(data.MetaData.UserId).to.equal(testData.bear.yoann.bearId);
+                    expect(data.MetaData.UserName).to.equal(testData.bear.yoann.bearUsername);
+                    expect(data.PayLoad.Case).to.equal("SignIn");
+                    expect(JSON.stringify(data.PayLoad.Fields)).to.equal(JSON.stringify(["jason", 3]));
+                    done();
+                } catch (e) {
+                    console.log(e);
+                }
+
+            });
+    });
+});

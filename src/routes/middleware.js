@@ -13,29 +13,11 @@ var middleware = function( router, source) {
 	var _sessions = new Sessions(source);
 	var _webSockets = null;
 
-	// router.use(function(req, res, next) {
-	// 	res.promise = function(promise) {
-	// 		promise.then(function(result) {
-	// 			res.send(200, result);
-	// 		}).fail(function(err) {
-	// 			if (err.statusCode) {
-	// 				res.send(err.statusCode, {
-	// 					error: err.message
-	// 				});
-	// 			} else {
-	// 				res.send(500, {
-	// 					error: 'Unexpected error'
-	// 				});
-	// 			}
-	// 		}).done();
-	// 	};
-	// 	next();
-	// });
-
-
-
 	var _returnJsonTo = function(res) {
 		return function(jsonData) {
+			console.log('***********response json ***************************');
+			console.log(jsonData);
+			console.log('**************************************');
 			res.json(jsonData);
 		};
 	};

@@ -77,9 +77,7 @@ var testData = function() {
         hasSignedIn : {
             evtType: "hasSignedIn",
             payLoad: {
-                "bearId" : 'd70efb73-996c-4107-97dd-7503bbf7f5bb', 
                 "bearUsername" : 'yoann', 
-                'socialId' : '1234567890', 
                 'avatarId' : 2
             }
         }

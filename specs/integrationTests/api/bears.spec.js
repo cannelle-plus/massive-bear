@@ -105,7 +105,7 @@
 
 
  	describe('Given that we have a bear not authentified, ', function() {
- 		it('when we get "/api/bear/profile", we receive an unauthorized response 401 ', function(done) {
+ 		it('when we get "/api/bear/profile/8", we receive an unauthorized response 401 ', function(done) {
 
 
  			var testData = new TestData();

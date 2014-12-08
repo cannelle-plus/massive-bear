@@ -13,6 +13,7 @@ var webSocket = function(server, sessions){
 	    var _socket = socket;
 
 	    socket.on('login', function(token){
+	    	console.log('opening socket :' + token);
 			var session = sessions.retrieveSession({userId : token});
 
 			if (session)
