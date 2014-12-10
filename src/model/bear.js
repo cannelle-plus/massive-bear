@@ -24,6 +24,7 @@ var Bear = function(bearId, socialId, bearUsername, avatarId, hasSignedIn) {
 	this.signIn = function(bearUsername,avatarId){
 		_self.bearUsername = bearUsername;
 		_self.avatarId = avatarId;
+		_self.hasSignedIn = true;
 	};
 	
 };

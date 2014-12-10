@@ -66,6 +66,7 @@ var bearsRoutes = function(bearRepo, commandHandler) {
 
 				return bearRepo.getBear(session.bear().bearId)
 					.then(function(bear) {
+						
 						return toJson(session.bear());
 
 					})

@@ -41,6 +41,7 @@ var socialAuth = function(bearRepo) {
 								if (bear){
 									//do the bindings
 									bear.userId = uuid.v1();
+									bear.
 									bear.hasSignedIn = true;
 									
 
